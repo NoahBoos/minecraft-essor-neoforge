@@ -1,5 +1,6 @@
 package fr.noahboos.essor;
 
+import fr.noahboos.essor.components.EssorDataComponents;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.Mod;
@@ -20,6 +21,8 @@ public class Essor
     public Essor(IEventBus modEventBus, ModContainer modContainer)
     {
         modEventBus.addListener(this::commonSetup);
+
+        EssorDataComponents.REGISTRAR.register(modEventBus);
 
         modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
     }
