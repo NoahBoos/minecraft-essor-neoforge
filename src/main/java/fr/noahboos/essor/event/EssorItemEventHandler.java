@@ -32,7 +32,7 @@ public class EssorItemEventHandler {
     }
 
     @SubscribeEvent
-    public static void OnItemPickedUp(ItemEntityPickupEvent event) {
-
+    public static void OnItemPickedUp(ItemEntityPickupEvent.Post event) {
+        InventoryUtils.InitializeEquipmentLevelingDataOnInventoryItems(event.getPlayer().getInventory());
     }
 }
