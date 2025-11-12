@@ -70,6 +70,12 @@ public class EquipmentLevelingData {
         SwordItem.class, TridentItem.class
     );
 
+    public static final Set<Class<?>> CHALLENGEABLE_ITEM_CLASSES = Set.of(
+        AxeItem.class, BowItem.class, CrossbowItem.class, MaceItem.class,
+        PickaxeItem.class, ShovelItem.class, ShieldItem.class, SwordItem.class,
+        TridentItem.class, BlockItem.class
+    );
+
     public int GetPrestige() {
         return this.prestige;
     }
