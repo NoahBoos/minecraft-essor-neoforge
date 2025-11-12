@@ -40,15 +40,14 @@ public class EquipmentLevelingData {
         float currentExperience,
         Challenges challenges
     ) {
-        this.prestige = 0;
-        this.requiredLevelToPrestige = 10;
-        this.level = 0;
-        this.totalExperienceMultiplier = 1f;
-        this.prestigeExperienceMultiplier = 0f;
-        this.challengeExperienceMultiplier = 0f;
-        this.requiredExperienceToLevelUp = 100;
-        this.currentExperience = 0;
-//        this.challenges = new Challenges();
+        this.prestige = prestige;
+        this.requiredLevelToPrestige = requiredLevelToPrestige;
+        this.level = level;
+        this.totalExperienceMultiplier = totalExperienceMultiplier;
+        this.prestigeExperienceMultiplier = prestigeExperienceMultiplier;
+        this.challengeExperienceMultiplier = challengeExperienceMultiplier;
+        this.requiredExperienceToLevelUp = requiredExperienceToLevelUp;
+        this.currentExperience = currentExperience;
         this.challenges = challenges;
     }
 
