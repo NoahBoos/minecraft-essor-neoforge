@@ -6,7 +6,7 @@ import net.minecraft.world.item.*;
 import java.util.Map;
 
 public class EssorRegistry {
-    private static final String PATH_TO_ENCHANTMENT_TABLES = "data/essor/enchantment/";
+    private static final String PATH_TO_ENCHANTMENT_TABLES = "data/essor/enchantment_rewards/";
     private static final String PATH_TO_EXPERIENCE_TABLES = "data/essor/experience/";
 
     private static Map<Integer, Map<String, Integer>> LoadEnchantmentTable(String file) {
