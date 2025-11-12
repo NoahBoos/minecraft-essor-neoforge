@@ -1,5 +1,6 @@
 package fr.noahboos.essor.components;
 
+import fr.noahboos.essor.components.challenge.Challenges;
 import net.minecraft.world.item.*;
 
 import java.util.Objects;
@@ -14,7 +15,7 @@ public class EquipmentLevelingData {
     private float challengeExperienceMultiplier;
     private int requiredExperienceToLevelUp;
     private float currentExperience;
-//    private Challenges challenges;
+    private Challenges challenges;
 
     public EquipmentLevelingData() {
         this.prestige = 0;
@@ -25,7 +26,7 @@ public class EquipmentLevelingData {
         this.challengeExperienceMultiplier = 0f;
         this.requiredExperienceToLevelUp = 100;
         this.currentExperience = 0;
-//        this.challenges = new Challenges();
+        this.challenges = new Challenges();
     }
 
     public EquipmentLevelingData(
@@ -36,8 +37,8 @@ public class EquipmentLevelingData {
         float prestigeExperienceMultiplier,
         float challengeExperienceMultiplier,
         int requiredExperienceToLevelUp,
-        float currentExperience
-//        Challenges challenges
+        float currentExperience,
+        Challenges challenges
     ) {
         this.prestige = 0;
         this.requiredLevelToPrestige = 10;
@@ -48,6 +49,7 @@ public class EquipmentLevelingData {
         this.requiredExperienceToLevelUp = 100;
         this.currentExperience = 0;
 //        this.challenges = new Challenges();
+        this.challenges = challenges;
     }
 
     public static final Set<Class<?>> UPGRADABLE_TOOLS_CLASSES = Set.of(
@@ -123,12 +125,12 @@ public class EquipmentLevelingData {
         this.currentExperience = currentExperience;
     }
 
-//    public Challenges GetChallenges() {
-//        return this.challenges;
-//    }
-//    public void SetChallenges(Challenges challenges) {
-//        this.challenges = challenges;
-//    }
+    public Challenges GetChallenges() {
+        return this.challenges;
+    }
+    public void SetChallenges(Challenges challenges) {
+        this.challenges = challenges;
+    }
 
     @Override
     public int hashCode() {
@@ -140,8 +142,8 @@ public class EquipmentLevelingData {
             this.prestigeExperienceMultiplier,
             this.challengeExperienceMultiplier,
             this.requiredExperienceToLevelUp,
-            this.currentExperience
-//            this.challenges()
+            this.currentExperience,
+            this.challenges
         );
     }
 
@@ -157,8 +159,8 @@ public class EquipmentLevelingData {
                 && this.prestigeExperienceMultiplier == obj.prestigeExperienceMultiplier
                 && this.challengeExperienceMultiplier == obj.challengeExperienceMultiplier
                 && this.requiredExperienceToLevelUp == obj.requiredExperienceToLevelUp
-                && this.currentExperience == obj.currentExperience;
-//                && this.challenges == obj.challenges;
+                && this.currentExperience == obj.currentExperience
+                && this.challenges == obj.challenges;
         }
     }
 }
