@@ -9,6 +9,10 @@ import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 public class EssorPlayerEventHandler {
     @SubscribeEvent
     public static void OnPlayerLoggedIn(PlayerEvent.PlayerLoggedInEvent event) {
-        InventoryUtils.InitializeEquipmentLevelingDataOnInventoryItems(event.getEntity().getInventory());
+        if (event.getEntity().level().isClientSide()) {
+            return;
+        } else {
+            InventoryUtils.InitializeEquipmentLevelingDataOnInventoryItems(event.getEntity().getInventory());
+        }
     }
 }

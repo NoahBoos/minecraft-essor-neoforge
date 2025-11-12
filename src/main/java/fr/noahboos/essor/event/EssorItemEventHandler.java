@@ -33,6 +33,10 @@ public class EssorItemEventHandler {
 
     @SubscribeEvent
     public static void OnItemPickedUp(ItemEntityPickupEvent.Post event) {
-        InventoryUtils.InitializeEquipmentLevelingDataOnInventoryItems(event.getPlayer().getInventory());
+        if (event.getPlayer().level().isClientSide()) {
+            return;
+        } else {
+            InventoryUtils.InitializeEquipmentLevelingDataOnInventoryItems(event.getPlayer().getInventory());
+        }
     }
 }
