@@ -17,9 +17,7 @@ public class EssorItemEventHandler {
             return;
         } else {
             ItemStack crafted = event.getCrafting();
-            if ((EquipmentLevelingData.UPGRADABLE_TOOLS_CLASSES.contains(crafted.getItem().getClass())
-                    || EquipmentLevelingData.UPGRADABLE_WEAPON_CLASSES.contains(crafted.getItem().getClass())
-                    || EquipmentLevelingData.UPGRADABLE_ARMOR_CLASSES.contains(crafted.getItem().getClass()))
+            if (EquipmentLevelingData.UPGRADABLE_ITEM_CLASSES.contains(crafted.getItem().getClass())
                     && !crafted.getComponents().has(EssorDataComponents.EQUIPMENT_LEVELING_DATA.get())) {
                 crafted.set(
                         EssorDataComponents.EQUIPMENT_LEVELING_DATA.get(),
