@@ -2,6 +2,9 @@ package fr.noahboos.essor.event;
 
 import fr.noahboos.essor.component.EquipmentLevelingData;
 import fr.noahboos.essor.component.EssorDataComponents;
+import fr.noahboos.essor.component.challenge.ChallengeDefinition;
+import fr.noahboos.essor.registry.EssorRegistry;
+import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.ItemStack;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -37,6 +40,20 @@ public class EssorTooltipEventHandler {
             levelProgressBar.append("§a■".repeat(Math.max(0, levelFilledSegments)));
             levelProgressBar.append("§7□".repeat(Math.max(0, levelSegments - levelFilledSegments)));
             tooltip.add(Component.literal(levelProgressBar.toString()));
+            if (EquipmentLevelingData.CHALLENGEABLE_ITEM_CLASSES.contains(item.getItem().getClass())) {
+                if (Screen.hasShiftDown()) {
+                    data.GetChallenges().challenges.forEach(challenge -> {
+                        ChallengeDefinition definition = EssorRegistry.CHALLENGE_DEFINITION_MAP.get(challenge.GetId());
+                        tooltip.add(Component.empty());
+                        StringBuilder challengeProgressBar = new StringBuilder();
+                        challengeProgressBar.append("§a■".repeat(Math.max(0, challenge.GetCurrentTier())));
+                        challengeProgressBar.append("§7□".repeat(Math.max(0, definition.GetMaximumTier() - challenge.GetCurrentTier())));
+                        tooltip.add(Component.translatable(challenge.GetId().replace(":", "."), challenge.GetProgress(), (challenge.GetCurrentTier() == definition.GetMaximumTier()) ? definition.GetThresholds().get(challenge.GetCurrentTier()) : definition.GetThresholds().get(challenge.GetCurrentTier() + 1)).append(Component.literal(" - ")).append(Component.literal(challengeProgressBar.toString())));
+                    });
+                } else {
+                    tooltip.add(Component.translatable("translation.holdToSeeChallenges"));
+                }
+            }
         }
     }
 }
