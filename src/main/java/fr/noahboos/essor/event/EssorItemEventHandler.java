@@ -2,6 +2,7 @@ package fr.noahboos.essor.event;
 
 import fr.noahboos.essor.component.EquipmentLevelingData;
 import fr.noahboos.essor.component.EssorDataComponents;
+import fr.noahboos.essor.component.challenge.ChallengesFactory;
 import fr.noahboos.essor.util.InventoryUtils;
 import net.minecraft.world.item.ItemStack;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -23,6 +24,7 @@ public class EssorItemEventHandler {
                         EssorDataComponents.EQUIPMENT_LEVELING_DATA.get(),
                         new EquipmentLevelingData()
                 );
+                ChallengesFactory.AssignChallenges(crafted);
             }
 
             InventoryUtils.InitializeEquipmentLevelingDataOnInventoryItems(event.getEntity().getInventory());
