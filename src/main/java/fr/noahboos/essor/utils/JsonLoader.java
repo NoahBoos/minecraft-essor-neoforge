@@ -2,6 +2,7 @@ package fr.noahboos.essor.utils;
 
 import com.google.common.reflect.TypeToken;
 import com.google.gson.Gson;
+import fr.noahboos.essor.components.challenge.ChallengeDefinition;
 
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -39,4 +40,19 @@ public class JsonLoader {
 //            return null;
 //        }
 //    }
+
+    public static ChallengeDefinition LoadChallengeDefinition(String file) {
+        String path = "data/essor/challenge/" + file + ".json";
+
+        try (InputStream stream = JsonLoader.class.getClassLoader().getResourceAsStream(path)) {
+            if (stream == null) throw new RuntimeException("Failed to load challenge definition data from " + path);
+            Reader reader = new InputStreamReader(stream);
+            Gson gson = new Gson();
+            Type type = new TypeToken<ChallengeDefinition>(){}.getType();
+            return gson.fromJson(reader, type);
+        } catch (Exception exception) {
+            exception.printStackTrace();
+            return null;
+        }
+    }
 }
