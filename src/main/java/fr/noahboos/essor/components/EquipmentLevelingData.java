@@ -1,6 +1,9 @@
 package fr.noahboos.essor.components;
 
+import net.minecraft.world.item.*;
+
 import java.util.Objects;
+import java.util.Set;
 
 public class EquipmentLevelingData {
     private int prestige;
@@ -46,6 +49,19 @@ public class EquipmentLevelingData {
         this.currentExperience = 0;
 //        this.challenges = new Challenges();
     }
+
+    public static final Set<Class<?>> UPGRADABLE_TOOLS_CLASSES = Set.of(
+        AxeItem.class, HoeItem.class, PickaxeItem.class, ShovelItem.class
+    );
+
+    public static final Set<Class<?>> UPGRADABLE_WEAPON_CLASSES = Set.of(
+        AxeItem.class, BowItem.class, CrossbowItem.class, MaceItem.class,
+        SwordItem.class, TridentItem.class
+    );
+
+    public static final Set<Class<?>> UPGRADABLE_ARMOR_CLASSES = Set.of(
+        ArmorItem.class
+    );
 
     public int GetPrestige() {
         return this.prestige;
