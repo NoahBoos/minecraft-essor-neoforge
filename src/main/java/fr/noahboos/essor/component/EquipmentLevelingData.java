@@ -57,17 +57,17 @@ public class EquipmentLevelingData {
 
     public static final Set<Class<?>> UPGRADABLE_WEAPON_CLASSES = Set.of(
         AxeItem.class, BowItem.class, CrossbowItem.class, MaceItem.class,
-        SwordItem.class, TridentItem.class
+        ShieldItem.class, SwordItem.class, TridentItem.class
     );
 
     public static final Set<Class<?>> UPGRADABLE_ARMOR_CLASSES = Set.of(
-        ArmorItem.class
+        ArmorItem.class, ShieldItem.class
     );
 
     public static final Set<Class<?>> UPGRADABLE_ITEM_CLASSES = Set.of(
         ArmorItem.class, AxeItem.class, BowItem.class, CrossbowItem.class,
-        MaceItem.class, PickaxeItem.class, ShovelItem.class, SwordItem.class,
-        TridentItem.class
+        MaceItem.class, PickaxeItem.class, ShovelItem.class, ShieldItem.class,
+        SwordItem.class, TridentItem.class
     );
 
     public int GetPrestige() {
