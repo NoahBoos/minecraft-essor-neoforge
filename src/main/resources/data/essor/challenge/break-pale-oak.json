@@ -1,0 +1,18 @@
+{
+  "id": "Essor:Challenge:BreakPaleOak",
+  "tiers": {
+    "1": 128,
+    "2": 256,
+    "3": 512,
+    "4": 1024,
+    "5": 2048
+  },
+  "maximumTier": 5,
+  "currentTier": 0,
+  "progression": 0,
+  "targets": [
+    "minecraft:pale_oak_log",
+    "minecraft:pale_oak_wood"
+  ],
+  "isCompleted": false
+}

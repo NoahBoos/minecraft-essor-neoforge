@@ -1,0 +1,47 @@
+{
+  "11": {
+    "unbreaking": 1
+  },
+  "13": {
+    "loyalty": 1,
+    "riptide": 1
+  },
+  "15": {
+    "impaling": 1
+  },
+  "21": {
+    "unbreaking": 2
+  },
+  "23": {
+    "loyalty": 2,
+    "riptide": 2
+  },
+  "25": {
+    "impaling": 2
+  },
+  "31": {
+    "unbreaking": 3
+  },
+  "33": {
+    "loyalty": 3,
+    "riptide": 3
+  },
+  "35": {
+    "impaling": 3
+  },
+  "37": {
+    "channeling": 1
+  },
+  "41": {
+    "unbreaking": 4
+  },
+  "45": {
+    "impaling": 4
+  },
+  "51": {
+    "unbreaking": 5
+  },
+  "55": {
+    "impaling": 5
+  }
+}

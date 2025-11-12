@@ -1,0 +1,17 @@
+{
+  "id": "Essor:Challenge:KillWarden",
+  "tiers": {
+    "1": 1,
+    "2": 2,
+    "3": 3,
+    "4": 4,
+    "5": 5
+  },
+  "maximumTier": 5,
+  "currentTier": 0,
+  "progression": 0,
+  "targets": [
+    "minecraft:warden"
+  ],
+  "isCompleted": false
+}

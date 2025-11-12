@@ -1,0 +1,21 @@
+{
+  "id": "Essor:Challenge:KillZombies",
+  "tiers": {
+    "1": 64,
+    "2": 128,
+    "3": 256,
+    "4": 512,
+    "5": 1048
+  },
+  "maximumTier": 5,
+  "currentTier": 0,
+  "progression": 0,
+  "targets": [
+    "minecraft:drowned",
+    "minecraft:husk",
+    "minecraft:zombie",
+    "minecraft:zombie_villager",
+    "minecraft:zombified_piglin"
+  ],
+  "isCompleted": false
+}

@@ -1,0 +1,34 @@
+{
+  "minecraft:oak_log": 4.5,
+  "minecraft:oak_wood": 4.5,
+
+  "minecraft:birch_log": 9,
+  "minecraft:birch_wood": 9,
+
+  "minecraft:dark_oak_log": 12,
+  "minecraft:dark_oak_wood": 12,
+
+  "minecraft:pale_oak_log": 12,
+  "minecraft:pale_oak_wood": 12,
+
+  "minecraft:spruce_log": 18,
+  "minecraft:spruce_wood": 18,
+
+  "minecraft:acacia_log": 22.5,
+  "minecraft:acacia_wood": 22.5,
+
+  "minecraft:jungle_log": 22.5,
+  "minecraft:jungle_wood": 22.5,
+
+  "minecraft:cherry_log": 27,
+  "minecraft:cherry_wood": 27,
+
+  "minecraft:mangrove_log": 30.5,
+  "minecraft:mangrove_wood": 30.5,
+
+  "minecraft:crimson_stem": 36,
+  "minecraft:crimson_hyphae": 36,
+
+  "minecraft:warped_stem": 36,
+  "minecraft:warped_hyphae": 36
+}

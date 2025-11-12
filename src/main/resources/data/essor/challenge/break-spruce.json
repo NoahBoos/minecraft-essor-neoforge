@@ -1,0 +1,18 @@
+{
+  "id": "Essor:Challenge:BreakSpruce",
+  "tiers": {
+    "1": 64,
+    "2": 128,
+    "3": 256,
+    "4": 512,
+    "5": 1024
+  },
+  "maximumTier": 5,
+  "currentTier": 0,
+  "progression": 0,
+  "targets": [
+    "minecraft:spruce_log",
+    "minecraft:spruce_wood"
+  ],
+  "isCompleted": false
+}

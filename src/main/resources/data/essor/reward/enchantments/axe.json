@@ -1,0 +1,47 @@
+{
+  "11": {
+    "unbreaking": 1
+  },
+  "13": {
+    "fortune": 1
+  },
+  "15": {
+    "efficiency": 1
+  },
+  "21": {
+    "unbreaking": 2
+  },
+  "23": {
+    "fortune": 2
+  },
+  "25": {
+    "efficiency": 2
+  },
+  "31": {
+    "unbreaking": 3
+  },
+  "33": {
+    "fortune": 3
+  },
+  "35": {
+    "efficiency": 3
+  },
+  "41": {
+    "unbreaking": 4
+  },
+  "43": {
+    "fortune": 4
+  },
+  "45": {
+    "efficiency": 4
+  },
+  "51": {
+    "unbreaking": 5
+  },
+  "53": {
+    "fortune": 5
+  },
+  "55": {
+    "efficiency": 5
+  }
+}

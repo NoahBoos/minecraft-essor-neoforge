@@ -1,0 +1,15 @@
+{
+  "minecraft:moss_block":  8.0,
+  "minecraft:red_mushroom": 24.0,
+  "minecraft:brown_mushroom": 24.0,
+  "minecraft:red_mushroom_block": 24.0,
+  "minecraft:brown_mushroom_block": 24.0,
+  "minecraft:mushroom_stem": 24.0,
+  "minecraft:nether_wart_block": 32.0,
+  "minecraft:warped_wart_block": 32.0,
+  "minecraft:shroomlight": 24.0,
+  "minecraft:warped_fungus": 16.0,
+  "minecraft:crimson_fungus": 16.0,
+  "minecraft:crimson_roots": 12.0,
+  "minecraft:warped_roots": 12.0
+}

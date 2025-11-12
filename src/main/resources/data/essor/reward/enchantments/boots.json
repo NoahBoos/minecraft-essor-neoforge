@@ -1,0 +1,101 @@
+{
+  "11": {
+    "unbreaking": 1
+  },
+  "12": {
+    "depth_strider": 1
+  },
+  "13": {
+    "protection": 1,
+    "projectile_protection": 1,
+    "blast_protection": 1,
+    "fire_protection": 1
+  },
+  "15": {
+    "feather_falling": 1
+  },
+  "17": {
+    "thorns": 1
+  },
+  "19": {
+    "soul_speed": 1
+  },
+  "21": {
+    "unbreaking": 2
+  },
+  "22": {
+    "depth_strider": 2
+  },
+  "23": {
+    "protection": 2,
+    "projectile_protection": 2,
+    "blast_protection": 2,
+    "fire_protection": 2
+  },
+  "25": {
+    "feather_falling": 2
+  },
+  "27": {
+    "thorns": 2
+  },
+  "29": {
+    "soul_speed": 2
+  },
+  "31": {
+    "unbreaking": 3
+  },
+  "32": {
+    "depth_strider": 3
+  },
+  "33": {
+    "protection": 3,
+    "projectile_protection": 3,
+    "blast_protection": 3,
+    "fire_protection": 3
+  },
+  "35": {
+    "feather_falling": 3
+  },
+  "37": {
+    "thorns": 3
+  },
+  "39": {
+    "soul_speed": 3
+  },
+  "41": {
+    "unbreaking": 4
+  },
+  "43": {
+    "protection": 4,
+    "projectile_protection": 4,
+    "blast_protection": 4,
+    "fire_protection": 4
+  },
+  "45": {
+    "feather_falling": 4
+  },
+  "47": {
+    "thorns": 4
+  },
+  "49": {
+    "soul_speed": 4
+  },
+  "51": {
+    "unbreaking": 5
+  },
+  "53": {
+    "protection": 5,
+    "projectile_protection": 5,
+    "blast_protection": 5,
+    "fire_protection": 5
+  },
+  "55": {
+    "feather_falling": 5
+  },
+  "57": {
+    "thorns": 5
+  },
+  "59": {
+    "soul_speed": 5
+  }
+}
