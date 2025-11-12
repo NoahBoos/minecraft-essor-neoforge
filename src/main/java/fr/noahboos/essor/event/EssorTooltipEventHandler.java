@@ -1,4 +1,4 @@
-package fr.noahboos.essor;
+package fr.noahboos.essor.event;
 
 import fr.noahboos.essor.component.EquipmentLevelingData;
 import fr.noahboos.essor.component.EssorDataComponents;
@@ -6,66 +6,12 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.ItemStack;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
-import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
-import net.neoforged.neoforge.event.entity.living.LivingDeathEvent;
-import net.neoforged.neoforge.event.entity.player.ItemEntityPickupEvent;
 import net.neoforged.neoforge.event.entity.player.ItemTooltipEvent;
-import net.neoforged.neoforge.event.entity.player.PlayerEvent;
-import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
-import net.neoforged.neoforge.event.level.BlockEvent;
 
 import java.util.List;
 
 @EventBusSubscriber
-public class EssorEventHandler {
-    @SubscribeEvent
-    public static void OnItemCrafted(PlayerEvent.ItemCraftedEvent event) {
-        if (event.getEntity().level().isClientSide()) {
-            return;
-        } else {
-            ItemStack crafted = event.getCrafting();
-            if ((EquipmentLevelingData.UPGRADABLE_TOOLS_CLASSES.contains(crafted.getItem().getClass())
-                    || EquipmentLevelingData.UPGRADABLE_WEAPON_CLASSES.contains(crafted.getItem().getClass())
-                    || EquipmentLevelingData.UPGRADABLE_ARMOR_CLASSES.contains(crafted.getItem().getClass()))
-                    && !crafted.getComponents().has(EssorDataComponents.EQUIPMENT_LEVELING_DATA.get())) {
-                crafted.set(
-                        EssorDataComponents.EQUIPMENT_LEVELING_DATA.get(),
-                        new EquipmentLevelingData()
-                );
-            }
-        }
-    }
-
-    @SubscribeEvent
-    public static void OnItemPickedUp(ItemEntityPickupEvent event) {
-
-    }
-
-    @SubscribeEvent
-    public static void OnBlockBreak(BlockEvent.BreakEvent event) {
-
-    }
-
-    @SubscribeEvent
-    public static void OnBlockRightClicked(PlayerInteractEvent.RightClickBlock event) {
-
-    }
-
-    @SubscribeEvent
-    public static void OnEntityHurt(LivingDamageEvent event) {
-
-    }
-
-    @SubscribeEvent
-    public static void OnEntityDeath(LivingDeathEvent event) {
-
-    }
-
-    @SubscribeEvent
-    public static void OnPlayerLoggedIn(PlayerEvent.PlayerLoggedInEvent event) {
-
-    }
-
+public class EssorTooltipEventHandler {
     @SubscribeEvent
     public static void OnItemTooltip(ItemTooltipEvent event) {
         List<Component> tooltip = event.getToolTip();

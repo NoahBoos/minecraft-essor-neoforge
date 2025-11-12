@@ -1,6 +1,7 @@
 package fr.noahboos.essor;
 
 import fr.noahboos.essor.component.EssorDataComponents;
+import fr.noahboos.essor.event.*;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.Mod;
@@ -23,7 +24,11 @@ public class Essor
     {
         modEventBus.addListener(this::commonSetup);
         EssorDataComponents.REGISTRAR.register(modEventBus);
-        NeoForge.EVENT_BUS.register(EssorEventHandler.class);
+        NeoForge.EVENT_BUS.register(EssorBlockEventHandler.class);
+        NeoForge.EVENT_BUS.register(EssorEntityEventHandler.class);
+        NeoForge.EVENT_BUS.register(EssorItemEventHandler.class);
+        NeoForge.EVENT_BUS.register(EssorPlayerEventHandler.class);
+        NeoForge.EVENT_BUS.register(EssorTooltipEventHandler.class);
         modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
     }
 
