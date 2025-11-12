@@ -1,13 +1,19 @@
 package fr.noahboos.essor.registry;
 
+import fr.noahboos.essor.component.challenge.ChallengeDefinition;
 import fr.noahboos.essor.util.JsonLoader;
 import net.minecraft.world.item.*;
 
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class EssorRegistry {
     private static final String PATH_TO_ENCHANTMENT_TABLES = "data/essor/enchantment_rewards/";
     private static final String PATH_TO_EXPERIENCE_TABLES = "data/essor/experience/";
+    private static final List<String> CHALLENGE_FILE_NAME_LIST = List.of(
+
+    );
 
     private static Map<Integer, Map<String, Integer>> LoadEnchantmentTable(String file) {
         return JsonLoader.LoadRewardData(PATH_TO_ENCHANTMENT_TABLES + file + ".json");
@@ -53,4 +59,17 @@ public class EssorRegistry {
             Map.entry("sword-killable", LoadExperienceTable("sword-killable")),
             Map.entry("trident-killable", LoadExperienceTable("trident-killable"))
     );
+
+    public static final Map<String, ChallengeDefinition> CHALLENGE_DEFINITION_MAP = new HashMap<>();
+
+    public static void InitializeChallengeDefinitionMap() {
+        for (String fileName : CHALLENGE_FILE_NAME_LIST) {
+            ChallengeDefinition challengeDefinition = JsonLoader.LoadChallengeDefinition(fileName);
+            if (challengeDefinition == null) {
+                System.err.println("Failed to load challenge definition data from " + fileName + ".json.");
+                continue;
+            }
+            CHALLENGE_DEFINITION_MAP.put(challengeDefinition.GetId(), challengeDefinition);
+        }
+    }
 }

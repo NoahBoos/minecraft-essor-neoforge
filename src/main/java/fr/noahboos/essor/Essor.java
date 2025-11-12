@@ -2,6 +2,7 @@ package fr.noahboos.essor;
 
 import fr.noahboos.essor.component.EssorDataComponents;
 import fr.noahboos.essor.event.*;
+import fr.noahboos.essor.registry.EssorRegistry;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.Mod;
@@ -34,6 +35,8 @@ public class Essor
 
     private void commonSetup(final FMLCommonSetupEvent event)
     {
-
+        event.enqueueWork(() -> {
+            EssorRegistry.InitializeChallengeDefinitionMap();
+        });
     }
 }
