@@ -18,39 +18,39 @@ public class EssorRegistry {
     }
 
     public static final Map<ArmorItem.Type, Map<Integer, Map<String, Integer>>> ARMOR_ENCHANTMENT_REWARDS = Map.of(
-            ArmorItem.Type.HELMET, LoadEnchantmentTable("HELMER"),
-            ArmorItem.Type.CHESTPLATE, LoadEnchantmentTable("CHESTPLATE"),
-            ArmorItem.Type.LEGGINGS, LoadEnchantmentTable("LEGGINGS"),
-            ArmorItem.Type.BOOTS, LoadEnchantmentTable("BOOTS")
+            ArmorItem.Type.HELMET, LoadEnchantmentTable("helmet"),
+            ArmorItem.Type.CHESTPLATE, LoadEnchantmentTable("chestplate"),
+            ArmorItem.Type.LEGGINGS, LoadEnchantmentTable("leggings"),
+            ArmorItem.Type.BOOTS, LoadEnchantmentTable("boots")
     );
 
     public static final Map<Class<?>, Map<Integer, Map<String, Integer>>> NON_ARMOR_ITEM_ENCHANTMENT_REWARDS = Map.ofEntries(
-            Map.entry(AxeItem.class, LoadEnchantmentTable("AXE")),
-            Map.entry(BowItem.class, LoadEnchantmentTable("BOW")),
-            Map.entry(CrossbowItem.class, LoadEnchantmentTable("CROSSBOW")),
-            Map.entry(HoeItem.class, LoadEnchantmentTable("HOE")),
-            Map.entry(MaceItem.class, LoadEnchantmentTable("MACE")),
-            Map.entry(PickaxeItem.class, LoadEnchantmentTable("PICKAXE")),
-            Map.entry(ShieldItem.class, LoadEnchantmentTable("SHIELD")),
-            Map.entry(ShovelItem.class, LoadEnchantmentTable("SHOVEL")),
-            Map.entry(SwordItem.class, LoadEnchantmentTable("SWORD")),
-            Map.entry(TridentItem.class, LoadEnchantmentTable("TRIDENT"))
+            Map.entry(AxeItem.class, LoadEnchantmentTable("axe")),
+            Map.entry(BowItem.class, LoadEnchantmentTable("bow")),
+            Map.entry(CrossbowItem.class, LoadEnchantmentTable("crossbow")),
+            Map.entry(HoeItem.class, LoadEnchantmentTable("hoe")),
+            Map.entry(MaceItem.class, LoadEnchantmentTable("mace")),
+            Map.entry(PickaxeItem.class, LoadEnchantmentTable("pickaxe")),
+            Map.entry(ShieldItem.class, LoadEnchantmentTable("shield")),
+            Map.entry(ShovelItem.class, LoadEnchantmentTable("shovel")),
+            Map.entry(SwordItem.class, LoadEnchantmentTable("sword")),
+            Map.entry(TridentItem.class, LoadEnchantmentTable("trident"))
     );
 
     public static final Map<String, Map<String, Float>> ITEM_EXPERIENCE_TABLES = Map.ofEntries(
-            Map.entry("armor", LoadExperienceTable("ARMOR")),
-            Map.entry("axe-breakable", LoadExperienceTable("AXE_BREAKABLE")),
-            Map.entry("axe-strippable", LoadExperienceTable("AXE_STRIPPABLE")),
-            Map.entry("bow-killable", LoadExperienceTable("BOW_KILLABLE")),
-            Map.entry("crossbow-killable", LoadExperienceTable("CROSSBOW_KILLABLE")),
-            Map.entry("hoe-breakable", LoadExperienceTable("HOE_BREAKABLE")),
-            Map.entry("hoe-tillable", LoadExperienceTable("HOE_TILLABLE")),
-            Map.entry("mace-killable", LoadExperienceTable("MACE_KILLABLE")),
-            Map.entry("pickaxe-breakable", LoadExperienceTable("PICKAXE_BREAKABLE")),
-            Map.entry("shield-killable", LoadExperienceTable("SHIELD_KILLABLE")),
-            Map.entry("shovel-breakable", LoadExperienceTable("SHOVEL_BREAKABLE")),
-            Map.entry("shovel-diggable", LoadExperienceTable("SHOVEL_DIGGABLE")),
-            Map.entry("sword-killable", LoadExperienceTable("SWORD_KILLABLE")),
-            Map.entry("trident-killable", LoadExperienceTable("TRIDENT_KILLABLE"))
+            Map.entry("armor", LoadExperienceTable("armor")),
+            Map.entry("axe-breakable", LoadExperienceTable("axe-breakable")),
+            Map.entry("axe-strippable", LoadExperienceTable("axe-strippable")),
+            Map.entry("bow-killable", LoadExperienceTable("bow-killable")),
+            Map.entry("crossbow-killable", LoadExperienceTable("crossbow-killable")),
+            Map.entry("hoe-breakable", LoadExperienceTable("hoe-breakable")),
+            Map.entry("hoe-tillable", LoadExperienceTable("hoe-tillable")),
+            Map.entry("mace-killable", LoadExperienceTable("mace-killable")),
+            Map.entry("pickaxe-breakable", LoadExperienceTable("pickaxe-breakable")),
+            Map.entry("shield-killable", LoadExperienceTable("shield-killable")),
+            Map.entry("shovel-breakable", LoadExperienceTable("shovel-breakable")),
+            Map.entry("shovel-diggable", LoadExperienceTable("shovel-diggable")),
+            Map.entry("sword-killable", LoadExperienceTable("sword-killable")),
+            Map.entry("trident-killable", LoadExperienceTable("trident-killable"))
     );
 }
