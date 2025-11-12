@@ -1,6 +1,6 @@
-package fr.noahboos.essor.components.challenge;
+package fr.noahboos.essor.component.challenge;
 
-import fr.noahboos.essor.utils.JsonLoader;
+import fr.noahboos.essor.util.JsonLoader;
 
 import java.util.List;
 

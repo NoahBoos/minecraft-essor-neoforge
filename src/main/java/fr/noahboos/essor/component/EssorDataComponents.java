@@ -1,10 +1,10 @@
-package fr.noahboos.essor.components;
+package fr.noahboos.essor.component;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import fr.noahboos.essor.Essor;
-import fr.noahboos.essor.components.challenge.ChallengeProgress;
-import fr.noahboos.essor.components.challenge.Challenges;
+import fr.noahboos.essor.component.challenge.ChallengeProgress;
+import fr.noahboos.essor.component.challenge.Challenges;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.core.component.DataComponentType;
 import net.minecraft.core.registries.Registries;

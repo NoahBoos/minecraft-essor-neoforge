@@ -1,6 +1,6 @@
 package fr.noahboos.essor;
 
-import fr.noahboos.essor.components.EssorDataComponents;
+import fr.noahboos.essor.component.EssorDataComponents;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.Mod;

@@ -1,6 +1,6 @@
-package fr.noahboos.essor.components;
+package fr.noahboos.essor.component;
 
-import fr.noahboos.essor.components.challenge.Challenges;
+import fr.noahboos.essor.component.challenge.Challenges;
 import net.minecraft.world.item.*;
 
 import java.util.Objects;

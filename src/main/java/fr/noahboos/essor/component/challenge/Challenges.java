@@ -1,4 +1,4 @@
-package fr.noahboos.essor.components.challenge;
+package fr.noahboos.essor.component.challenge;
 
 import java.util.ArrayList;
 import java.util.List;

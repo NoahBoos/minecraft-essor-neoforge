@@ -1,4 +1,4 @@
-package fr.noahboos.essor.components.challenge;
+package fr.noahboos.essor.component.challenge;
 
 public class ChallengeProgress {
     private String id;
