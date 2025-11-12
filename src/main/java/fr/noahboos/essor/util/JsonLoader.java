@@ -42,7 +42,7 @@ public class JsonLoader {
     }
 
     public static ChallengeDefinition LoadChallengeDefinition(String file) {
-        String path = "data/essor/challenge/" + file + ".json";
+        String path = "data/essor/challenges/" + file + ".json";
 
         try (InputStream stream = JsonLoader.class.getClassLoader().getResourceAsStream(path)) {
             if (stream == null) throw new RuntimeException("Failed to load challenge definition data from " + path);
