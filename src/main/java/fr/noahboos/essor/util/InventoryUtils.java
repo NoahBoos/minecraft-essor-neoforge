@@ -3,6 +3,7 @@ package fr.noahboos.essor.util;
 import fr.noahboos.essor.component.EquipmentLevelingData;
 import fr.noahboos.essor.component.EssorDataComponents;
 import fr.noahboos.essor.component.challenge.ChallengeProgress;
+import fr.noahboos.essor.component.challenge.ChallengesFactory;
 import net.minecraft.network.protocol.game.ClientboundContainerSetSlotPacket;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Inventory;
@@ -46,6 +47,8 @@ public class InventoryUtils {
                     );
                 }
 
+                ChallengesFactory.AssignChallenges(item);
+
                 EquipmentLevelingData data = item.getComponents().get(EssorDataComponents.EQUIPMENT_LEVELING_DATA.get());
                 if (data == null) return;
                 data.SetPrestigeExperienceMultiplier((float) Math.round((data.GetPrestige() * 0.25) * 100f) / 100f);
@@ -66,6 +69,8 @@ public class InventoryUtils {
                         new EquipmentLevelingData()
                     );
                 }
+
+                ChallengesFactory.AssignChallenges(item);
             }
         }
 
@@ -77,6 +82,8 @@ public class InventoryUtils {
                         new EquipmentLevelingData()
                     );
                 }
+
+                ChallengesFactory.AssignChallenges(item);
 
                 EquipmentLevelingData data = item.getComponents().get(EssorDataComponents.EQUIPMENT_LEVELING_DATA.get());
                 if (data == null) return;
