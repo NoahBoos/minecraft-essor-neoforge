@@ -64,6 +64,19 @@ public class EssorRegistry {
             Map.entry(ShovelItem.class, LoadExperienceTable("shovel-diggable"))
     );
 
+    public record ExperienceResult(boolean isRewardable, float experience) {}
+
+    public static ExperienceResult GetExperience(Map<Class<?>, Map<String, Float>> tables, ItemStack item, String id) {
+        for (var entry : tables.entrySet()) {
+            if (entry.getKey().isAssignableFrom(item.getItem().getClass())) {
+                Float experience = entry.getValue().get(id);
+                if (experience == null) return new ExperienceResult(false, 0f);
+                return new ExperienceResult(true, experience);
+            }
+        }
+        return new ExperienceResult(false, 0f);
+    }
+
     public static final Map<String, ChallengeDefinition> CHALLENGE_DEFINITION_MAP = new HashMap<>();
 
     public static void InitializeChallengeDefinitionMap() {
