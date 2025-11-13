@@ -43,7 +43,18 @@ public class EssorBlockEventHandler {
         if (event.getEntity().level().isClientSide()) {
             return;
         } else {
-
+            if (event.getEntity() instanceof Player player) {
+                ItemStack heldItem = player.getMainHandItem();
+                Block block = event.getEntity().level().getBlockState(event.getPos()).getBlock();
+                EssorRegistry.ExperienceResult result = EssorRegistry.GetExperience(EssorRegistry.SECOND_ACTION_EXPERIENCE_TABLES, heldItem, BuiltInRegistries.BLOCK.getKey(block).toString());
+                if (result.isRewardable()) {
+                    ProgressionManager.AddExperience(heldItem, result.experience());
+                    ProgressionManager.LevelUp(player, heldItem);
+                    Map<Integer, Map<String, Integer>> enchantmentRewardTable = EssorRegistry.GetEnchantmentRewardTable(heldItem);
+                    ProgressionManager.ApplyEnchantment(player.level(), enchantmentRewardTable, heldItem);
+                    ProgressionManager.PrestigeUp(player, heldItem);
+                }
+            }
         }
     }
 }
