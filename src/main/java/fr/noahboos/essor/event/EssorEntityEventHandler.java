@@ -26,6 +26,7 @@ public class EssorEntityEventHandler {
             return;
         } else {
             LivingEntity entity = event.getEntity();
+            Entity attacker = event.getSource().getEntity();
             if (entity instanceof Player player) {
                 float damage = event.getOriginalDamage() - event.getNewDamage();
                 float armorExperience = damage * 3.75f;
@@ -50,9 +51,33 @@ public class EssorEntityEventHandler {
                     ProgressionManager.ApplyEnchantment(player.level(), enchantmentRewardTable, heldItem);
                     ProgressionManager.PrestigeUp(player, heldItem);
                 }
+
                 ItemStack offHandItem = player.getOffhandItem();
                 if (offHandItem.getItem() instanceof ShieldItem) {
                     ProgressionManager.AddExperience(offHandItem, shieldExperience);
+                    ProgressionManager.LevelUp(player, offHandItem);
+                    Map<Integer, Map<String, Integer>> enchantmentRewardTable = EssorRegistry.GetEnchantmentRewardTable(offHandItem);
+                    ProgressionManager.ApplyEnchantment(player.level(), enchantmentRewardTable, offHandItem);
+                    ProgressionManager.PrestigeUp(player, offHandItem);
+                }
+            }
+
+            if (attacker instanceof Player player) {
+                float experience = (float) (Math.ceil((event.getOriginalDamage() * 0.75f) * 2) / 2);
+
+                ItemStack heldItem = player.getMainHandItem();
+                if (!(heldItem.getItem() instanceof ShieldItem)) {
+                    ProgressionManager.AddExperience(heldItem, experience);
+                    ProgressionManager.LevelUp(player, heldItem);
+                    Map<Integer, Map<String, Integer>> enchantmentRewardTable = EssorRegistry.GetEnchantmentRewardTable(heldItem);
+                    ProgressionManager.ApplyEnchantment(player.level(), enchantmentRewardTable, heldItem);
+                    ProgressionManager.PrestigeUp(player, heldItem);
+                }
+
+
+                ItemStack offHandItem = player.getOffhandItem();
+                if (!(offHandItem.getItem() instanceof ShieldItem)) {
+                    ProgressionManager.AddExperience(offHandItem, experience);
                     ProgressionManager.LevelUp(player, offHandItem);
                     Map<Integer, Map<String, Integer>> enchantmentRewardTable = EssorRegistry.GetEnchantmentRewardTable(offHandItem);
                     ProgressionManager.ApplyEnchantment(player.level(), enchantmentRewardTable, offHandItem);
