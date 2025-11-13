@@ -13,6 +13,7 @@ public class EssorRegistry {
     private static final String PATH_TO_EXPERIENCE_TABLES = "data/essor/experience/";
     private static final List<String> CHALLENGE_FILE_NAME_LIST = List.of(
         "break-block"
+        "kill-entities"
     );
 
     private static Map<Integer, Map<String, Integer>> LoadEnchantmentTable(String file) {

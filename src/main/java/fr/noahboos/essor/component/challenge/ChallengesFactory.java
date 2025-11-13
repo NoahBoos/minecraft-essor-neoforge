@@ -37,6 +37,7 @@ public class ChallengesFactory {
 
     private static Challenges AddChallengeToWeapon() {
         Challenges challenges = AddBossChallenges();
+        challenges.challenges.add(new ChallengeProgress(EssorRegistry.CHALLENGE_DEFINITION_MAP.get("Essor:Challenge:KillEntities")));
         return challenges;
     }
 
