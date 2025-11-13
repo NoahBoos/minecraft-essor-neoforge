@@ -29,10 +29,10 @@ public class EssorBlockEventHandler {
                     int dropCount = event.getDrops().stream().mapToInt(itemEntity -> itemEntity.getItem().getCount()).sum();
                     float experience = result.experience() * dropCount;
                     ProgressionManager.AddExperience(heldItem, experience);
-                    ProgressionManager.LevelUp(heldItem);
+                    ProgressionManager.LevelUp(player, heldItem);
                     Map<Integer, Map<String, Integer>> enchantmentRewardTable = EssorRegistry.GetEnchantmentRewardTable(heldItem);
                     ProgressionManager.ApplyEnchantment(player.level(), enchantmentRewardTable, heldItem);
-                    ProgressionManager.PrestigeUp(heldItem);
+                    ProgressionManager.PrestigeUp(player, heldItem);
                 }
             }
         }

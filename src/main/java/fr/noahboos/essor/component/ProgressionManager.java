@@ -2,6 +2,8 @@ package fr.noahboos.essor.component;
 
 import fr.noahboos.essor.registry.EssorEnchantmentRegistry;
 import net.minecraft.core.Holder;
+import net.minecraft.network.chat.Component;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.level.Level;
@@ -17,7 +19,7 @@ public class ProgressionManager {
         data.SetCurrentExperience((float) Math.round((data.GetCurrentExperience() + (experience * data.GetTotalExperienceMultiplier())) * 1000f) / 1000f);
     }
 
-    public static void LevelUp(ItemStack item) {
+    public static void LevelUp(Player player, ItemStack item) {
         EquipmentLevelingData data = item.getComponents().get(EssorDataComponents.EQUIPMENT_LEVELING_DATA.get());
         if (data == null) return;
         while (data.GetCurrentExperience() > data.GetRequiredExperienceToLevelUp()) {
@@ -25,10 +27,11 @@ public class ProgressionManager {
             data.SetCurrentExperience(data.GetCurrentExperience() - data.GetRequiredExperienceToLevelUp());
             data.SetRequiredExperienceToLevelUp(100 + (100 * data.GetLevel()));
             item.setDamageValue(0);
+            player.sendSystemMessage(Component.translatable("chat.essor.levelUpMessage", item.getDisplayName(), data.GetLevel()));
         }
     }
 
-    public static void PrestigeUp(ItemStack item) {
+    public static void PrestigeUp(Player player, ItemStack item) {
         EquipmentLevelingData data = item.getComponents().get(EssorDataComponents.EQUIPMENT_LEVELING_DATA.get());
         if (data == null) return;
         while (data.GetLevel() > data.GetRequiredLevelToPrestige() && data.GetPrestige() < EquipmentLevelingData.maxPrestige) {
@@ -38,6 +41,7 @@ public class ProgressionManager {
             data.SetTotalExperienceMultiplier();
             data.SetRequiredExperienceToLevelUp(100 + (100 * data.GetLevel()));
             data.SetRequiredLevelToPrestige(10 + (10 * data.GetPrestige()));
+            player.sendSystemMessage(Component.translatable("chat.essor.prestigeMessage", item.getDisplayName(), data.GetPrestige()));
         }
     }
 
