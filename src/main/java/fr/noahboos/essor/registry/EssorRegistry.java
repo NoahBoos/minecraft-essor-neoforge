@@ -24,14 +24,14 @@ public class EssorRegistry {
         return JsonLoader.LoadExperienceData(PATH_TO_EXPERIENCE_TABLES + file + ".json");
     }
 
-    public static final Map<ArmorItem.Type, Map<Integer, Map<String, Integer>>> ARMOR_ENCHANTMENT_REWARDS = Map.of(
+    public static final Map<ArmorItem.Type, Map<Integer, Map<String, Integer>>> ARMOR_ENCHANTMENT_REWARD_TABLES = Map.of(
             ArmorItem.Type.HELMET, LoadEnchantmentTable("helmet"),
             ArmorItem.Type.CHESTPLATE, LoadEnchantmentTable("chestplate"),
             ArmorItem.Type.LEGGINGS, LoadEnchantmentTable("leggings"),
             ArmorItem.Type.BOOTS, LoadEnchantmentTable("boots")
     );
 
-    public static final Map<Class<?>, Map<Integer, Map<String, Integer>>> NON_ARMOR_ITEM_ENCHANTMENT_REWARDS = Map.ofEntries(
+    public static final Map<Class<?>, Map<Integer, Map<String, Integer>>> NON_ARMOR_ITEM_ENCHANTMENT_REWARD_TABLES = Map.ofEntries(
             Map.entry(AxeItem.class, LoadEnchantmentTable("axe")),
             Map.entry(BowItem.class, LoadEnchantmentTable("bow")),
             Map.entry(CrossbowItem.class, LoadEnchantmentTable("crossbow")),
