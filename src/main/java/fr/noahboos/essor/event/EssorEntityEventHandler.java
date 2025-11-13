@@ -4,6 +4,8 @@ import fr.noahboos.essor.component.EquipmentLevelingData;
 import fr.noahboos.essor.component.EssorDataComponents;
 import fr.noahboos.essor.component.ProgressionManager;
 import fr.noahboos.essor.registry.EssorRegistry;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ArmorItem;
@@ -65,7 +67,29 @@ public class EssorEntityEventHandler {
         if (event.getEntity().level().isClientSide()) {
             return;
         } else {
+            LivingEntity entity = event.getEntity();
+            Entity killer = event.getSource().getEntity();
+            if (killer instanceof Player player) {
+                ItemStack heldItem = player.getMainHandItem();
+                EssorRegistry.ExperienceResult heldItemResult = EssorRegistry.GetExperience(EssorRegistry.PRIMARY_ACTION_EXPERIENCE_TABLES, heldItem, BuiltInRegistries.ENTITY_TYPE.getKey(entity.getType()).toString());
+                if (heldItemResult.isRewardable()) {
+                    ProgressionManager.AddExperience(heldItem, heldItemResult.experience());
+                    ProgressionManager.LevelUp(player, heldItem);
+                    Map<Integer, Map<String, Integer>> enchantmentRewardTable = EssorRegistry.GetEnchantmentRewardTable(heldItem);
+                    ProgressionManager.ApplyEnchantment(player.level(), enchantmentRewardTable, heldItem);
+                    ProgressionManager.PrestigeUp(player, heldItem);
+                }
 
+                ItemStack offHandItem = player.getOffhandItem();
+                EssorRegistry.ExperienceResult offHandResult = EssorRegistry.GetExperience(EssorRegistry.PRIMARY_ACTION_EXPERIENCE_TABLES, offHandItem, BuiltInRegistries.ENTITY_TYPE.getKey(entity.getType()).toString());
+                if (offHandResult.isRewardable()) {
+                    ProgressionManager.AddExperience(offHandItem, offHandResult.experience());
+                    ProgressionManager.LevelUp(player, offHandItem);
+                    Map<Integer, Map<String, Integer>> enchantmentRewardTable = EssorRegistry.GetEnchantmentRewardTable(offHandItem);
+                    ProgressionManager.ApplyEnchantment(player.level(), enchantmentRewardTable, offHandItem);
+                    ProgressionManager.PrestigeUp(player, offHandItem);
+                }
+            }
         }
     }
 }
