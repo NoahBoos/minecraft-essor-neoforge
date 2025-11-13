@@ -34,6 +34,7 @@ public class EssorBlockEventHandler {
                     ProgressionManager.LevelUp(heldItem);
                     Map<Integer, Map<String, Integer>> enchantmentRewardTable = EssorRegistry.GetEnchantmentRewardTable(heldItem);
                     ProgressionManager.ApplyEnchantment(player.level(), enchantmentRewardTable, heldItem);
+                    ProgressionManager.PrestigeUp(heldItem);
                 }
             }
         }

@@ -29,6 +29,19 @@ public class ProgressionManager {
         }
     }
 
+    public static void PrestigeUp(ItemStack item) {
+        EquipmentLevelingData data = item.getComponents().get(EssorDataComponents.EQUIPMENT_LEVELING_DATA.get());
+        if (data == null) return;
+        while (data.GetLevel() > data.GetRequiredLevelToPrestige() && data.GetPrestige() < EquipmentLevelingData.maxPrestige) {
+            data.SetPrestige(data.GetPrestige() + 1);
+            data.SetLevel(data.GetLevel() - data.GetRequiredLevelToPrestige());
+            data.SetPrestigeExperienceMultiplier((float) Math.round((data.GetPrestigeExperienceMultiplier() + EquipmentLevelingData.prestigeExperienceMultiplierStep) * 100f) / 100f);
+            data.SetTotalExperienceMultiplier();
+            data.SetRequiredExperienceToLevelUp(100 + (100 * data.GetLevel()));
+            data.SetRequiredLevelToPrestige(10 + (10 * data.GetPrestige()));
+        }
+    }
+
     public static void ApplyEnchantment(Level level, Map<Integer, Map<String, Integer>> table, ItemStack item) {
         EquipmentLevelingData data = item.getComponents().get(EssorDataComponents.EQUIPMENT_LEVELING_DATA.get());
         if (data == null) return;
