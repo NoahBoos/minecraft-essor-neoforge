@@ -44,21 +44,24 @@ public class EssorRegistry {
             Map.entry(TridentItem.class, LoadEnchantmentTable("trident"))
     );
 
-    public static final Map<String, Map<String, Float>> ITEM_EXPERIENCE_TABLES = Map.ofEntries(
-            Map.entry("armor", LoadExperienceTable("armor")),
-            Map.entry("axe-breakable", LoadExperienceTable("axe-breakable")),
-            Map.entry("axe-strippable", LoadExperienceTable("axe-strippable")),
-            Map.entry("bow-killable", LoadExperienceTable("bow-killable")),
-            Map.entry("crossbow-killable", LoadExperienceTable("crossbow-killable")),
-            Map.entry("hoe-breakable", LoadExperienceTable("hoe-breakable")),
-            Map.entry("hoe-tillable", LoadExperienceTable("hoe-tillable")),
-            Map.entry("mace-killable", LoadExperienceTable("mace-killable")),
-            Map.entry("pickaxe-breakable", LoadExperienceTable("pickaxe-breakable")),
-            Map.entry("shield-killable", LoadExperienceTable("shield-killable")),
-            Map.entry("shovel-breakable", LoadExperienceTable("shovel-breakable")),
-            Map.entry("shovel-diggable", LoadExperienceTable("shovel-diggable")),
-            Map.entry("sword-killable", LoadExperienceTable("sword-killable")),
-            Map.entry("trident-killable", LoadExperienceTable("trident-killable"))
+    public static final Map<Class<?>, Map<String, Float>> PRIMARY_ACTION_EXPERIENCE_TABLES = Map.ofEntries(
+            Map.entry(AxeItem.class, LoadExperienceTable("axe-breakable")),
+            Map.entry(BowItem.class, LoadExperienceTable("bow-killable")),
+            Map.entry(CrossbowItem.class, LoadExperienceTable("crossbow-killable")),
+            Map.entry(HoeItem.class, LoadExperienceTable("hoe-breakable")),
+            Map.entry(MaceItem.class, LoadExperienceTable("mace-killable")),
+            Map.entry(PickaxeItem.class, LoadExperienceTable("pickaxe-breakable")),
+            Map.entry(ShieldItem.class, LoadExperienceTable("shield-killable")),
+            Map.entry(ShovelItem.class, LoadExperienceTable("shovel-breakable")),
+            Map.entry(SwordItem.class, LoadExperienceTable("sword-killable")),
+            Map.entry(TridentItem.class, LoadExperienceTable("trident-killable"))
+    );
+
+    public static final Map<Class<?>, Map<String, Float>> SECOND_ACTION_EXPERIENCE_TABLES = Map.ofEntries(
+//            Map.entry("armor", LoadExperienceTable("armor"))
+            Map.entry(AxeItem.class, LoadExperienceTable("axe-strippable")),
+            Map.entry(HoeItem.class, LoadExperienceTable("hoe-tillable")),
+            Map.entry(ShovelItem.class, LoadExperienceTable("shovel-diggable"))
     );
 
     public static final Map<String, ChallengeDefinition> CHALLENGE_DEFINITION_MAP = new HashMap<>();
