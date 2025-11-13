@@ -9,10 +9,13 @@ import java.util.Set;
 public class EquipmentLevelingData {
     private int prestige;
     private int requiredLevelToPrestige;
+    public static int maxPrestige = 10;
     private int level;
     private float totalExperienceMultiplier;
     private float prestigeExperienceMultiplier;
+    public static float prestigeExperienceMultiplierStep = 0.25f;
     private float challengeExperienceMultiplier;
+    public static float challengeExperienceMultiplierStep = 0.125f;
     private int requiredExperienceToLevelUp;
     private float currentExperience;
     private Challenges challenges;
