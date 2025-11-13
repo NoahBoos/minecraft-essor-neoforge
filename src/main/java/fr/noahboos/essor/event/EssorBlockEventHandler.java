@@ -29,6 +29,7 @@ public class EssorBlockEventHandler {
                     int dropCount = event.getDrops().stream().mapToInt(itemEntity -> itemEntity.getItem().getCount()).sum();
                     float experience = result.experience() * dropCount;
                     ProgressionManager.AddExperience(heldItem, experience);
+                    ProgressionManager.LevelUp(heldItem);
                 }
             }
         }
