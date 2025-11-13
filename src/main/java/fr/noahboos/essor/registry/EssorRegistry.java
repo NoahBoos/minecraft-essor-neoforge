@@ -44,6 +44,19 @@ public class EssorRegistry {
             Map.entry(TridentItem.class, LoadEnchantmentTable("trident"))
     );
 
+    public static Map<Integer, Map<String, Integer>> GetEnchantmentRewardTable(ItemStack item) {
+        if (item.getItem() instanceof ArmorItem armorItem) {
+            return EssorRegistry.ARMOR_ENCHANTMENT_REWARD_TABLES.get(armorItem.getType());
+        } else {
+            for (var entry : NON_ARMOR_ITEM_ENCHANTMENT_REWARD_TABLES.entrySet()) {
+                if (entry.getKey().isAssignableFrom(item.getItem().getClass())) {
+                    return EssorRegistry.NON_ARMOR_ITEM_ENCHANTMENT_REWARD_TABLES.get(entry.getKey());
+                }
+            }
+        }
+        return Map.of();
+    }
+
     public static final Map<Class<?>, Map<String, Float>> PRIMARY_ACTION_EXPERIENCE_TABLES = Map.ofEntries(
             Map.entry(AxeItem.class, LoadExperienceTable("axe-breakable")),
             Map.entry(BowItem.class, LoadExperienceTable("bow-killable")),
