@@ -12,7 +12,7 @@ public class EssorRegistry {
     private static final String PATH_TO_ENCHANTMENT_TABLES = "data/essor/enchantment_rewards/";
     private static final String PATH_TO_EXPERIENCE_TABLES = "data/essor/experience/";
     private static final List<String> CHALLENGE_FILE_NAME_LIST = List.of(
-        "break-block"
+        "break-blocks",
         "kill-entities"
     );
 
