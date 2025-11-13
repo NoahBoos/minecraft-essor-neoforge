@@ -13,6 +13,8 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
 import net.neoforged.neoforge.event.level.BlockDropsEvent;
 
+import java.util.Map;
+
 @EventBusSubscriber
 public class EssorBlockEventHandler {
     @SubscribeEvent
@@ -30,6 +32,8 @@ public class EssorBlockEventHandler {
                     float experience = result.experience() * dropCount;
                     ProgressionManager.AddExperience(heldItem, experience);
                     ProgressionManager.LevelUp(heldItem);
+                    Map<Integer, Map<String, Integer>> enchantmentRewardTable = EssorRegistry.GetEnchantmentRewardTable(heldItem);
+                    ProgressionManager.ApplyEnchantment(player.level(), enchantmentRewardTable, heldItem);
                 }
             }
         }
