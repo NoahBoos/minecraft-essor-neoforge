@@ -23,10 +23,9 @@ public class EssorTooltipEventHandler {
             EquipmentLevelingData data = item.getComponents().get(EssorDataComponents.EQUIPMENT_LEVELING_DATA.get());
 
             StringBuilder prestigeProgressBar = new StringBuilder();
-            int prestigeSegments = 10;
             int prestigeFilledSegments = data.GetPrestige();
             prestigeProgressBar.append("§6★".repeat(Math.max(0, prestigeFilledSegments)));
-            prestigeProgressBar.append("§7☆".repeat(Math.max(0, prestigeSegments - prestigeFilledSegments)));
+            prestigeProgressBar.append("§7☆".repeat(Math.max(0, EquipmentLevelingData.maxPrestige - prestigeFilledSegments)));
             tooltip.add(Component.empty());
             tooltip.add(Component.literal(Component.translatable("tooltip.essor.prestige", data.GetPrestige()).getString() + " " + prestigeProgressBar.toString()));
             tooltip.add(Component.translatable("tooltip.essor.totalExperienceMultiplier", data.GetTotalExperienceMultiplier()));
