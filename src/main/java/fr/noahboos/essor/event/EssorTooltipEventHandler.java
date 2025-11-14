@@ -47,7 +47,7 @@ public class EssorTooltipEventHandler {
                         StringBuilder challengeProgressBar = new StringBuilder();
                         challengeProgressBar.append("§a■".repeat(Math.max(0, challenge.GetCurrentTier())));
                         challengeProgressBar.append("§7□".repeat(Math.max(0, definition.GetMaximumTier() - challenge.GetCurrentTier())));
-                        tooltip.add(Component.translatable(challenge.GetId().replace(":", "."), challenge.GetProgress(), (challenge.GetCurrentTier() == definition.GetMaximumTier()) ? definition.GetThresholds().get(challenge.GetCurrentTier()) : definition.GetThresholds().get(challenge.GetCurrentTier() + 1)).append(Component.literal(" - ")).append(Component.literal(challengeProgressBar.toString())));
+                        tooltip.add(Component.translatable(challenge.GetId().replace(":", "."), challenge.GetProgress(), definition.GetThresholds().get(challenge.GetCurrentTier())).append(Component.literal(" - ")).append(Component.literal(challengeProgressBar.toString())));
                     });
                 } else {
                     tooltip.add(Component.translatable("translation.holdToSeeChallenges"));
