@@ -1,5 +1,7 @@
 package fr.noahboos.essor.component.challenge;
 
+import fr.noahboos.essor.registry.EssorRegistry;
+
 public class ChallengeProgress {
     private String id;
     private int currentTier;
@@ -35,5 +37,7 @@ public class ChallengeProgress {
         this.progress = progress;
     }
 
-
+    public boolean IsTarget(String id) {
+        return EssorRegistry.CHALLENGE_DEFINITION_MAP.get(this.GetId()).GetTargets().contains(id);
+    }
 }
