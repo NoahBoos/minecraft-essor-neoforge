@@ -1,5 +1,7 @@
 package fr.noahboos.essor.component;
 
+import fr.noahboos.essor.component.challenge.ChallengeDefinition;
+import fr.noahboos.essor.component.challenge.ChallengeProgress;
 import fr.noahboos.essor.registry.EssorEnchantmentRegistry;
 import net.minecraft.core.Holder;
 import net.minecraft.network.chat.Component;
@@ -67,6 +69,24 @@ public class ProgressionManager {
         if (enchantment != null) {
             int enchantLevel = enchantments.get(enchantment);
             item.enchant(enchantment, enchantLevel);
+        }
+    }
+
+    public static void IncrementChallenge(ChallengeProgress challenge, ChallengeDefinition definition) {
+        if (challenge.GetCurrentTier() < definition.GetMaximumTier()) {
+            challenge.SetProgress(challenge.GetProgress() + 1);
+        }
+    }
+
+    public static void LevelUpChallenge(ItemStack item, ChallengeProgress challenge, ChallengeDefinition definition) {
+        EquipmentLevelingData data = item.getComponents().get(EssorDataComponents.EQUIPMENT_LEVELING_DATA.get());
+        if (data == null) return;
+        if (challenge.GetProgress() >= definition.GetThresholds().get(challenge.GetCurrentTier())) {
+            if (challenge.GetCurrentTier() >= definition.GetMaximumTier()) return;
+            challenge.SetCurrentTier(challenge.GetCurrentTier() + 1);
+            challenge.SetProgress(0);
+            data.SetChallengeExperienceMultiplier(data.GetChallengeExperienceMultiplier() + EquipmentLevelingData.challengeExperienceMultiplierStep);
+            data.SetTotalExperienceMultiplier();
         }
     }
 }
