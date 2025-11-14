@@ -54,7 +54,7 @@ public class InventoryUtils {
                 data.SetPrestigeExperienceMultiplier((float) Math.round((data.GetPrestige() * 0.25) * 100f) / 100f);
                 data.SetChallengeExperienceMultiplier(0.00f);
                 for (ChallengeProgress challenge : data.GetChallenges().GetChallenges()) {
-                    float challengeExperienceMultiplier = (float) Math.round((challenge.GetCurrentTier() * 0.25f) * 100) / 100;
+                    float challengeExperienceMultiplier = (float) Math.round((challenge.GetCurrentTier() * EquipmentLevelingData.challengeExperienceMultiplierStep) * 1000) / 1000;
                     data.SetChallengeExperienceMultiplier(data.GetChallengeExperienceMultiplier() + challengeExperienceMultiplier);
                 }
                 data.SetTotalExperienceMultiplier();
@@ -90,7 +90,7 @@ public class InventoryUtils {
                 data.SetPrestigeExperienceMultiplier((float) Math.round((data.GetPrestige() * 0.25) * 100f) / 100f);
                 data.SetChallengeExperienceMultiplier(0.00f);
                 for (ChallengeProgress challenge : data.GetChallenges().GetChallenges()) {
-                    float challengeExperienceMultiplier = (float) Math.round((challenge.GetCurrentTier() * 0.25f) * 100) / 100;
+                    float challengeExperienceMultiplier = (float) Math.round((challenge.GetCurrentTier() * EquipmentLevelingData.challengeExperienceMultiplierStep) * 1000) / 1000;
                     data.SetChallengeExperienceMultiplier(data.GetChallengeExperienceMultiplier() + challengeExperienceMultiplier);
                 }
                 data.SetTotalExperienceMultiplier();
