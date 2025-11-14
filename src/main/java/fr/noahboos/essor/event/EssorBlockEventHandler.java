@@ -1,6 +1,7 @@
 package fr.noahboos.essor.event;
 
 import fr.noahboos.essor.component.ProgressionManager;
+import fr.noahboos.essor.component.challenge.Challenges;
 import fr.noahboos.essor.registry.EssorRegistry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.entity.player.Player;
@@ -34,6 +35,7 @@ public class EssorBlockEventHandler {
                     ProgressionManager.ApplyEnchantment(player.level(), enchantmentRewardTable, heldItem);
                     ProgressionManager.PrestigeUp(player, heldItem);
                 }
+                Challenges.AttemptToLevelUpChallenges(heldItem, BuiltInRegistries.BLOCK.getKey(block).toString());
             }
         }
     }
@@ -54,6 +56,7 @@ public class EssorBlockEventHandler {
                     ProgressionManager.ApplyEnchantment(player.level(), enchantmentRewardTable, heldItem);
                     ProgressionManager.PrestigeUp(player, heldItem);
                 }
+                Challenges.AttemptToLevelUpChallenges(heldItem, BuiltInRegistries.BLOCK.getKey(block).toString());
             }
         }
     }

@@ -3,6 +3,7 @@ package fr.noahboos.essor.event;
 import fr.noahboos.essor.component.EquipmentLevelingData;
 import fr.noahboos.essor.component.EssorDataComponents;
 import fr.noahboos.essor.component.ProgressionManager;
+import fr.noahboos.essor.component.challenge.Challenges;
 import fr.noahboos.essor.registry.EssorRegistry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.entity.Entity;
@@ -104,6 +105,7 @@ public class EssorEntityEventHandler {
                     ProgressionManager.ApplyEnchantment(player.level(), enchantmentRewardTable, heldItem);
                     ProgressionManager.PrestigeUp(player, heldItem);
                 }
+                Challenges.AttemptToLevelUpChallenges(heldItem, BuiltInRegistries.ENTITY_TYPE.getKey(entity.getType()).toString());
 
                 ItemStack offHandItem = player.getOffhandItem();
                 EssorRegistry.ExperienceResult offHandResult = EssorRegistry.GetExperience(EssorRegistry.PRIMARY_ACTION_EXPERIENCE_TABLES, offHandItem, BuiltInRegistries.ENTITY_TYPE.getKey(entity.getType()).toString());
@@ -114,6 +116,7 @@ public class EssorEntityEventHandler {
                     ProgressionManager.ApplyEnchantment(player.level(), enchantmentRewardTable, offHandItem);
                     ProgressionManager.PrestigeUp(player, offHandItem);
                 }
+                Challenges.AttemptToLevelUpChallenges(offHandItem, BuiltInRegistries.ENTITY_TYPE.getKey(entity.getType()).toString());
             }
         }
     }
