@@ -36,7 +36,7 @@ public class ProgressionManager {
     public static void PrestigeUp(Player player, ItemStack item) {
         EquipmentLevelingData data = item.getComponents().get(EssorDataComponents.EQUIPMENT_LEVELING_DATA.get());
         if (data == null) return;
-        while (data.GetLevel() > data.GetRequiredLevelToPrestige() && data.GetPrestige() < EquipmentLevelingData.maxPrestige) {
+        while (data.GetLevel() >= data.GetRequiredLevelToPrestige() && data.GetPrestige() < EquipmentLevelingData.maxPrestige) {
             data.SetPrestige(data.GetPrestige() + 1);
             data.SetLevel(data.GetLevel() - data.GetRequiredLevelToPrestige());
             data.SetPrestigeExperienceMultiplier((float) Math.round((data.GetPrestigeExperienceMultiplier() + EquipmentLevelingData.prestigeExperienceMultiplierStep) * 100f) / 100f);
