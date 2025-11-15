@@ -3,11 +3,13 @@ package fr.noahboos.essor.component.challenge;
 import fr.noahboos.essor.component.EquipmentLevelingData;
 import fr.noahboos.essor.component.EssorDataComponents;
 import fr.noahboos.essor.registry.EssorRegistry;
+import fr.noahboos.essor.util.EquipmentType;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.*;
 
 public class ChallengesFactory {
     public static void AssignChallenges(ItemStack item) {
-        if (!EquipmentLevelingData.CHALLENGEABLE_ITEM_CLASSES.contains(item.getItem().getClass())) return;
+        if (!EquipmentLevelingData.CHALLENGEABLE_ITEM_CLASSES.contains(EquipmentType.GetEquipmentType(item))) return;
 
         EquipmentLevelingData data = item.getComponents().get(EssorDataComponents.EQUIPMENT_LEVELING_DATA.get());
 
@@ -21,12 +23,16 @@ public class ChallengesFactory {
             case CrossbowItem crossbowItem -> data.SetChallenges(AddChallengeToRangedWeapon());
             case HoeItem hoeItem -> data.SetChallenges(AddChallengeToHoe());
             case MaceItem maceItem -> data.SetChallenges(AddChallengeToWeapon());
-            case PickaxeItem pickaxeItem -> data.SetChallenges(AddChallengeToPickaxe());
             case ShovelItem shovelItem -> data.SetChallenges(AddChallengeToShovel());
             case ShieldItem shieldItem -> data.SetChallenges(AddChallengeToWeapon());
-            case SwordItem swordItem -> data.SetChallenges(AddChallengeToWeapon());
             case TridentItem tridentItem -> data.SetChallenges(AddChallengeToTrident());
-            default -> {}
+            default -> {
+                if (item.is(ItemTags.SWORDS)) {
+                    data.SetChallenges(AddChallengeToWeapon());
+                } else if (item.is(ItemTags.PICKAXES)) {
+                    data.SetChallenges(AddChallengeToPickaxe());
+                }
+            }
         }
     }
 

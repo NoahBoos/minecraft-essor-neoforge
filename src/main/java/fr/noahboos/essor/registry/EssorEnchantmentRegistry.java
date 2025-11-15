@@ -1,6 +1,7 @@
 package fr.noahboos.essor.registry;
 
 import net.minecraft.core.Holder;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.core.Registry;
 import net.minecraft.core.RegistryAccess;
 import net.minecraft.core.registries.Registries;
@@ -24,45 +25,45 @@ public class EssorEnchantmentRegistry {
             throw new IllegalStateException("The minecraft level registry access is null!");
         }
 
-        var enchantmentRegistry = registryAccess.registryOrThrow(Registries.ENCHANTMENT);
+        HolderLookup.RegistryLookup<Enchantment> enchantmentRegistryLookup = registryAccess.lookupOrThrow(Registries.ENCHANTMENT);
 
-        Register(enchantmentRegistry, "unbreaking", Enchantments.UNBREAKING);
-        Register(enchantmentRegistry, "protection", Enchantments.PROTECTION);
-        Register(enchantmentRegistry, "projectile_protection", Enchantments.PROJECTILE_PROTECTION);
-        Register(enchantmentRegistry, "blast_protection", Enchantments.BLAST_PROTECTION);
-        Register(enchantmentRegistry, "fire_protection", Enchantments.FIRE_PROTECTION);
-        Register(enchantmentRegistry, "respiration", Enchantments.RESPIRATION);
-        Register(enchantmentRegistry, "thorns", Enchantments.THORNS);
-        Register(enchantmentRegistry, "aqua_affinity", Enchantments.AQUA_AFFINITY);
-        Register(enchantmentRegistry, "swift_sneak", Enchantments.SWIFT_SNEAK);
-        Register(enchantmentRegistry, "soul_speed", Enchantments.SOUL_SPEED);
-        Register(enchantmentRegistry, "feather_falling", Enchantments.FEATHER_FALLING);
-        Register(enchantmentRegistry, "depth_strider", Enchantments.DEPTH_STRIDER);
-        Register(enchantmentRegistry, "efficiency", Enchantments.EFFICIENCY);
-        Register(enchantmentRegistry, "fortune", Enchantments.FORTUNE);
-        Register(enchantmentRegistry, "power", Enchantments.POWER);
-        Register(enchantmentRegistry, "punch", Enchantments.PUNCH);
-        Register(enchantmentRegistry, "multishot", Enchantments.MULTISHOT);
-        Register(enchantmentRegistry, "piercing", Enchantments.PIERCING);
-        Register(enchantmentRegistry, "quick_charge", Enchantments.QUICK_CHARGE);
-        Register(enchantmentRegistry, "density", Enchantments.DENSITY);
-        Register(enchantmentRegistry, "breach", Enchantments.BREACH);
-        Register(enchantmentRegistry, "wind_burst", Enchantments.WIND_BURST);
-        Register(enchantmentRegistry, "smite", Enchantments.SMITE);
-        Register(enchantmentRegistry, "bane_of_arthropods", Enchantments.BANE_OF_ARTHROPODS);
-        Register(enchantmentRegistry, "sharpness", Enchantments.SHARPNESS);
-        Register(enchantmentRegistry, "looting", Enchantments.LOOTING);
-        Register(enchantmentRegistry, "loyalty", Enchantments.LOYALTY);
-        Register(enchantmentRegistry, "riptide", Enchantments.RIPTIDE);
-        Register(enchantmentRegistry, "impaling", Enchantments.IMPALING);
-        Register(enchantmentRegistry, "channeling", Enchantments.CHANNELING);
-        Register(enchantmentRegistry, "fire_aspect", Enchantments.FIRE_ASPECT);
+        Register(enchantmentRegistryLookup, "unbreaking", Enchantments.UNBREAKING);
+        Register(enchantmentRegistryLookup, "protection", Enchantments.PROTECTION);
+        Register(enchantmentRegistryLookup, "projectile_protection", Enchantments.PROJECTILE_PROTECTION);
+        Register(enchantmentRegistryLookup, "blast_protection", Enchantments.BLAST_PROTECTION);
+        Register(enchantmentRegistryLookup, "fire_protection", Enchantments.FIRE_PROTECTION);
+        Register(enchantmentRegistryLookup, "respiration", Enchantments.RESPIRATION);
+        Register(enchantmentRegistryLookup, "thorns", Enchantments.THORNS);
+        Register(enchantmentRegistryLookup, "aqua_affinity", Enchantments.AQUA_AFFINITY);
+        Register(enchantmentRegistryLookup, "swift_sneak", Enchantments.SWIFT_SNEAK);
+        Register(enchantmentRegistryLookup, "soul_speed", Enchantments.SOUL_SPEED);
+        Register(enchantmentRegistryLookup, "feather_falling", Enchantments.FEATHER_FALLING);
+        Register(enchantmentRegistryLookup, "depth_strider", Enchantments.DEPTH_STRIDER);
+        Register(enchantmentRegistryLookup, "efficiency", Enchantments.EFFICIENCY);
+        Register(enchantmentRegistryLookup, "fortune", Enchantments.FORTUNE);
+        Register(enchantmentRegistryLookup, "power", Enchantments.POWER);
+        Register(enchantmentRegistryLookup, "punch", Enchantments.PUNCH);
+        Register(enchantmentRegistryLookup, "multishot", Enchantments.MULTISHOT);
+        Register(enchantmentRegistryLookup, "piercing", Enchantments.PIERCING);
+        Register(enchantmentRegistryLookup, "quick_charge", Enchantments.QUICK_CHARGE);
+        Register(enchantmentRegistryLookup, "density", Enchantments.DENSITY);
+        Register(enchantmentRegistryLookup, "breach", Enchantments.BREACH);
+        Register(enchantmentRegistryLookup, "wind_burst", Enchantments.WIND_BURST);
+        Register(enchantmentRegistryLookup, "smite", Enchantments.SMITE);
+        Register(enchantmentRegistryLookup, "bane_of_arthropods", Enchantments.BANE_OF_ARTHROPODS);
+        Register(enchantmentRegistryLookup, "sharpness", Enchantments.SHARPNESS);
+        Register(enchantmentRegistryLookup, "looting", Enchantments.LOOTING);
+        Register(enchantmentRegistryLookup, "loyalty", Enchantments.LOYALTY);
+        Register(enchantmentRegistryLookup, "riptide", Enchantments.RIPTIDE);
+        Register(enchantmentRegistryLookup, "impaling", Enchantments.IMPALING);
+        Register(enchantmentRegistryLookup, "channeling", Enchantments.CHANNELING);
+        Register(enchantmentRegistryLookup, "fire_aspect", Enchantments.FIRE_ASPECT);
 
         initialized = true;
     }
 
-    public static void Register(Registry<Enchantment> registry, String key, ResourceKey<Enchantment> enchantmentResourceKey) {
-        DEFAULT_ENCHANTMENTS.put(key, registry.getHolderOrThrow(enchantmentResourceKey));
+    public static void Register(HolderLookup.RegistryLookup<Enchantment> lookup, String key, ResourceKey<Enchantment> enchantmentResourceKey) {
+        DEFAULT_ENCHANTMENTS.put(key, lookup.getOrThrow(enchantmentResourceKey));
     }
 
     public static Holder<Enchantment> GetEnchantmentByID(String id, RegistryAccess registryAccess) {

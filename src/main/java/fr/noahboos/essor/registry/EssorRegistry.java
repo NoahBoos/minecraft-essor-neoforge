@@ -1,7 +1,10 @@
 package fr.noahboos.essor.registry;
 
 import fr.noahboos.essor.component.challenge.ChallengeDefinition;
+import fr.noahboos.essor.util.E_EquipmentType;
+import fr.noahboos.essor.util.EquipmentType;
 import fr.noahboos.essor.util.JsonLoader;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.*;
 
 import java.util.HashMap;
@@ -70,64 +73,65 @@ public class EssorRegistry {
         return JsonLoader.LoadExperienceData(PATH_TO_EXPERIENCE_TABLES + file + ".json");
     }
 
-    public static final Map<ArmorItem.Type, Map<Integer, Map<String, Integer>>> ARMOR_ENCHANTMENT_REWARD_TABLES = Map.of(
-            ArmorItem.Type.HELMET, LoadEnchantmentTable("helmet"),
-            ArmorItem.Type.CHESTPLATE, LoadEnchantmentTable("chestplate"),
-            ArmorItem.Type.LEGGINGS, LoadEnchantmentTable("leggings"),
-            ArmorItem.Type.BOOTS, LoadEnchantmentTable("boots")
+    public static final Map<E_EquipmentType, Map<Integer, Map<String, Integer>>> ARMOR_ENCHANTMENT_REWARD_TABLES = Map.of(
+            E_EquipmentType.HELMET, LoadEnchantmentTable("helmet"),
+            E_EquipmentType.CHESTPLATE, LoadEnchantmentTable("chestplate"),
+            E_EquipmentType.LEGGINGS, LoadEnchantmentTable("leggings"),
+            E_EquipmentType.BOOTS, LoadEnchantmentTable("boots")
     );
 
-    public static final Map<Class<?>, Map<Integer, Map<String, Integer>>> NON_ARMOR_ITEM_ENCHANTMENT_REWARD_TABLES = Map.ofEntries(
-            Map.entry(AxeItem.class, LoadEnchantmentTable("axe")),
-            Map.entry(BowItem.class, LoadEnchantmentTable("bow")),
-            Map.entry(CrossbowItem.class, LoadEnchantmentTable("crossbow")),
-            Map.entry(HoeItem.class, LoadEnchantmentTable("hoe")),
-            Map.entry(MaceItem.class, LoadEnchantmentTable("mace")),
-            Map.entry(PickaxeItem.class, LoadEnchantmentTable("pickaxe")),
-            Map.entry(ShieldItem.class, LoadEnchantmentTable("shield")),
-            Map.entry(ShovelItem.class, LoadEnchantmentTable("shovel")),
-            Map.entry(SwordItem.class, LoadEnchantmentTable("sword")),
-            Map.entry(TridentItem.class, LoadEnchantmentTable("trident"))
+    public static final Map<E_EquipmentType, Map<Integer, Map<String, Integer>>> NON_ARMOR_ITEM_ENCHANTMENT_REWARD_TABLES = Map.ofEntries(
+            Map.entry(E_EquipmentType.AXE, LoadEnchantmentTable("axe")),
+            Map.entry(E_EquipmentType.BOW, LoadEnchantmentTable("bow")),
+            Map.entry(E_EquipmentType.CROSSBOW, LoadEnchantmentTable("crossbow")),
+            Map.entry(E_EquipmentType.HOE, LoadEnchantmentTable("hoe")),
+            Map.entry(E_EquipmentType.MACE, LoadEnchantmentTable("mace")),
+            Map.entry(E_EquipmentType.PICKAXE, LoadEnchantmentTable("pickaxe")),
+            Map.entry(E_EquipmentType.SHIELD, LoadEnchantmentTable("shield")),
+            Map.entry(E_EquipmentType.SHOVEL, LoadEnchantmentTable("shovel")),
+            Map.entry(E_EquipmentType.SWORD, LoadEnchantmentTable("sword")),
+            Map.entry(E_EquipmentType.TRIDENT, LoadEnchantmentTable("trident"))
     );
 
     public static Map<Integer, Map<String, Integer>> GetEnchantmentRewardTable(ItemStack item) {
-        if (item.getItem() instanceof ArmorItem armorItem) {
-            return EssorRegistry.ARMOR_ENCHANTMENT_REWARD_TABLES.get(armorItem.getType());
+        if (item.is(ItemTags.HEAD_ARMOR) || item.is(ItemTags.CHEST_ARMOR) || item.is(ItemTags.LEG_ARMOR) || item.is(ItemTags.FOOT_ARMOR)) {
+            return EssorRegistry.ARMOR_ENCHANTMENT_REWARD_TABLES.get(EquipmentType.GetEquipmentType(item));
         } else {
             for (var entry : NON_ARMOR_ITEM_ENCHANTMENT_REWARD_TABLES.entrySet()) {
-                if (entry.getKey().isAssignableFrom(item.getItem().getClass())) {
-                    return EssorRegistry.NON_ARMOR_ITEM_ENCHANTMENT_REWARD_TABLES.get(entry.getKey());
+                for (var equipmentType : E_EquipmentType.values() ) {
+                    if (entry.getKey().equals(equipmentType)) {
+                        return EssorRegistry.NON_ARMOR_ITEM_ENCHANTMENT_REWARD_TABLES.get(entry.getKey());
+                    }
                 }
             }
         }
         return Map.of();
     }
 
-    public static final Map<Class<?>, Map<String, Float>> PRIMARY_ACTION_EXPERIENCE_TABLES = Map.ofEntries(
-            Map.entry(AxeItem.class, LoadExperienceTable("axe-breakable")),
-            Map.entry(BowItem.class, LoadExperienceTable("bow-killable")),
-            Map.entry(CrossbowItem.class, LoadExperienceTable("crossbow-killable")),
-            Map.entry(HoeItem.class, LoadExperienceTable("hoe-breakable")),
-            Map.entry(MaceItem.class, LoadExperienceTable("mace-killable")),
-            Map.entry(PickaxeItem.class, LoadExperienceTable("pickaxe-breakable")),
-            Map.entry(ShieldItem.class, LoadExperienceTable("shield-killable")),
-            Map.entry(ShovelItem.class, LoadExperienceTable("shovel-breakable")),
-            Map.entry(SwordItem.class, LoadExperienceTable("sword-killable")),
-            Map.entry(TridentItem.class, LoadExperienceTable("trident-killable"))
+    public static final Map<E_EquipmentType, Map<String, Float>> PRIMARY_ACTION_EXPERIENCE_TABLES = Map.ofEntries(
+            Map.entry(E_EquipmentType.AXE, LoadExperienceTable("axe-breakable")),
+            Map.entry(E_EquipmentType.BOW, LoadExperienceTable("bow-killable")),
+            Map.entry(E_EquipmentType.CROSSBOW, LoadExperienceTable("crossbow-killable")),
+            Map.entry(E_EquipmentType.HOE, LoadExperienceTable("hoe-breakable")),
+            Map.entry(E_EquipmentType.MACE, LoadExperienceTable("mace-killable")),
+            Map.entry(E_EquipmentType.PICKAXE, LoadExperienceTable("pickaxe-breakable")),
+            Map.entry(E_EquipmentType.SHIELD, LoadExperienceTable("shield-killable")),
+            Map.entry(E_EquipmentType.SHOVEL, LoadExperienceTable("shovel-breakable")),
+            Map.entry(E_EquipmentType.SWORD, LoadExperienceTable("sword-killable")),
+            Map.entry(E_EquipmentType.TRIDENT, LoadExperienceTable("trident-killable"))
     );
 
-    public static final Map<Class<?>, Map<String, Float>> SECOND_ACTION_EXPERIENCE_TABLES = Map.ofEntries(
-//            Map.entry("armor", LoadExperienceTable("armor"))
-            Map.entry(AxeItem.class, LoadExperienceTable("axe-strippable")),
-            Map.entry(HoeItem.class, LoadExperienceTable("hoe-tillable")),
-            Map.entry(ShovelItem.class, LoadExperienceTable("shovel-diggable"))
+    public static final Map<E_EquipmentType, Map<String, Float>> SECOND_ACTION_EXPERIENCE_TABLES = Map.ofEntries(
+            Map.entry(E_EquipmentType.AXE, LoadExperienceTable("axe-strippable")),
+            Map.entry(E_EquipmentType.HOE, LoadExperienceTable("hoe-tillable")),
+            Map.entry(E_EquipmentType.SHOVEL, LoadExperienceTable("shovel-diggable"))
     );
 
     public record ExperienceResult(boolean isRewardable, float experience) {}
 
-    public static ExperienceResult GetExperience(Map<Class<?>, Map<String, Float>> tables, ItemStack item, String id) {
+    public static ExperienceResult GetExperience(Map<E_EquipmentType, Map<String, Float>> tables, ItemStack item, String id) {
         for (var entry : tables.entrySet()) {
-            if (entry.getKey().isAssignableFrom(item.getItem().getClass())) {
+            if (entry.getKey().equals(EquipmentType.GetEquipmentType(item))) {
                 Float experience = entry.getValue().get(id);
                 if (experience == null) return new ExperienceResult(false, 0f);
                 return new ExperienceResult(true, experience);

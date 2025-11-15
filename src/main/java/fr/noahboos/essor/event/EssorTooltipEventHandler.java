@@ -4,16 +4,15 @@ import fr.noahboos.essor.component.EquipmentLevelingData;
 import fr.noahboos.essor.component.EssorDataComponents;
 import fr.noahboos.essor.component.challenge.ChallengeDefinition;
 import fr.noahboos.essor.registry.EssorRegistry;
+import fr.noahboos.essor.util.EquipmentType;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.ItemStack;
 import net.neoforged.bus.api.SubscribeEvent;
-import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.entity.player.ItemTooltipEvent;
 
 import java.util.List;
 
-@EventBusSubscriber
 public class EssorTooltipEventHandler {
     @SubscribeEvent
     public static void OnItemTooltip(ItemTooltipEvent event) {
@@ -39,7 +38,7 @@ public class EssorTooltipEventHandler {
             levelProgressBar.append("§a■".repeat(Math.max(0, levelFilledSegments)));
             levelProgressBar.append("§7□".repeat(Math.max(0, levelSegments - levelFilledSegments)));
             tooltip.add(Component.literal(levelProgressBar.toString()));
-            if (EquipmentLevelingData.CHALLENGEABLE_ITEM_CLASSES.contains(item.getItem().getClass())) {
+            if (EquipmentLevelingData.CHALLENGEABLE_ITEM_CLASSES.contains(EquipmentType.GetEquipmentType(item))) {
                 if (Screen.hasShiftDown()) {
                     data.GetChallenges().challenges.forEach(challenge -> {
                         ChallengeDefinition definition = EssorRegistry.CHALLENGE_DEFINITION_MAP.get(challenge.GetId());

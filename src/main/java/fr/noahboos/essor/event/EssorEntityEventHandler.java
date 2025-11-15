@@ -5,21 +5,19 @@ import fr.noahboos.essor.component.EssorDataComponents;
 import fr.noahboos.essor.component.ProgressionManager;
 import fr.noahboos.essor.component.challenge.Challenges;
 import fr.noahboos.essor.registry.EssorRegistry;
+import fr.noahboos.essor.util.InventoryUtils;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.ShieldItem;
 import net.neoforged.bus.api.SubscribeEvent;
-import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
 import net.neoforged.neoforge.event.entity.living.LivingDeathEvent;
 
 import java.util.Map;
 
-@EventBusSubscriber
 public class EssorEntityEventHandler {
     @SubscribeEvent
     public static void OnEntityHurt(LivingDamageEvent.Post event) {
@@ -31,9 +29,9 @@ public class EssorEntityEventHandler {
             if (entity instanceof Player player) {
                 float damage = event.getOriginalDamage() - event.getNewDamage();
                 float armorExperience = damage * 3.75f;
-                Iterable<ItemStack> armor = player.getArmorSlots();
+                Iterable<ItemStack> armor = InventoryUtils.GetPlayerArmor(player.getInventory());
                 for (ItemStack item : armor) {
-                    if (item.getItem() instanceof ArmorItem) {
+                    if (item instanceof ItemStack) {
                         EquipmentLevelingData data = item.getComponents().get(EssorDataComponents.EQUIPMENT_LEVELING_DATA.get());
                         if (data == null) continue;
                         ProgressionManager.AddExperience(item, armorExperience);

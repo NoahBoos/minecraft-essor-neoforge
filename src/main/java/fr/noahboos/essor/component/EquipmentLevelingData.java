@@ -1,6 +1,7 @@
 package fr.noahboos.essor.component;
 
 import fr.noahboos.essor.component.challenge.Challenges;
+import fr.noahboos.essor.util.E_EquipmentType;
 import net.minecraft.world.item.*;
 
 import java.util.Objects;
@@ -54,29 +55,22 @@ public class EquipmentLevelingData {
         this.challenges = challenges;
     }
 
-    public static final Set<Class<?>> UPGRADABLE_TOOLS_CLASSES = Set.of(
-        AxeItem.class, HoeItem.class, PickaxeItem.class, ShovelItem.class
+    public static final Set<E_EquipmentType> UPGRADABLE_ARMOR_CLASSES = Set.of(
+        E_EquipmentType.HELMET, E_EquipmentType.CHESTPLATE, E_EquipmentType.LEGGINGS, E_EquipmentType.BOOTS,
+        E_EquipmentType.SHIELD
     );
 
-    public static final Set<Class<?>> UPGRADABLE_WEAPON_CLASSES = Set.of(
-        AxeItem.class, BowItem.class, CrossbowItem.class, MaceItem.class,
-        ShieldItem.class, SwordItem.class, TridentItem.class
+    public static final Set<E_EquipmentType> UPGRADABLE_ITEM_CLASSES = Set.of(
+        E_EquipmentType.AXE, E_EquipmentType.BOOTS, E_EquipmentType.BOW, E_EquipmentType.CHESTPLATE,
+        E_EquipmentType.CROSSBOW, E_EquipmentType.HELMET, E_EquipmentType.HOE, E_EquipmentType.LEGGINGS,
+        E_EquipmentType.MACE, E_EquipmentType.PICKAXE, E_EquipmentType.SHOVEL, E_EquipmentType.SHIELD,
+        E_EquipmentType.SWORD, E_EquipmentType.TRIDENT
     );
 
-    public static final Set<Class<?>> UPGRADABLE_ARMOR_CLASSES = Set.of(
-        ArmorItem.class, ShieldItem.class
-    );
-
-    public static final Set<Class<?>> UPGRADABLE_ITEM_CLASSES = Set.of(
-        ArmorItem.class, AxeItem.class, BowItem.class, CrossbowItem.class,
-        HoeItem.class, MaceItem.class, PickaxeItem.class, ShovelItem.class,
-        ShieldItem.class, SwordItem.class, TridentItem.class
-    );
-
-    public static final Set<Class<?>> CHALLENGEABLE_ITEM_CLASSES = Set.of(
-        AxeItem.class, BowItem.class, CrossbowItem.class, HoeItem.class,
-        MaceItem.class, PickaxeItem.class, ShovelItem.class, ShieldItem.class,
-        SwordItem.class, TridentItem.class, BlockItem.class
+    public static final Set<E_EquipmentType> CHALLENGEABLE_ITEM_CLASSES = Set.of(
+            E_EquipmentType.AXE, E_EquipmentType.BOW, E_EquipmentType.CROSSBOW, E_EquipmentType.HOE,
+            E_EquipmentType.MACE, E_EquipmentType.PICKAXE, E_EquipmentType.SHOVEL, E_EquipmentType.SHIELD,
+            E_EquipmentType.SWORD, E_EquipmentType.TRIDENT
     );
 
     public int GetPrestige() {

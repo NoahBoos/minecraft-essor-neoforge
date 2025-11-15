@@ -29,7 +29,7 @@ public class ProgressionManager {
             data.SetCurrentExperience(data.GetCurrentExperience() - data.GetRequiredExperienceToLevelUp());
             data.SetRequiredExperienceToLevelUp(100 + (100 * data.GetLevel()));
             item.setDamageValue(0);
-            player.sendSystemMessage(Component.translatable("chat.essor.levelUpMessage", item.getDisplayName(), data.GetLevel()));
+            player.displayClientMessage(Component.translatable("chat.essor.levelUpMessage", item.getDisplayName(), data.GetLevel()), false);
         }
     }
 
@@ -43,7 +43,7 @@ public class ProgressionManager {
             data.SetTotalExperienceMultiplier();
             data.SetRequiredExperienceToLevelUp(100 + (100 * data.GetLevel()));
             data.SetRequiredLevelToPrestige(10 + (10 * data.GetPrestige()));
-            player.sendSystemMessage(Component.translatable("chat.essor.prestigeMessage", item.getDisplayName(), data.GetPrestige()));
+            player.displayClientMessage(Component.translatable("chat.essor.prestigeMessage", item.getDisplayName(), data.GetPrestige()), false);
         }
     }
 
