@@ -7,6 +7,7 @@ import fr.noahboos.essor.component.challenge.Challenges;
 import fr.noahboos.essor.registry.EssorRegistry;
 import fr.noahboos.essor.util.InventoryUtils;
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
@@ -59,6 +60,7 @@ public class EssorEntityEventHandler {
                     ProgressionManager.ApplyEnchantment(player.level(), enchantmentRewardTable, offHandItem);
                     ProgressionManager.PrestigeUp(player, offHandItem);
                 }
+                InventoryUtils.InventorySync((ServerPlayer) player);
             }
 
             if (attacker instanceof Player player) {
@@ -82,6 +84,7 @@ public class EssorEntityEventHandler {
                     ProgressionManager.ApplyEnchantment(player.level(), enchantmentRewardTable, offHandItem);
                     ProgressionManager.PrestigeUp(player, offHandItem);
                 }
+                InventoryUtils.InventorySync((ServerPlayer) player);
             }
         }
     }
@@ -115,6 +118,7 @@ public class EssorEntityEventHandler {
                     ProgressionManager.PrestigeUp(player, offHandItem);
                 }
                 Challenges.AttemptToLevelUpChallenges(offHandItem, BuiltInRegistries.ENTITY_TYPE.getKey(entity.getType()).toString());
+                InventoryUtils.InventorySync((ServerPlayer) player);
             }
         }
     }

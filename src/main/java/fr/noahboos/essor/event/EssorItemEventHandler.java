@@ -5,6 +5,7 @@ import fr.noahboos.essor.component.EssorDataComponents;
 import fr.noahboos.essor.component.challenge.ChallengesFactory;
 import fr.noahboos.essor.util.EquipmentType;
 import fr.noahboos.essor.util.InventoryUtils;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.item.ItemStack;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.neoforge.event.entity.player.ItemEntityPickupEvent;
@@ -27,6 +28,7 @@ public class EssorItemEventHandler {
             }
 
             InventoryUtils.InitializeEquipmentLevelingDataOnInventoryItems(event.getEntity().getInventory());
+            InventoryUtils.InventorySync((ServerPlayer) event.getEntity());
         }
     }
 
@@ -36,6 +38,7 @@ public class EssorItemEventHandler {
             return;
         } else {
             InventoryUtils.InitializeEquipmentLevelingDataOnInventoryItems(event.getPlayer().getInventory());
+            InventoryUtils.InventorySync((ServerPlayer) event.getPlayer());
         }
     }
 }
