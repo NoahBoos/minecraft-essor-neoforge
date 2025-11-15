@@ -72,9 +72,9 @@ public class ProgressionManager {
         }
     }
 
-    public static void IncrementChallenge(ChallengeProgress challenge, ChallengeDefinition definition) {
+    public static void IncrementChallenge(ChallengeProgress challenge, ChallengeDefinition definition, int progress) {
         if (challenge.GetCurrentTier() < definition.GetMaximumTier()) {
-            challenge.SetProgress(challenge.GetProgress() + 1);
+            challenge.SetProgress(challenge.GetProgress() + progress);
         }
     }
 

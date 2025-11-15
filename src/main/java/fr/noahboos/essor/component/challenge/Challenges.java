@@ -30,7 +30,19 @@ public class Challenges {
         for (var challenge : data.GetChallenges().challenges) {
             ChallengeDefinition definition = EssorRegistry.CHALLENGE_DEFINITION_MAP.get(challenge.GetId());
             if (challenge.IsTarget(id) || definition.GetTargets().isEmpty()) {
-                ProgressionManager.IncrementChallenge(challenge, definition);
+                ProgressionManager.IncrementChallenge(challenge, definition, 1);
+                ProgressionManager.LevelUpChallenge(item, challenge, definition);
+            }
+        }
+    }
+
+    public static void AttemptToLevelUpChallenges(ItemStack item, String id, int progress) {
+        EquipmentLevelingData data = item.getComponents().get(EssorDataComponents.EQUIPMENT_LEVELING_DATA.get());
+        if (data == null) return;
+        for (var challenge : data.GetChallenges().challenges) {
+            ChallengeDefinition definition = EssorRegistry.CHALLENGE_DEFINITION_MAP.get(challenge.GetId());
+            if (challenge.IsTarget(id) || definition.GetTargets().isEmpty()) {
+                ProgressionManager.IncrementChallenge(challenge, definition, progress);
                 ProgressionManager.LevelUpChallenge(item, challenge, definition);
             }
         }
