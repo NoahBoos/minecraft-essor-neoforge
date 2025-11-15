@@ -1,0 +1,15 @@
+{
+  "id": "Essor:Challenge:BreakBirch",
+  "maximumTier": 5,
+  "thresholds": [
+    64,
+    128,
+    256,
+    512,
+    1024
+  ],
+  "targets": [
+    "minecraft:birch_log",
+    "minecraft:birch_wood"
+  ]
+}

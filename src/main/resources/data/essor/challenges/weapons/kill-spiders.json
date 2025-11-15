@@ -1,0 +1,15 @@
+{
+  "id": "Essor:Challenge:KillSpiders",
+  "maximumTier": 5,
+  "thresholds": [
+    32,
+    64,
+    128,
+    256,
+    512
+  ],
+  "targets": [
+    "minecraft:spider",
+    "minecraft:cave_spider"
+  ]
+}

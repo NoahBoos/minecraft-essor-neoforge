@@ -1,0 +1,15 @@
+{
+  "id": "Essor:Challenge:BreakLapisOre",
+  "maximumTier": 5,
+  "thresholds": [
+    128,
+    256,
+    512,
+    1024,
+    2048
+  ],
+  "targets": [
+    "minecraft:lapis_ore",
+    "minecraft:deepslate_lapis_ore"
+  ]
+}

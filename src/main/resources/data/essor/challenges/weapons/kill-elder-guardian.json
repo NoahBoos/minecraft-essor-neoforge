@@ -1,0 +1,14 @@
+{
+  "id": "Essor:Challenge:KillElderGuardian",
+  "maximumTier": 5,
+  "thresholds": [
+    1,
+    2,
+    3,
+    4,
+    5
+  ],
+  "targets": [
+    "minecraft:elder_guardian"
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "id": "Essor:Challenge:BreakNetherQuartzOre",
+  "maximumTier": 5,
+  "thresholds": [
+    128,
+    256,
+    512,
+    1024,
+    2048
+  ],
+  "targets": [
+    "minecraft:nether_quartz_ore"
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "id": "Essor:Challenge:BreakWarpedWart",
+  "maximumTier": 5,
+  "thresholds": [
+    64,
+    128,
+    256,
+    512,
+    1024
+  ],
+  "targets": [
+    "minecraft:warped_wart_block"
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "id": "Essor:Challenge:BreakEmeraldOre",
+  "maximumTier": 5,
+  "thresholds": [
+    8,
+    16,
+    32,
+    64,
+    128
+  ],
+  "targets": [
+    "minecraft:emerald_ore",
+    "minecraft:deepslate_emerald_ore"
+  ]
+}

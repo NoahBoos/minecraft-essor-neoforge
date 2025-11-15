@@ -1,0 +1,14 @@
+{
+  "id": "Essor:Challenge:BreakGravel",
+  "maximumTier": 5,
+  "thresholds": [
+    64,
+    128,
+    256,
+    512,
+    1024
+  ],
+  "targets": [
+    "minecraft:gravel"
+  ]
+}

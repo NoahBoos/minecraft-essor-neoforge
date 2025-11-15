@@ -1,0 +1,15 @@
+{
+  "id": "Essor:Challenge:BreakAcacia",
+  "maximumTier": 5,
+  "thresholds": [
+    64,
+    128,
+    256,
+    512,
+    1024
+  ],
+  "targets": [
+    "minecraft:acacia_log",
+    "minecraft:acacia_wood"
+  ]
+}

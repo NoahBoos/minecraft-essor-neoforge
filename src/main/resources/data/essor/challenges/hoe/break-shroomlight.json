@@ -1,0 +1,14 @@
+{
+  "id": "Essor:Challenge:BreakShroomlight",
+  "maximumTier": 5,
+  "thresholds": [
+    16,
+    32,
+    64,
+    128,
+    256
+  ],
+  "targets": [
+    "minecraft:shroomlight"
+  ]
+}

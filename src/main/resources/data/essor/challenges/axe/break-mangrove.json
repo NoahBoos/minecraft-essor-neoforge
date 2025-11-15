@@ -1,0 +1,15 @@
+{
+  "id": "Essor:Challenge:BreakMangrove",
+  "maximumTier": 5,
+  "thresholds": [
+    64,
+    128,
+    256,
+    512,
+    1024
+  ],
+  "targets": [
+    "minecraft:mangrove_log",
+    "minecraft:mangrove_wood"
+  ]
+}

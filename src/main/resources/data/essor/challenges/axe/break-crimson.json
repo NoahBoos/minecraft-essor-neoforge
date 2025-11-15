@@ -1,0 +1,15 @@
+{
+  "id": "Essor:Challenge:BreakCrimson",
+  "maximumTier": 5,
+  "thresholds": [
+    64,
+    128,
+    256,
+    512,
+    1024
+  ],
+  "targets": [
+    "minecraft:crimson_stem",
+    "minecraft:crimson_hyphae"
+  ]
+}

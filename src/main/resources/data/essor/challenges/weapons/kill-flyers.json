@@ -1,0 +1,19 @@
+{
+  "id": "Essor:Challenge:KillFlyers",
+  "maximumTier": 5,
+  "thresholds": [
+    32,
+    64,
+    128,
+    256,
+    512
+  ],
+  "targets": [
+    "minecraft:blaze",
+    "minecraft:breeze",
+    "minecraft:ender_dragon",
+    "minecraft:ghast",
+    "minecraft:phantom",
+    "minecraft:vex"
+  ]
+}

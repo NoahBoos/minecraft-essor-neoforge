@@ -1,0 +1,15 @@
+{
+  "id": "Essor:Challenge:BreakPaleOak",
+  "maximumTier": 5,
+  "thresholds": [
+    64,
+    128,
+    256,
+    512,
+    1024
+  ],
+  "targets": [
+    "minecraft:pale_oak_log",
+    "minecraft:pale_oak_wood"
+  ]
+}

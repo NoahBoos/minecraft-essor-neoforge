@@ -1,0 +1,14 @@
+{
+  "id": "Essor:Challenge:KillCreepers",
+  "maximumTier": 5,
+  "thresholds": [
+    32,
+    64,
+    128,
+    256,
+    512
+  ],
+  "targets": [
+    "minecraft:creeper"
+  ]
+}

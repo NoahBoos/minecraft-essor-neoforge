@@ -1,0 +1,15 @@
+{
+  "id": "Essor:Challenge:BreakRedstoneOre",
+  "maximumTier": 5,
+  "thresholds": [
+    128,
+    256,
+    512,
+    1024,
+    2048
+  ],
+  "targets": [
+    "minecraft:redstone_ore",
+    "minecraft:deepslate_redstone_ore"
+  ]
+}

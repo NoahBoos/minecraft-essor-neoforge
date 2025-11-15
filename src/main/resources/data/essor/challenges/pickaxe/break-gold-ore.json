@@ -1,0 +1,15 @@
+{
+  "id": "Essor:Challenge:BreakGoldOre",
+  "maximumTier": 5,
+  "thresholds": [
+    64,
+    128,
+    256,
+    512,
+    1024
+  ],
+  "targets": [
+    "minecraft:gold_ore",
+    "minecraft:deepslate_gold_ore"
+  ]
+}

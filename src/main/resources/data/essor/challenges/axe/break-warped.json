@@ -1,0 +1,15 @@
+{
+  "id": "Essor:Challenge:BreakWarped",
+  "maximumTier": 5,
+  "thresholds": [
+    64,
+    128,
+    256,
+    512,
+    1024
+  ],
+  "targets": [
+    "minecraft:warped_stem",
+    "minecraft:warped_hyphae"
+  ]
+}

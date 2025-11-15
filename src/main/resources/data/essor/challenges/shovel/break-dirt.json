@@ -1,0 +1,18 @@
+{
+  "id": "Essor:Challenge:BreakDirt",
+  "maximumTier": 5,
+  "thresholds": [
+    256,
+    512,
+    1024,
+    2048,
+    4096
+  ],
+  "targets": [
+    "minecraft:coarse_dirt",
+    "minecraft:dirt",
+    "minecraft:farmland",
+    "minecraft:rooted_dirt",
+    "minecraft:grass"
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "id": "Essor:Challenge:BreakJungle",
+  "maximumTier": 5,
+  "thresholds": [
+    64,
+    128,
+    256,
+    512,
+    1024
+  ],
+  "targets": [
+    "minecraft:jungle_log",
+    "minecraft:jungle_wood"
+  ]
+}
