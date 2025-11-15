@@ -98,10 +98,8 @@ public class EssorRegistry {
             return EssorRegistry.ARMOR_ENCHANTMENT_REWARD_TABLES.get(EquipmentType.GetEquipmentType(item));
         } else {
             for (var entry : NON_ARMOR_ITEM_ENCHANTMENT_REWARD_TABLES.entrySet()) {
-                for (var equipmentType : E_EquipmentType.values() ) {
-                    if (entry.getKey().equals(equipmentType)) {
-                        return EssorRegistry.NON_ARMOR_ITEM_ENCHANTMENT_REWARD_TABLES.get(entry.getKey());
-                    }
+                if (entry.getKey().equals(EquipmentType.GetEquipmentType(item))) {
+                    return EssorRegistry.NON_ARMOR_ITEM_ENCHANTMENT_REWARD_TABLES.get(entry.getKey());
                 }
             }
         }
