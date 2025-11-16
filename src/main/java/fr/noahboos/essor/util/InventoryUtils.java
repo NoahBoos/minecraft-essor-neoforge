@@ -54,7 +54,7 @@ public class InventoryUtils {
 
                 EquipmentLevelingData data = item.getComponents().get(EssorDataComponents.EQUIPMENT_LEVELING_DATA.get());
                 if (data == null) return;
-                data.SetPrestigeExperienceMultiplier((float) Math.round((data.GetPrestige() * 0.25) * 100f) / 100f);
+                data.SetPrestigeExperienceMultiplier((float) Math.round((data.GetPrestige() * EquipmentLevelingData.prestigeExperienceMultiplierStep) * 100f) / 100f);
                 data.SetChallengeExperienceMultiplier(0.00f);
                 for (ChallengeProgress challenge : data.GetChallenges().GetChallenges()) {
                     float challengeExperienceMultiplier = (float) Math.round((challenge.GetCurrentTier() * EquipmentLevelingData.challengeExperienceMultiplierStep) * 1000) / 1000;
@@ -74,6 +74,16 @@ public class InventoryUtils {
                 }
 
                 ChallengesFactory.AssignChallenges(item);
+
+                EquipmentLevelingData data = item.getComponents().get(EssorDataComponents.EQUIPMENT_LEVELING_DATA.get());
+                if (data == null) return;
+                data.SetPrestigeExperienceMultiplier((float) Math.round((data.GetPrestige() * EquipmentLevelingData.prestigeExperienceMultiplierStep) * 100f) / 100f);
+                data.SetChallengeExperienceMultiplier(0.00f);
+                for (ChallengeProgress challenge : data.GetChallenges().GetChallenges()) {
+                    float challengeExperienceMultiplier = (float) Math.round((challenge.GetCurrentTier() * EquipmentLevelingData.challengeExperienceMultiplierStep) * 1000) / 1000;
+                    data.SetChallengeExperienceMultiplier(data.GetChallengeExperienceMultiplier() + challengeExperienceMultiplier);
+                }
+                data.SetTotalExperienceMultiplier();
             }
         }
 
@@ -90,7 +100,7 @@ public class InventoryUtils {
 
             EquipmentLevelingData data = offhand.getComponents().get(EssorDataComponents.EQUIPMENT_LEVELING_DATA.get());
             if (data == null) return;
-            data.SetPrestigeExperienceMultiplier((float) Math.round((data.GetPrestige() * 0.25) * 100f) / 100f);
+            data.SetPrestigeExperienceMultiplier((float) Math.round((data.GetPrestige() * EquipmentLevelingData.prestigeExperienceMultiplierStep) * 100f) / 100f);
             data.SetChallengeExperienceMultiplier(0.00f);
             for (ChallengeProgress challenge : data.GetChallenges().GetChallenges()) {
                 float challengeExperienceMultiplier = (float) Math.round((challenge.GetCurrentTier() * EquipmentLevelingData.challengeExperienceMultiplierStep) * 1000) / 1000;
