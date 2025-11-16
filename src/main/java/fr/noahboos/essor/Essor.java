@@ -26,6 +26,7 @@ public class Essor
         modEventBus.addListener(this::commonSetup);
         EssorDataComponents.REGISTRAR.register(modEventBus);
         NeoForge.EVENT_BUS.register(EssorBlockEventHandler.class);
+        NeoForge.EVENT_BUS.register(EssorCommandEventHandler.class);
         NeoForge.EVENT_BUS.register(EssorEntityEventHandler.class);
         NeoForge.EVENT_BUS.register(EssorItemEventHandler.class);
         NeoForge.EVENT_BUS.register(EssorPlayerEventHandler.class);
