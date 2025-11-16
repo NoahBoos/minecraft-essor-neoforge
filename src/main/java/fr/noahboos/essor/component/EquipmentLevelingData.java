@@ -16,7 +16,7 @@ public class EquipmentLevelingData {
     private float prestigeExperienceMultiplier;
     public static float prestigeExperienceMultiplierStep = 0.5f;
     private float challengeExperienceMultiplier;
-    public static float challengeExperienceMultiplierStep = 0.125f;
+    public static float challengeExperienceMultiplierStep = 0.25f;
     private int requiredExperienceToLevelUp;
     private float currentExperience;
     private Challenges challenges;
