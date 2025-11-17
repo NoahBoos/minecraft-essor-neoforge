@@ -56,5 +56,9 @@
   "Essor.Challenge.KillWarden": "Tuer %1$s/%2$s Warden.",
   "Essor.Challenge.KillWither": "Tuer %1$s/%2$s Wither.",
   "Essor.Challenge.KillZombies": "Tuer %1$s/%2$s créatures zombifiées.",
-  "Essor.Challenge.TillDirt": "Bêcher %1$s/%2$s blocs de terres."
+  "Essor.Challenge.TillDirt": "Bêcher %1$s/%2$s blocs de terres.",
+  "Essor.Command.NoEquipmentLevelingData": "Cet item ne possède pas aucun composant de données EquipmentLevelingData. Est-ce un item améliorable ?",
+  "Essor.Command.MustBeTriggeredByAPlayer": "Cette commande doit être déclenchée par un joueur.",
+  "Essor.Command.SetPrestige.Successful": "Le niveau de prestige de l'item a bien été mis à jour au niveau %1$s.",
+  "Essor.Command.SetLevel.Successful": "Le niveau de l'item a bien été mis à jour au niveau %1$s. Le niveau de prestige a été mis à jour, si nécessaire."
 }

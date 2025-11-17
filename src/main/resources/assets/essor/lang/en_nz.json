@@ -56,5 +56,9 @@
   "Essor.Challenge.KillWarden": "Kill %1$s/%2$s Warden.",
   "Essor.Challenge.KillWither": "Kill %1$s/%2$s Wither.",
   "Essor.Challenge.KillZombies": "Kill %1$s/%2$s zombified creatures.",
-  "Essor.Challenge.TillDirt": "Till %1$s/%2$s dirt blocks."
+  "Essor.Challenge.TillDirt": "Till %1$s/%2$s dirt blocks.",
+  "Essor.Command.NoEquipmentLevelingData": "This item does not have any EquipmentLevelingData data component. Is it an upgradable item ?",
+  "Essor.Command.MustBeTriggeredByAPlayer": "This command must be triggered by a player.",
+  "Essor.Command.SetPrestige.Successful": "This item's prestige level has been successfully set to %1$s.",
+  "Essor.Command.SetLevel.Successful": "This item's level has been successfully set to %1$s. The prestige level has been updated, if necessary."
 }

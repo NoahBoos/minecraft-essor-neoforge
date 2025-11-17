@@ -36,7 +36,7 @@ public class EssorCommands {
                         ItemStack item = player.getMainHandItem();
                         EquipmentLevelingData data = item.getComponents().get(EssorDataComponents.EQUIPMENT_LEVELING_DATA.get());
                         if (data == null) {
-                            context.getSource().sendFailure(Component.literal("This item does not have any EquipmentLevelingData data component. Is it an upgradable item ?"));
+                            context.getSource().sendFailure(Component.translatable("Essor.Command.NoEquipmentLevelingData"));
                             return 0;
                         }
                         int prestige = IntegerArgumentType.getInteger(context, "value");
@@ -44,7 +44,7 @@ public class EssorCommands {
                         data.SetPrestigeExperienceMultiplier(data.GetPrestige() * EquipmentLevelingData.prestigeExperienceMultiplierStep);
                         data.SetTotalExperienceMultiplier();
                         context.getSource().sendSuccess(
-                            () -> Component.literal("This item's prestige level has been successfully set to " + prestige + "."),
+                                () -> Component.translatable("Essor.Command.SetPrestige.Successful", data.GetPrestige()),
                             true
                         );
                         return 1;
@@ -54,22 +54,20 @@ public class EssorCommands {
                         .executes(context -> {
                             ServerPlayer player = EntityArgument.getPlayer(context, "player");
                             if (player == null) {
-                                context.getSource().sendFailure(Component.literal("This command must be triggered by a player."));
+                                context.getSource().sendFailure(Component.translatable("Essor.Command.MustBeTriggeredByAPlayer"));
                                 return 0;
                             }
                             ItemStack item = player.getMainHandItem();
                             EquipmentLevelingData data = item.getComponents().get(EssorDataComponents.EQUIPMENT_LEVELING_DATA.get());
                             if (data == null) {
-                                context.getSource().sendFailure(Component.literal("This item does not have any EquipmentLevelingData data component. Is it an upgradable item ?"));
+                                context.getSource().sendFailure(Component.translatable("Essor.Command.NoEquipmentLevelingData"));
                                 return 0;
                             }
                             data.SetPrestige(data.GetPrestige() + 1);
                             data.SetPrestigeExperienceMultiplier(data.GetPrestige() * EquipmentLevelingData.prestigeExperienceMultiplierStep);
                             data.SetTotalExperienceMultiplier();
                             context.getSource().sendSuccess(
-                                () -> Component.literal(
-                                    "This item's prestige level has been successfully set to " + data.GetPrestige() + "."
-                                ),
+                                () -> Component.translatable("Essor.Command.SetPrestige.Successful", data.GetPrestige()),
                                 true
                             );
                             return 1;
@@ -85,17 +83,14 @@ public class EssorCommands {
                         ItemStack item = player.getMainHandItem();
                         EquipmentLevelingData data = item.getComponents().get(EssorDataComponents.EQUIPMENT_LEVELING_DATA.get());
                         if (data == null) {
-                            context.getSource().sendFailure(Component.literal("This item does not have any EquipmentLevelingData data component. Is it an upgradable item ?"));
+                            context.getSource().sendFailure(Component.translatable("Essor.Command.NoEquipmentLevelingData"));
                             return 0;
                         }
                         int level = IntegerArgumentType.getInteger(context, "value");
                         data.SetLevel(level);
                         ProgressionManager.PrestigeUp(player, item);
                         context.getSource().sendSuccess(
-                            () -> Component.literal(
-                                "This item's level has been successfully set to " + level +
-                                ". The prestige level has been automatically set to " + data.GetPrestige() + "."
-                            ),
+                            () -> Component.translatable("Essor.Command.SetLevel.Successful", data.GetLevel()),
                             true
                         );
                         return 1;
@@ -105,22 +100,19 @@ public class EssorCommands {
                     .executes(context -> {
                         ServerPlayer player = EntityArgument.getPlayer(context, "player");
                         if (player == null) {
-                            context.getSource().sendFailure(Component.literal("This command must be triggered by a player."));
+                            context.getSource().sendFailure(Component.translatable("Essor.Command.MustBeTriggeredByAPlayer"));
                             return 0;
                         }
                         ItemStack item = player.getMainHandItem();
                         EquipmentLevelingData data = item.getComponents().get(EssorDataComponents.EQUIPMENT_LEVELING_DATA.get());
                         if (data == null) {
-                            context.getSource().sendFailure(Component.literal("This item does not have any EquipmentLevelingData data component. Is it an upgradable item ?"));
+                            context.getSource().sendFailure(Component.translatable("Essor.Command.NoEquipmentLevelingData"));
                             return 0;
                         }
                         data.SetLevel(data.GetLevel() + 1);
                         ProgressionManager.PrestigeUp(player, item);
                         context.getSource().sendSuccess(
-                            () -> Component.literal(
-                                "This item's level has been successfully set to " + data.GetLevel() +
-                                ". The prestige level has been automatically updated."
-                            ),
+                            () -> Component.translatable("Essor.Command.SetLevel.Successful", data.GetLevel()),
                             true
                         );
                         return 1;

@@ -56,5 +56,9 @@
   "Essor.Challenge.KillWarden": "Zabij %1$s/%2$s Wardenów.",
   "Essor.Challenge.KillWither": "Zabij %1$s/%2$s Witherów.",
   "Essor.Challenge.KillZombies": "Zabij %1$s/%2$s stworzeń zombie.",
-  "Essor.Challenge.TillDirt": "Zaoraj %1$s/%2$s bloków ziemi."
+  "Essor.Challenge.TillDirt": "Zaoraj %1$s/%2$s bloków ziemi.",
+  "Essor.Command.NoEquipmentLevelingData": "Ten przedmiot nie posiada komponentu danych EquipmentLevelingData. Czy jest to przedmiot ulepszany?",
+  "Essor.Command.MustBeTriggeredByAPlayer": "Ta komenda musi zostać wywołana przez gracza.",
+  "Essor.Command.SetPrestige.Successful": "Poziom prestiżu tego przedmiotu został pomyślnie ustawiony na %1$s.",
+  "Essor.Command.SetLevel.Successful": "Poziom tego przedmiotu został pomyślnie ustawiony na %1$s. Poziom prestiżu został zaktualizowany automatycznie.",
 }

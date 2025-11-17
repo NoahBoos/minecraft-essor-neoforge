@@ -56,5 +56,9 @@
   "Essor.Challenge.KillWarden": "Töte %1$s/%2$s Wächter.",
   "Essor.Challenge.KillWither": "Töte %1$s/%2$s Wither.",
   "Essor.Challenge.KillZombies": "Töte %1$s/%2$s zombifizierte Kreaturen.",
-  "Essor.Challenge.TillDirt": "Pflüge %1$s/%2$s Erdblöcke."
+  "Essor.Challenge.TillDirt": "Pflüge %1$s/%2$s Erdblöcke.",
+  "Essor.Command.NoEquipmentLevelingData": "Dieses Item besitzt keine EquipmentLevelingData-Datenkomponente. Ist es ein aufrüstbares Item?",
+  "Essor.Command.MustBeTriggeredByAPlayer": "Dieser Befehl muss von einem Spieler ausgelöst werden.",
+  "Essor.Command.SetPrestige.Successful": "Der Prestigestufe dieses Items wurde erfolgreich auf %1$s gesetzt.",
+  "Essor.Command.SetLevel.Successful": "Die Stufe dieses Items wurde erfolgreich auf %1$s gesetzt. Die Prestigestufe wurde automatisch aktualisiert."
 }
