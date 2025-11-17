@@ -1,5 +1,6 @@
 package fr.noahboos.essor.event;
 
+import fr.noahboos.essor.component.ActionBar;
 import fr.noahboos.essor.component.ProgressionManager;
 import fr.noahboos.essor.component.challenge.Challenges;
 import fr.noahboos.essor.registry.EssorRegistry;
@@ -37,6 +38,7 @@ public class EssorBlockEventHandler {
                 }
                 Challenges.AttemptToLevelUpChallenges(heldItem, BuiltInRegistries.BLOCK.getKey(block).toString(), dropCount);
                 InventoryUtils.InventorySync((ServerPlayer) player);
+                ActionBar.DisplayXPCount((ServerPlayer) player, heldItem);
             }
         }
     }
@@ -59,6 +61,7 @@ public class EssorBlockEventHandler {
                 }
                 Challenges.AttemptToLevelUpChallenges(heldItem, BuiltInRegistries.BLOCK.getKey(block).toString());
                 InventoryUtils.InventorySync((ServerPlayer) player);
+                ActionBar.DisplayXPCount((ServerPlayer) player, heldItem);
             }
         }
     }

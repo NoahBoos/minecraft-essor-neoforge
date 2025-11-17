@@ -1,5 +1,6 @@
 package fr.noahboos.essor.event;
 
+import fr.noahboos.essor.component.ActionBar;
 import fr.noahboos.essor.component.EquipmentLevelingData;
 import fr.noahboos.essor.component.EssorDataComponents;
 import fr.noahboos.essor.component.ProgressionManager;
@@ -107,6 +108,7 @@ public class EssorEntityEventHandler {
                     ProgressionManager.PrestigeUp(player, heldItem);
                 }
                 Challenges.AttemptToLevelUpChallenges(heldItem, BuiltInRegistries.ENTITY_TYPE.getKey(entity.getType()).toString());
+                ActionBar.DisplayXPCount((ServerPlayer) player, heldItem);
 
                 ItemStack offHandItem = player.getOffhandItem();
                 EssorRegistry.ExperienceResult offHandResult = EssorRegistry.GetExperience(EssorRegistry.PRIMARY_ACTION_EXPERIENCE_TABLES, offHandItem, BuiltInRegistries.ENTITY_TYPE.getKey(entity.getType()).toString());
