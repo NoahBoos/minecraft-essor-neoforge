@@ -88,6 +88,7 @@ public class EssorCommands {
                         }
                         int level = IntegerArgumentType.getInteger(context, "value");
                         data.SetLevel(level);
+                        data.SetRequiredExperienceToLevelUp(100 + (100 * data.GetLevel()));
                         ProgressionManager.PrestigeUp(player, item);
                         context.getSource().sendSuccess(
                             () -> Component.translatable("Essor.Command.SetLevel.Successful", data.GetLevel()),
@@ -110,6 +111,7 @@ public class EssorCommands {
                             return 0;
                         }
                         data.SetLevel(data.GetLevel() + 1);
+                        data.SetRequiredExperienceToLevelUp(100 + (100 * data.GetLevel()));
                         ProgressionManager.PrestigeUp(player, item);
                         context.getSource().sendSuccess(
                             () -> Component.translatable("Essor.Command.SetLevel.Successful", data.GetLevel()),
