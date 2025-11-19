@@ -66,7 +66,7 @@ public class ProgressionManager {
             }
         }
         Holder<Enchantment> enchantment = enchantments.keySet().stream().skip(new Random().nextInt(enchantments.size())).findFirst().orElse(null);
-        if (enchantment != null) {
+        if (enchantment != null && !item.getEnchantments().keySet().contains(enchantment)) {
             int enchantLevel = enchantments.get(enchantment);
             item.enchant(enchantment, enchantLevel);
         }
