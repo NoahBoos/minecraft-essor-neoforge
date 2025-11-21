@@ -37,11 +37,6 @@ Mending is a very powerful enchantment — and often the one players seek the mo
 
 This design choice may be reconsidered in future updates.
 
-#### Game-changing enchantments
-
-Some enchantments are left for you to decide. For example, with the bow:  
-As you level it up, you’ll earn *Unbreaking*, *Flame*, *Punch*, and *Power*. But what about *Mending* and *Infinity*? Since those two are incompatible in Minecraft, it’s up to you to decide whether you want infinite arrows or a bow that never breaks. ;>
-
 #### Protection-like, Sharpness-like, Trident, Mace, and Crossbow enchantments
 
 To prevent gear from becoming too overpowered, you cannot get all “protection-like” enchantments on the same armor piece. When you first earn a protection-like enchantment, a randomizer chooses between *Protection*, *Blast Protection*, *Fire Protection*, or *Projectile Protection*. 
