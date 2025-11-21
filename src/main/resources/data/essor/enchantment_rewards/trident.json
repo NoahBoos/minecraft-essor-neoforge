@@ -43,5 +43,38 @@
   },
   "55": {
     "impaling": 5
+  },
+  "61": {
+    "unbreaking": 6
+  },
+  "65": {
+    "impaling": 6
+  },
+  "71": {
+    "unbreaking": 7
+  },
+  "75": {
+    "impaling": 7
+  },
+  "81": {
+    "unbreaking": 8
+  },
+  "85": {
+    "impaling": 8
+  },
+  "91": {
+    "unbreaking": 9
+  },
+  "95": {
+    "impaling": 9
+  },
+  "100": {
+    "mending": 1
+  },
+  "101": {
+    "unbreaking": 10
+  },
+  "105": {
+    "impaling": 10
   }
 }

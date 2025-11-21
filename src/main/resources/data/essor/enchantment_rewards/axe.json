@@ -43,5 +43,53 @@
   },
   "55": {
     "efficiency": 5
+  },
+  "61": {
+    "unbreaking": 6
+  },
+  "63": {
+    "fortune": 6
+  },
+  "65": {
+    "efficiency": 6
+  },
+  "71": {
+    "unbreaking": 7
+  },
+  "73": {
+    "fortune": 7
+  },
+  "75": {
+    "efficiency": 7
+  },
+  "81": {
+    "unbreaking": 8
+  },
+  "83": {
+    "fortune": 8
+  },
+  "85": {
+    "efficiency": 8
+  },
+  "91": {
+    "unbreaking": 9
+  },
+  "93": {
+    "fortune": 9
+  },
+  "95": {
+    "efficiency": 9
+  },
+  "100": {
+    "mending": 1
+  },
+  "101": {
+    "unbreaking": 10
+  },
+  "103": {
+    "fortune": 10
+  },
+  "105": {
+    "efficiency": 10
   }
 }

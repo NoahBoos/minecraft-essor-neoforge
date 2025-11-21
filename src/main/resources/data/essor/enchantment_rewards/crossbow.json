@@ -48,5 +48,58 @@
   },
   "55": {
     "quick_charge": 5
+  },
+  "61": {
+    "unbreaking": 6
+  },
+  "63": {
+    "multishot": 6,
+    "piercing": 6
+  },
+  "65": {
+    "quick_charge": 6
+  },
+  "71": {
+    "unbreaking": 7
+  },
+  "73": {
+    "multishot": 7,
+    "piercing": 7
+  },
+  "75": {
+    "quick_charge": 7
+  },
+  "81": {
+    "unbreaking": 8
+  },
+  "83": {
+    "multishot": 8,
+    "piercing": 8
+  },
+  "85": {
+    "quick_charge": 8
+  },
+  "91": {
+    "unbreaking": 9
+  },
+  "93": {
+    "multishot": 9,
+    "piercing": 9
+  },
+  "95": {
+    "quick_charge": 9
+  },
+  "100": {
+    "mending": 1
+  },
+  "101": {
+    "unbreaking": 10
+  },
+  "103": {
+    "multishot": 10,
+    "piercing": 10
+  },
+  "105": {
+    "quick_charge": 10
   }
 }

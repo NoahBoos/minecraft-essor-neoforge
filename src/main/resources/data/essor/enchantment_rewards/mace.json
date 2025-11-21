@@ -67,5 +67,68 @@
     "breach": 5,
     "density": 5,
     "smite": 5
+  },
+  "61": {
+    "unbreaking": 6
+  },
+  "63": {
+    "wind_burst": 6
+  },
+  "65": {
+    "bane_of_arthropods": 6,
+    "breach": 6,
+    "density": 6,
+    "smite": 6
+  },
+  "71": {
+    "unbreaking": 7
+  },
+  "73": {
+    "wind_burst": 7
+  },
+  "75": {
+    "bane_of_arthropods": 7,
+    "breach": 7,
+    "density": 7,
+    "smite": 7
+  },
+  "81": {
+    "unbreaking": 8
+  },
+  "83": {
+    "wind_burst": 8
+  },
+  "85": {
+    "bane_of_arthropods": 8,
+    "breach": 8,
+    "density": 8,
+    "smite": 8
+  },
+  "91": {
+    "unbreaking": 9
+  },
+  "93": {
+    "wind_burst": 9
+  },
+  "95": {
+    "bane_of_arthropods": 9,
+    "breach": 9,
+    "density": 9,
+    "smite": 9
+  },
+  "100": {
+    "mending": 1
+  },
+  "101": {
+    "unbreaking": 10
+  },
+  "103": {
+    "wind_burst": 10
+  },
+  "105": {
+    "bane_of_arthropods": 10,
+    "breach": 10,
+    "density": 10,
+    "smite": 10
   }
 }

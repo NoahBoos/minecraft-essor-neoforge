@@ -76,5 +76,83 @@
   },
   "57": {
     "thorns": 5
+  },
+  "61": {
+    "unbreaking": 6
+  },
+  "63": {
+    "protection": 6,
+    "projectile_protection": 6,
+    "blast_protection": 6,
+    "fire_protection": 6
+  },
+  "65": {
+    "respiration": 6
+  },
+  "67": {
+    "thorns": 6
+  },
+  "71": {
+    "unbreaking": 7
+  },
+  "73": {
+    "protection": 7,
+    "projectile_protection": 7,
+    "blast_protection": 7,
+    "fire_protection": 7
+  },
+  "75": {
+    "respiration": 7
+  },
+  "77": {
+    "thorns": 7
+  },
+  "81": {
+    "unbreaking": 8
+  },
+  "83": {
+    "protection": 8,
+    "projectile_protection": 8,
+    "blast_protection": 8,
+    "fire_protection": 8
+  },
+  "85": {
+    "respiration": 8
+  },
+  "87": {
+    "thorns": 8
+  },
+  "91": {
+    "unbreaking": 9
+  },
+  "93": {
+    "protection": 9,
+    "projectile_protection": 9,
+    "blast_protection": 9,
+    "fire_protection": 9
+  },
+  "95": {
+    "respiration": 9
+  },
+  "97": {
+    "thorns": 9
+  },
+  "100": {
+    "mending": 1
+  },
+  "101": {
+    "unbreaking": 5
+  },
+  "103": {
+    "protection": 10,
+    "projectile_protection": 10,
+    "blast_protection": 10,
+    "fire_protection": 10
+  },
+  "105": {
+    "respiration": 10
+  },
+  "107": {
+    "thorns": 10
   }
 }
