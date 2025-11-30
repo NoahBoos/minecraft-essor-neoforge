@@ -12,6 +12,7 @@ import net.minecraft.world.level.Level;
 import org.joml.Random;
 
 import java.util.Map;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 public class ProgressionManager {
@@ -52,10 +53,11 @@ public class ProgressionManager {
         if (data == null) return;
         Map<String, Integer> rewards = table.get(data.GetLevel());
         if (rewards == null || rewards.isEmpty()) return;
-        Map<Holder<Enchantment>, Integer> enchantments = rewards.entrySet().stream().collect(Collectors.toMap(
-                enchantment -> EssorEnchantmentRegistry.GetEnchantmentByID(enchantment.getKey(), level.registryAccess()),
-                Map.Entry::getValue
-        ));
+        Map<Holder<Enchantment>, Integer> enchantments = rewards.entrySet().stream().map(enchantment -> {
+            Holder<Enchantment> enchantmentHolder = EssorEnchantmentRegistry.GetEnchantmentByID(enchantment.getKey(), level.registryAccess());
+            return enchantmentHolder == null ? null : Map.entry(enchantmentHolder, enchantment.getValue());
+        }).filter(Objects::nonNull).collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
+        if (enchantments.isEmpty()) return;
         for (Map.Entry<Holder<Enchantment>, Integer> enchantment : enchantments.entrySet()) {
             Holder<Enchantment> holder = enchantment.getKey();
             if (item.getEnchantments().keySet().contains(holder)) {
