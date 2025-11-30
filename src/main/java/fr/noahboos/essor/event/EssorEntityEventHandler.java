@@ -32,7 +32,7 @@ public class EssorEntityEventHandler {
             Entity attacker = event.getSource().getEntity();
             if (entity instanceof Player player) {
                 float damage = event.getOriginalDamage() - event.getNewDamage();
-                float armorExperience = damage * 3.75f;
+                float armorExperience = damage * EquipmentLevelingData.DEFAULT_XP_DAMAGE_TAKEN;
                 Iterable<ItemStack> armor = InventoryUtils.GetPlayerArmor(player.getInventory());
                 for (ItemStack item : armor) {
                     if (item instanceof ItemStack) {
@@ -45,7 +45,7 @@ public class EssorEntityEventHandler {
                         ProgressionManager.PrestigeUp(player, item);
                     }
                 }
-                float shieldExperience = event.getBlockedDamage() * 7.5f;
+                float shieldExperience = event.getBlockedDamage() * EquipmentLevelingData.DEFAULT_XP_SHIELD_BLOCK;
                 ItemStack heldItem = player.getMainHandItem();
                 if (heldItem.getItem() instanceof ShieldItem) {
                     ProgressionManager.AddExperience(heldItem, shieldExperience);
@@ -67,7 +67,7 @@ public class EssorEntityEventHandler {
             }
 
             if (attacker instanceof Player player) {
-                float experience = (float) (Math.ceil((event.getOriginalDamage() * 0.75f) * 2) / 2);
+                float experience = (float) (Math.ceil((event.getOriginalDamage() * EquipmentLevelingData.DEFAULT_XP_DAMAGE_DEALT) * 2) / 2);
 
                 ItemStack heldItem = player.getMainHandItem();
                 if (!(heldItem.getItem() instanceof ShieldItem)) {
