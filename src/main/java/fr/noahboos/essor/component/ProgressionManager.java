@@ -26,7 +26,7 @@ public class ProgressionManager {
     public static void LevelUp(Player player, ItemStack item) {
         EquipmentLevelingData data = item.getComponents().get(EssorDataComponents.EQUIPMENT_LEVELING_DATA.get());
         if (data == null) return;
-        while (data.GetCurrentExperience() > data.GetRequiredExperienceToLevelUp()) {
+        while (data.GetCurrentExperience() >= data.GetRequiredExperienceToLevelUp()) {
             data.SetLevel(data.GetLevel() + 1);
             data.SetCurrentExperience(data.GetCurrentExperience() - data.GetRequiredExperienceToLevelUp());
             data.SetRequiredExperienceToLevelUp(100 + (100 * data.GetLevel()));
