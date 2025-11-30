@@ -8,6 +8,7 @@ import fr.noahboos.essor.component.challenge.Challenges;
 import fr.noahboos.essor.registry.EssorEnchantmentRegistry;
 import fr.noahboos.essor.registry.EssorRegistry;
 import fr.noahboos.essor.util.InventoryUtils;
+import net.minecraft.core.BlockPos;
 import net.minecraft.core.RegistryAccess;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.server.level.ServerPlayer;
@@ -17,6 +18,8 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.ShieldItem;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
 import net.neoforged.neoforge.event.entity.living.LivingDeathEvent;
@@ -138,6 +141,7 @@ public class EssorEntityEventHandler {
         ItemStack helmetStack = player.getItemBySlot(EquipmentSlot.HEAD);
         ItemStack chestStack = player.getItemBySlot(EquipmentSlot.CHEST);
         ItemStack legsStack = player.getItemBySlot(EquipmentSlot.LEGS);
+        ItemStack feetStack = player.getItemBySlot(EquipmentSlot.FEET);
 
         if (player.isFallFlying()) {
             ProgressionManager.AddExperience(chestStack, EquipmentLevelingData.DEFAULT_XP_ELYTRA_GLIDE);
@@ -159,6 +163,13 @@ public class EssorEntityEventHandler {
             Map<Integer, Map<String, Integer>> enchantmentRewardTable = EssorRegistry.GetEnchantmentRewardTable(legsStack);
             ProgressionManager.ApplyEnchantment(player.level(), enchantmentRewardTable, legsStack);
             ProgressionManager.PrestigeUp(player, legsStack);
+        }
+        if ((player.level().getBlockState(new BlockPos(player.blockPosition().getX(), player.blockPosition().getY(), player.blockPosition().getZ())).getBlock() == Blocks.SOUL_SAND || player.level().getBlockState(player.blockPosition().below()).getBlock() == Blocks.SOUL_SOIL) && (feetStack.getEnchantmentLevel(EssorEnchantmentRegistry.GetEnchantmentByID("soul_speed", event.getEntity().registryAccess())) >= 1)) {
+            ProgressionManager.AddExperience(feetStack, EquipmentLevelingData.DEFAULT_XP_MOVING_ON_SOUL_BLOCKS);
+            ProgressionManager.LevelUp(player, feetStack);
+            Map<Integer, Map<String, Integer>> enchantmentRewardTable = EssorRegistry.GetEnchantmentRewardTable(feetStack);
+            ProgressionManager.ApplyEnchantment(player.level(), enchantmentRewardTable, feetStack);
+            ProgressionManager.PrestigeUp(player, feetStack);
         }
     }
 }
