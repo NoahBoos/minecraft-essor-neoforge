@@ -17,6 +17,12 @@ import java.util.Objects;
 import java.util.stream.Collectors;
 
 public class ProgressionManager {
+    public static void HandleProgress(Player player, ItemStack item, float experience) {
+        AddExperience(item, experience);
+        LevelUp(player, item);
+        PrestigeUp(player, item);
+    }
+
     public static void AddExperience(ItemStack item, float experience) {
         EquipmentLevelingData data = item.getComponents().get(EssorDataComponents.EQUIPMENT_LEVELING_DATA.get());
         if (data == null) return;

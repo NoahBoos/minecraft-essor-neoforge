@@ -14,8 +14,6 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
 import net.neoforged.neoforge.event.level.BlockDropsEvent;
 
-import java.util.Map;
-
 public class EssorBlockEventHandler {
     @SubscribeEvent
     public static void OnBlockDropped(BlockDropsEvent event) {
@@ -30,9 +28,7 @@ public class EssorBlockEventHandler {
                 int dropCount = event.getDrops().stream().mapToInt(itemEntity -> itemEntity.getItem().getCount()).sum();
                 if (result.isRewardable()) {
                     float experience = result.experience() * dropCount;
-                    ProgressionManager.AddExperience(heldItem, experience);
-                    ProgressionManager.LevelUp(player, heldItem);
-                    ProgressionManager.PrestigeUp(player, heldItem);
+                    ProgressionManager.HandleProgress(player, heldItem, experience);
                 }
                 Challenges.AttemptToLevelUpChallenges(heldItem, BuiltInRegistries.BLOCK.getKey(block).toString(), dropCount);
                 InventoryUtils.InventorySync((ServerPlayer) player);
@@ -51,9 +47,7 @@ public class EssorBlockEventHandler {
                 Block block = event.getEntity().level().getBlockState(event.getPos()).getBlock();
                 EssorRegistry.ExperienceResult result = EssorRegistry.GetExperience(EssorRegistry.SECOND_ACTION_EXPERIENCE_TABLES, heldItem, BuiltInRegistries.BLOCK.getKey(block).toString());
                 if (result.isRewardable()) {
-                    ProgressionManager.AddExperience(heldItem, result.experience());
-                    ProgressionManager.LevelUp(player, heldItem);
-                    ProgressionManager.PrestigeUp(player, heldItem);
+                    ProgressionManager.HandleProgress(player, heldItem, result.experience());
                 }
                 Challenges.AttemptToLevelUpChallenges(heldItem, BuiltInRegistries.BLOCK.getKey(block).toString());
                 InventoryUtils.InventorySync((ServerPlayer) player);
