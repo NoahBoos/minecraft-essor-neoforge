@@ -3,6 +3,7 @@ package fr.noahboos.essor.component;
 import fr.noahboos.essor.component.challenge.ChallengeDefinition;
 import fr.noahboos.essor.component.challenge.ChallengeProgress;
 import fr.noahboos.essor.registry.EssorEnchantmentRegistry;
+import fr.noahboos.essor.registry.EssorRegistry;
 import net.minecraft.core.Holder;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Player;
@@ -29,6 +30,8 @@ public class ProgressionManager {
             data.SetLevel(data.GetLevel() + 1);
             data.SetCurrentExperience(data.GetCurrentExperience() - data.GetRequiredExperienceToLevelUp());
             data.SetRequiredExperienceToLevelUp(100 + (100 * data.GetLevel()));
+            Map<Integer, Map<String, Integer>> enchantmentRewardTable = EssorRegistry.GetEnchantmentRewardTable(item);
+            ProgressionManager.ApplyEnchantment(player.level(), enchantmentRewardTable, item);
             item.setDamageValue(0);
             player.displayClientMessage(Component.translatable("chat.essor.levelUpMessage", item.getDisplayName(), data.GetLevel()), false);
         }

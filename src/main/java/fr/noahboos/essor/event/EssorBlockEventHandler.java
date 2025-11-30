@@ -32,8 +32,6 @@ public class EssorBlockEventHandler {
                     float experience = result.experience() * dropCount;
                     ProgressionManager.AddExperience(heldItem, experience);
                     ProgressionManager.LevelUp(player, heldItem);
-                    Map<Integer, Map<String, Integer>> enchantmentRewardTable = EssorRegistry.GetEnchantmentRewardTable(heldItem);
-                    ProgressionManager.ApplyEnchantment(player.level(), enchantmentRewardTable, heldItem);
                     ProgressionManager.PrestigeUp(player, heldItem);
                 }
                 Challenges.AttemptToLevelUpChallenges(heldItem, BuiltInRegistries.BLOCK.getKey(block).toString(), dropCount);
@@ -55,8 +53,6 @@ public class EssorBlockEventHandler {
                 if (result.isRewardable()) {
                     ProgressionManager.AddExperience(heldItem, result.experience());
                     ProgressionManager.LevelUp(player, heldItem);
-                    Map<Integer, Map<String, Integer>> enchantmentRewardTable = EssorRegistry.GetEnchantmentRewardTable(heldItem);
-                    ProgressionManager.ApplyEnchantment(player.level(), enchantmentRewardTable, heldItem);
                     ProgressionManager.PrestigeUp(player, heldItem);
                 }
                 Challenges.AttemptToLevelUpChallenges(heldItem, BuiltInRegistries.BLOCK.getKey(block).toString());

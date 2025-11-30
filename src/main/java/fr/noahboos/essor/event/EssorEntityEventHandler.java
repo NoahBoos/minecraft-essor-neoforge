@@ -47,8 +47,6 @@ public class EssorEntityEventHandler {
                         if (data == null) continue;
                         ProgressionManager.AddExperience(item, armorExperience);
                         ProgressionManager.LevelUp(player, item);
-                        Map<Integer, Map<String, Integer>> enchantmentRewardTable = EssorRegistry.GetEnchantmentRewardTable(item);
-                        ProgressionManager.ApplyEnchantment(player.level(), enchantmentRewardTable, item);
                         ProgressionManager.PrestigeUp(player, item);
                     }
                 }
@@ -57,8 +55,6 @@ public class EssorEntityEventHandler {
                 if (heldItem.getItem() instanceof ShieldItem) {
                     ProgressionManager.AddExperience(heldItem, shieldExperience);
                     ProgressionManager.LevelUp(player, heldItem);
-                    Map<Integer, Map<String, Integer>> enchantmentRewardTable = EssorRegistry.GetEnchantmentRewardTable(heldItem);
-                    ProgressionManager.ApplyEnchantment(player.level(), enchantmentRewardTable, heldItem);
                     ProgressionManager.PrestigeUp(player, heldItem);
                 }
 
@@ -66,8 +62,6 @@ public class EssorEntityEventHandler {
                 if (offHandItem.getItem() instanceof ShieldItem) {
                     ProgressionManager.AddExperience(offHandItem, shieldExperience);
                     ProgressionManager.LevelUp(player, offHandItem);
-                    Map<Integer, Map<String, Integer>> enchantmentRewardTable = EssorRegistry.GetEnchantmentRewardTable(offHandItem);
-                    ProgressionManager.ApplyEnchantment(player.level(), enchantmentRewardTable, offHandItem);
                     ProgressionManager.PrestigeUp(player, offHandItem);
                 }
                 InventoryUtils.InventorySync((ServerPlayer) player);
@@ -80,8 +74,6 @@ public class EssorEntityEventHandler {
                 if (!(heldItem.getItem() instanceof ShieldItem)) {
                     ProgressionManager.AddExperience(heldItem, experience);
                     ProgressionManager.LevelUp(player, heldItem);
-                    Map<Integer, Map<String, Integer>> enchantmentRewardTable = EssorRegistry.GetEnchantmentRewardTable(heldItem);
-                    ProgressionManager.ApplyEnchantment(player.level(), enchantmentRewardTable, heldItem);
                     ProgressionManager.PrestigeUp(player, heldItem);
                 }
 
@@ -90,8 +82,6 @@ public class EssorEntityEventHandler {
                 if (!(offHandItem.getItem() instanceof ShieldItem)) {
                     ProgressionManager.AddExperience(offHandItem, experience);
                     ProgressionManager.LevelUp(player, offHandItem);
-                    Map<Integer, Map<String, Integer>> enchantmentRewardTable = EssorRegistry.GetEnchantmentRewardTable(offHandItem);
-                    ProgressionManager.ApplyEnchantment(player.level(), enchantmentRewardTable, offHandItem);
                     ProgressionManager.PrestigeUp(player, offHandItem);
                 }
                 InventoryUtils.InventorySync((ServerPlayer) player);
@@ -112,8 +102,6 @@ public class EssorEntityEventHandler {
                 if (heldItemResult.isRewardable()) {
                     ProgressionManager.AddExperience(heldItem, heldItemResult.experience());
                     ProgressionManager.LevelUp(player, heldItem);
-                    Map<Integer, Map<String, Integer>> enchantmentRewardTable = EssorRegistry.GetEnchantmentRewardTable(heldItem);
-                    ProgressionManager.ApplyEnchantment(player.level(), enchantmentRewardTable, heldItem);
                     ProgressionManager.PrestigeUp(player, heldItem);
                 }
                 Challenges.AttemptToLevelUpChallenges(heldItem, BuiltInRegistries.ENTITY_TYPE.getKey(entity.getType()).toString());
@@ -124,8 +112,6 @@ public class EssorEntityEventHandler {
                 if (offHandResult.isRewardable()) {
                     ProgressionManager.AddExperience(offHandItem, offHandResult.experience());
                     ProgressionManager.LevelUp(player, offHandItem);
-                    Map<Integer, Map<String, Integer>> enchantmentRewardTable = EssorRegistry.GetEnchantmentRewardTable(offHandItem);
-                    ProgressionManager.ApplyEnchantment(player.level(), enchantmentRewardTable, offHandItem);
                     ProgressionManager.PrestigeUp(player, offHandItem);
                 }
                 Challenges.AttemptToLevelUpChallenges(offHandItem, BuiltInRegistries.ENTITY_TYPE.getKey(entity.getType()).toString());
@@ -148,29 +134,21 @@ public class EssorEntityEventHandler {
         if (player.isFallFlying()) {
             ProgressionManager.AddExperience(chestStack, EquipmentLevelingData.DEFAULT_XP_ELYTRA_GLIDE);
             ProgressionManager.LevelUp(player, chestStack);
-            Map<Integer, Map<String, Integer>> enchantmentRewardTable = EssorRegistry.GetEnchantmentRewardTable(chestStack);
-            ProgressionManager.ApplyEnchantment(player.level(), enchantmentRewardTable, chestStack);
             ProgressionManager.PrestigeUp(player, chestStack);
         }
         if (player.isUnderWater() && (helmetStack.getEnchantmentLevel(EssorEnchantmentRegistry.GetEnchantmentByID("respiration", event.getEntity().registryAccess())) >= 1 || EquipmentType.GetEquipmentType(helmetStack) == E_EquipmentType.TURTLE_HELMET)) {
             ProgressionManager.AddExperience(helmetStack, EquipmentLevelingData.DEFAULT_XP_UNDER_WATER_BREATHING);
             ProgressionManager.LevelUp(player, helmetStack);
-            Map<Integer, Map<String, Integer>> enchantmentRewardTable = EssorRegistry.GetEnchantmentRewardTable(helmetStack);
-            ProgressionManager.ApplyEnchantment(player.level(), enchantmentRewardTable, helmetStack);
             ProgressionManager.PrestigeUp(player, helmetStack);
         }
         if (player.isCrouching() && (legsStack.getEnchantmentLevel(EssorEnchantmentRegistry.GetEnchantmentByID("swift_sneak", event.getEntity().registryAccess())) >= 1)) {
             ProgressionManager.AddExperience(legsStack, EquipmentLevelingData.DEFAULT_XP_CROUCHED);
             ProgressionManager.LevelUp(player, legsStack);
-            Map<Integer, Map<String, Integer>> enchantmentRewardTable = EssorRegistry.GetEnchantmentRewardTable(legsStack);
-            ProgressionManager.ApplyEnchantment(player.level(), enchantmentRewardTable, legsStack);
             ProgressionManager.PrestigeUp(player, legsStack);
         }
         if ((player.level().getBlockState(new BlockPos(player.blockPosition().getX(), player.blockPosition().getY(), player.blockPosition().getZ())).getBlock() == Blocks.SOUL_SAND || player.level().getBlockState(player.blockPosition().below()).getBlock() == Blocks.SOUL_SOIL) && (feetStack.getEnchantmentLevel(EssorEnchantmentRegistry.GetEnchantmentByID("soul_speed", event.getEntity().registryAccess())) >= 1)) {
             ProgressionManager.AddExperience(feetStack, EquipmentLevelingData.DEFAULT_XP_MOVING_ON_SOUL_BLOCKS);
             ProgressionManager.LevelUp(player, feetStack);
-            Map<Integer, Map<String, Integer>> enchantmentRewardTable = EssorRegistry.GetEnchantmentRewardTable(feetStack);
-            ProgressionManager.ApplyEnchantment(player.level(), enchantmentRewardTable, feetStack);
             ProgressionManager.PrestigeUp(player, feetStack);
         }
     }
