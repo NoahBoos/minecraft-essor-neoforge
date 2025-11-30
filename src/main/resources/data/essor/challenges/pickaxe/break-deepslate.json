@@ -1,0 +1,14 @@
+{
+  "id": "Essor:Challenge:BreakDeepslate",
+  "maximumTier": 5,
+  "thresholds": [
+    256,
+    512,
+    1024,
+    2048,
+    4096
+  ],
+  "targets": [
+    "minecraft:deepslate"
+  ]
+}

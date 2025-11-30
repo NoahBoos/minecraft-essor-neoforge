@@ -19,6 +19,7 @@
   "Essor.Challenge.BreakCopperOre": "Zniszcz %1$s/%2$s rud miedzi.",
   "Essor.Challenge.BreakCrimson": "Zniszcz %1$s/%2$s karmazynowych pni.",
   "Essor.Challenge.BreakDarkOak": "Zniszcz %1$s/%2$s kłód ciemnego dębu.",
+  "Essor.Challenge.BreakDeepslate": "Zniszcz %1$s/%2$s bloku łupek.",
   "Essor.Challenge.BreakDiamondOre": "Zniszcz %1$s/%2$s rud diamentu.",
   "Essor.Challenge.BreakDirt": "Zniszcz %1$s/%2$s bloków ziemi.",
   "Essor.Challenge.BreakEmeraldOre": "Zniszcz %1$s/%2$s rud szmaragdu.",
@@ -60,5 +61,5 @@
   "Essor.Command.NoEquipmentLevelingData": "Ten przedmiot nie posiada komponentu danych EquipmentLevelingData. Czy jest to przedmiot ulepszany?",
   "Essor.Command.MustBeTriggeredByAPlayer": "Ta komenda musi zostać wywołana przez gracza.",
   "Essor.Command.SetPrestige.Successful": "Poziom prestiżu tego przedmiotu został pomyślnie ustawiony na %1$s.",
-  "Essor.Command.SetLevel.Successful": "Poziom tego przedmiotu został pomyślnie ustawiony na %1$s. Poziom prestiżu został zaktualizowany automatycznie.",
+  "Essor.Command.SetLevel.Successful": "Poziom tego przedmiotu został pomyślnie ustawiony na %1$s. Poziom prestiżu został zaktualizowany automatycznie."
 }

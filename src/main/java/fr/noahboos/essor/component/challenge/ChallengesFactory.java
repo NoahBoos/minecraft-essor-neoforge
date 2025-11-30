@@ -104,6 +104,7 @@ public class ChallengesFactory {
         challenges.challenges.add(new ChallengeProgress(EssorRegistry.CHALLENGE_DEFINITION_MAP.get("Essor:Challenge:BreakNetherQuartzOre")));
         challenges.challenges.add(new ChallengeProgress(EssorRegistry.CHALLENGE_DEFINITION_MAP.get("Essor:Challenge:BreakRedstoneOre")));
         challenges.challenges.add(new ChallengeProgress(EssorRegistry.CHALLENGE_DEFINITION_MAP.get("Essor:Challenge:BreakStone")));
+        challenges.challenges.add(new ChallengeProgress(EssorRegistry.CHALLENGE_DEFINITION_MAP.get("Essor:Challenge:BreakDeepslate")));
         return challenges;
     }
 
