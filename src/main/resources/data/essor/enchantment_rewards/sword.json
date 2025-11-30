@@ -2,6 +2,9 @@
   "11": {
     "unbreaking": 1
   },
+  "12": {
+    "knockback": 1
+  },
   "13": {
     "looting": 1
   },
@@ -12,6 +15,9 @@
   },
   "21": {
     "unbreaking": 2
+  },
+  "12": {
+    "fire_aspect": 1
   },
   "23": {
     "looting": 2
@@ -25,7 +31,7 @@
     "unbreaking": 3
   },
   "32": {
-    "fire_aspect": 1
+    "knockback": 2
   },
   "33": {
     "looting": 3
@@ -59,7 +65,7 @@
     "unbreaking": 5
   },
   "52": {
-    "fire_aspect": 3
+    "knockback": 3
   },
   "53": {
     "looting": 5
@@ -74,6 +80,9 @@
   },
   "61": {
     "unbreaking": 6
+  },
+  "62": {
+    "fire_aspect": 1
   },
   "63": {
     "looting": 6
