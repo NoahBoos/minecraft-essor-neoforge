@@ -2,12 +2,13 @@ package fr.noahboos.essor.component;
 
 import fr.noahboos.essor.component.challenge.Challenges;
 import fr.noahboos.essor.util.E_EquipmentType;
-import net.minecraft.world.item.*;
 
 import java.util.Objects;
 import java.util.Set;
 
 public class EquipmentLevelingData {
+    public static final float DEFAULT_XP_ELYTRA_GLIDE = 2.0f;
+
     private int prestige;
     private int requiredLevelToPrestige;
     public static int maxPrestige = 10;
@@ -57,20 +58,20 @@ public class EquipmentLevelingData {
 
     public static final Set<E_EquipmentType> UPGRADABLE_ARMOR_CLASSES = Set.of(
         E_EquipmentType.HELMET, E_EquipmentType.CHESTPLATE, E_EquipmentType.LEGGINGS, E_EquipmentType.BOOTS,
-        E_EquipmentType.SHIELD
+        E_EquipmentType.SHIELD, E_EquipmentType.ELYTRA
     );
 
     public static final Set<E_EquipmentType> UPGRADABLE_ITEM_CLASSES = Set.of(
         E_EquipmentType.AXE, E_EquipmentType.BOOTS, E_EquipmentType.BOW, E_EquipmentType.CHESTPLATE,
-        E_EquipmentType.CROSSBOW, E_EquipmentType.HELMET, E_EquipmentType.HOE, E_EquipmentType.LEGGINGS,
-        E_EquipmentType.MACE, E_EquipmentType.PICKAXE, E_EquipmentType.SHOVEL, E_EquipmentType.SHIELD,
-        E_EquipmentType.SWORD, E_EquipmentType.TRIDENT
+        E_EquipmentType.CROSSBOW, E_EquipmentType.ELYTRA, E_EquipmentType.HELMET, E_EquipmentType.HOE,
+        E_EquipmentType.LEGGINGS, E_EquipmentType.MACE, E_EquipmentType.PICKAXE, E_EquipmentType.SHOVEL,
+        E_EquipmentType.SHIELD, E_EquipmentType.SWORD, E_EquipmentType.TRIDENT
     );
 
     public static final Set<E_EquipmentType> CHALLENGEABLE_ITEM_CLASSES = Set.of(
-            E_EquipmentType.AXE, E_EquipmentType.BOW, E_EquipmentType.CROSSBOW, E_EquipmentType.HOE,
-            E_EquipmentType.MACE, E_EquipmentType.PICKAXE, E_EquipmentType.SHOVEL, E_EquipmentType.SHIELD,
-            E_EquipmentType.SWORD, E_EquipmentType.TRIDENT
+        E_EquipmentType.AXE, E_EquipmentType.BOW, E_EquipmentType.CROSSBOW, E_EquipmentType.HOE,
+        E_EquipmentType.MACE, E_EquipmentType.PICKAXE, E_EquipmentType.SHOVEL, E_EquipmentType.SHIELD,
+        E_EquipmentType.SWORD, E_EquipmentType.TRIDENT
     );
 
     public int GetPrestige() {

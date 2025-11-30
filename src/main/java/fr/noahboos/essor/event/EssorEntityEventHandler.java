@@ -10,6 +10,7 @@ import fr.noahboos.essor.util.InventoryUtils;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -17,6 +18,7 @@ import net.minecraft.world.item.ShieldItem;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
 import net.neoforged.neoforge.event.entity.living.LivingDeathEvent;
+import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 
 import java.util.Map;
 
@@ -122,6 +124,23 @@ public class EssorEntityEventHandler {
                 Challenges.AttemptToLevelUpChallenges(offHandItem, BuiltInRegistries.ENTITY_TYPE.getKey(entity.getType()).toString());
                 InventoryUtils.InventorySync((ServerPlayer) player);
             }
+        }
+    }
+
+    @SubscribeEvent
+    public static void OnLivingTick(PlayerTickEvent.Post event) {
+        Player player = event.getEntity();
+
+        if (player.level().isClientSide()) return;
+
+        ItemStack chestStack = player.getItemBySlot(EquipmentSlot.CHEST);
+
+        if (player.isFallFlying()) {
+            ProgressionManager.AddExperience(chestStack, EquipmentLevelingData.DEFAULT_XP_ELYTRA_GLIDE);
+            ProgressionManager.LevelUp(player, chestStack);
+            Map<Integer, Map<String, Integer>> enchantmentRewardTable = EssorRegistry.GetEnchantmentRewardTable(chestStack);
+            ProgressionManager.ApplyEnchantment(player.level(), enchantmentRewardTable, chestStack);
+            ProgressionManager.PrestigeUp(player, chestStack);
         }
     }
 }

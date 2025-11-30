@@ -1,0 +1,35 @@
+{
+  "11": {
+    "unbreaking": 1
+  },
+  "21": {
+    "unbreaking": 2
+  },
+  "31": {
+    "unbreaking": 3
+  },
+  "41": {
+    "unbreaking": 4
+  },
+  "51": {
+    "unbreaking": 5
+  },
+  "61": {
+    "unbreaking": 6
+  },
+  "71": {
+    "unbreaking": 7
+  },
+  "81": {
+    "unbreaking": 8
+  },
+  "91": {
+    "unbreaking": 9
+  },
+  "100": {
+    "mending": 1
+  },
+  "101": {
+    "unbreaking": 10
+  }
+}

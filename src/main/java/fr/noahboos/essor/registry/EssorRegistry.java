@@ -76,6 +76,7 @@ public class EssorRegistry {
     public static final Map<E_EquipmentType, Map<Integer, Map<String, Integer>>> ARMOR_ENCHANTMENT_REWARD_TABLES = Map.of(
             E_EquipmentType.HELMET, LoadEnchantmentTable("helmet"),
             E_EquipmentType.CHESTPLATE, LoadEnchantmentTable("chestplate"),
+            E_EquipmentType.ELYTRA, LoadEnchantmentTable("elytra"),
             E_EquipmentType.LEGGINGS, LoadEnchantmentTable("leggings"),
             E_EquipmentType.BOOTS, LoadEnchantmentTable("boots")
     );
@@ -94,7 +95,7 @@ public class EssorRegistry {
     );
 
     public static Map<Integer, Map<String, Integer>> GetEnchantmentRewardTable(ItemStack item) {
-        if (item.is(ItemTags.HEAD_ARMOR) || item.is(ItemTags.CHEST_ARMOR) || item.is(ItemTags.LEG_ARMOR) || item.is(ItemTags.FOOT_ARMOR)) {
+        if (item.is(ItemTags.HEAD_ARMOR) || item.is(ItemTags.CHEST_ARMOR) || item.is(ItemTags.LEG_ARMOR) || item.is(ItemTags.FOOT_ARMOR) || item.is(Items.ELYTRA)) {
             return EssorRegistry.ARMOR_ENCHANTMENT_REWARD_TABLES.get(EquipmentType.GetEquipmentType(item));
         } else {
             for (var entry : NON_ARMOR_ITEM_ENCHANTMENT_REWARD_TABLES.entrySet()) {

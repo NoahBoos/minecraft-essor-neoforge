@@ -15,6 +15,8 @@ public class EquipmentType {
         if (item.is(ItemTags.PICKAXES)) return E_EquipmentType.PICKAXE;
         if (item.is(ItemTags.SWORDS)) return E_EquipmentType.SWORD;
 
+        if (item.is(Items.ELYTRA)) return E_EquipmentType.ELYTRA;
+
         switch (item.getItem()) {
             case BowItem bowItem -> {
                 return E_EquipmentType.BOW;

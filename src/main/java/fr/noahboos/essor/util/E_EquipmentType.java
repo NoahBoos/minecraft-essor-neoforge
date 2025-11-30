@@ -6,6 +6,7 @@ public enum E_EquipmentType {
     BOW,
     CHESTPLATE,
     CROSSBOW,
+    ELYTRA,
     HELMET,
     HOE,
     LEGGINGS,
