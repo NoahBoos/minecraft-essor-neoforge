@@ -59,6 +59,7 @@ public class EssorEnchantmentRegistry {
         Register(enchantmentRegistryLookup, "channeling", Enchantments.CHANNELING);
         Register(enchantmentRegistryLookup, "fire_aspect", Enchantments.FIRE_ASPECT);
         Register(enchantmentRegistryLookup, "sweeping_edge", Enchantments.SWEEPING_EDGE);
+        Register(enchantmentRegistryLookup, "mending", Enchantments.MENDING);
 
         initialized = true;
     }
