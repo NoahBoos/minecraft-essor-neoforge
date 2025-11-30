@@ -7,10 +7,11 @@ import java.util.Objects;
 import java.util.Set;
 
 public class EquipmentLevelingData {
-    public static final float DEFAULT_XP_ELYTRA_GLIDE = 2.0f;
+    public static final float DEFAULT_XP_DAMAGE_DEALT = 0.75f;
     public static final float DEFAULT_XP_DAMAGE_TAKEN = 3.75f;
     public static final float DEFAULT_XP_SHIELD_BLOCK = 7.5f;
-    public static final float DEFAULT_XP_DAMAGE_DEALT = 0.75f;
+    public static final float DEFAULT_XP_ELYTRA_GLIDE = 2.0f;
+    public static final float DEFAULT_XP_UNDER_WATER_BREATHING = 0.25f;
 
     private int prestige;
     private int requiredLevelToPrestige;

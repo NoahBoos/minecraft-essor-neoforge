@@ -133,6 +133,7 @@ public class EssorEntityEventHandler {
 
         if (player.level().isClientSide()) return;
 
+        ItemStack helmetStack = player.getItemBySlot(EquipmentSlot.HEAD);
         ItemStack chestStack = player.getItemBySlot(EquipmentSlot.CHEST);
 
         if (player.isFallFlying()) {
@@ -141,6 +142,13 @@ public class EssorEntityEventHandler {
             Map<Integer, Map<String, Integer>> enchantmentRewardTable = EssorRegistry.GetEnchantmentRewardTable(chestStack);
             ProgressionManager.ApplyEnchantment(player.level(), enchantmentRewardTable, chestStack);
             ProgressionManager.PrestigeUp(player, chestStack);
+        }
+        if (player.isUnderWater() && (helmetStack.getEnchantmentLevel(EssorEnchantmentRegistry.GetEnchantmentByID("respiration", event.getEntity().registryAccess())) >= 1)) {
+            ProgressionManager.AddExperience(helmetStack, EquipmentLevelingData.DEFAULT_XP_UNDER_WATER_BREATHING);
+            ProgressionManager.LevelUp(player, helmetStack);
+            Map<Integer, Map<String, Integer>> enchantmentRewardTable = EssorRegistry.GetEnchantmentRewardTable(helmetStack);
+            ProgressionManager.ApplyEnchantment(player.level(), enchantmentRewardTable, helmetStack);
+            ProgressionManager.PrestigeUp(player, helmetStack);
         }
     }
 }
