@@ -52,8 +52,10 @@ public class EssorBlockEventHandler {
                 ItemStack mainHandItem = player.getMainHandItem();
                 ItemStack offHandItem = player.getOffhandItem();
                 Block block = event.getEntity().level().getBlockState(event.getPos()).getBlock();
+                Block blockOnTop = event.getEntity().level().getBlockState(event.getPos().above()).getBlock();
 
                 if (EquipmentType.GetEquipmentType(offHandItem) == E_EquipmentType.SHIELD && EquipmentType.GetEquipmentType(mainHandItem) == E_EquipmentType.AXE) return;
+                if ((EquipmentType.GetEquipmentType(mainHandItem) == E_EquipmentType.HOE || EquipmentType.GetEquipmentType(mainHandItem) == E_EquipmentType.SHOVEL) && blockOnTop != Blocks.AIR) return;
 
                 EssorRegistry.ExperienceResult result = EssorRegistry.GetExperience(EssorRegistry.SECOND_ACTION_EXPERIENCE_TABLES, mainHandItem, BuiltInRegistries.BLOCK.getKey(block).toString());
                 if (result.isRewardable()) {
