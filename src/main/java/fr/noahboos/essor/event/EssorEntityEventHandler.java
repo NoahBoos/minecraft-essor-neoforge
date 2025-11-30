@@ -11,12 +11,15 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.animal.SnowGolem;
+import net.minecraft.world.entity.animal.sheep.Sheep;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.ShieldItem;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
 import net.neoforged.neoforge.event.entity.living.LivingDeathEvent;
+import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
 
 public class EssorEntityEventHandler {
     @SubscribeEvent
@@ -93,5 +96,21 @@ public class EssorEntityEventHandler {
                 InventoryUtils.InventorySync((ServerPlayer) player);
             }
         }
+    }
+
+    @SubscribeEvent
+    public static void OnEntityRightClick(PlayerInteractEvent.EntityInteract event) {
+        if (event.getEntity().level().isClientSide()) return;
+        ServerPlayer player = (ServerPlayer) event.getEntity();
+        Entity entity = event.getTarget();
+        ItemStack mainHandItem = player.getMainHandItem();
+        EssorRegistry.ExperienceResult mainItemResult = EssorRegistry.GetExperience(EssorRegistry.SECOND_ACTION_EXPERIENCE_TABLES, mainHandItem, BuiltInRegistries.ENTITY_TYPE.getKey(entity.getType()).toString());
+        if (mainItemResult.isRewardable()) {
+            if (entity instanceof Sheep && ((Sheep) entity).isSheared()) return;
+            if (entity instanceof SnowGolem && !((SnowGolem) entity).hasPumpkin()) return;
+            ProgressionManager.HandleProgress(player, mainHandItem, mainItemResult.experience());
+        }
+        Challenges.AttemptToLevelUpChallenges(mainHandItem, BuiltInRegistries.ENTITY_TYPE.getKey(entity.getType()).toString());
+        InventoryUtils.InventorySync(player);
     }
 }

@@ -12,6 +12,7 @@ public enum E_EquipmentType {
     LEGGINGS,
     MACE,
     PICKAXE,
+    SHEARS,
     SHOVEL,
     SHIELD,
     SWORD,

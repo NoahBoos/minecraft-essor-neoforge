@@ -7,6 +7,7 @@ public class EquipmentType {
     public static  E_EquipmentType GetEquipmentType(ItemStack item) {
         if (item.is(Items.ELYTRA)) return E_EquipmentType.ELYTRA;
         if (item.is(Items.TURTLE_HELMET)) return E_EquipmentType.TURTLE_HELMET;
+        if (item.is(Items.SHEARS)) return E_EquipmentType.SHEARS;
 
         if (item.is(ItemTags.AXES)) return E_EquipmentType.AXE;
         if (item.is(ItemTags.CHEST_ARMOR)) return E_EquipmentType.CHESTPLATE;

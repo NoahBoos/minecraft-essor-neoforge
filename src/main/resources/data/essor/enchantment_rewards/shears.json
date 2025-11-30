@@ -1,0 +1,65 @@
+{
+  "11": {
+    "unbreaking": 1
+  },
+  "15": {
+    "efficiency": 1
+  },
+  "21": {
+    "unbreaking": 2
+  },
+  "25": {
+    "efficiency": 2
+  },
+  "31": {
+    "unbreaking": 3
+  },
+  "35": {
+    "efficiency": 3
+  },
+  "41": {
+    "unbreaking": 4
+  },
+  "45": {
+    "efficiency": 4
+  },
+  "51": {
+    "unbreaking": 5
+  },
+  "55": {
+    "efficiency": 5
+  },
+  "61": {
+    "unbreaking": 6
+  },
+  "65": {
+    "efficiency": 6
+  },
+  "71": {
+    "unbreaking": 7
+  },
+  "75": {
+    "efficiency": 7
+  },
+  "81": {
+    "unbreaking": 8
+  },
+  "85": {
+    "efficiency": 8
+  },
+  "91": {
+    "unbreaking": 9
+  },
+  "95": {
+    "efficiency": 9
+  },
+  "100": {
+    "mending": 1
+  },
+  "101": {
+    "unbreaking": 10
+  },
+  "105": {
+    "efficiency": 10
+  }
+}

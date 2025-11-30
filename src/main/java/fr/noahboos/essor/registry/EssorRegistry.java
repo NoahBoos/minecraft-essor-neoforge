@@ -89,6 +89,7 @@ public class EssorRegistry {
             Map.entry(E_EquipmentType.HOE, LoadEnchantmentTable("hoe")),
             Map.entry(E_EquipmentType.MACE, LoadEnchantmentTable("mace")),
             Map.entry(E_EquipmentType.PICKAXE, LoadEnchantmentTable("pickaxe")),
+            Map.entry(E_EquipmentType.SHEARS, LoadEnchantmentTable("shears")),
             Map.entry(E_EquipmentType.SHIELD, LoadEnchantmentTable("shield")),
             Map.entry(E_EquipmentType.SHOVEL, LoadEnchantmentTable("shovel")),
             Map.entry(E_EquipmentType.SWORD, LoadEnchantmentTable("sword")),
@@ -115,6 +116,7 @@ public class EssorRegistry {
             Map.entry(E_EquipmentType.HOE, LoadExperienceTable("hoe-breakable")),
             Map.entry(E_EquipmentType.MACE, LoadExperienceTable("mace-killable")),
             Map.entry(E_EquipmentType.PICKAXE, LoadExperienceTable("pickaxe-breakable")),
+            Map.entry(E_EquipmentType.SHEARS, LoadExperienceTable("shears-breakable")),
             Map.entry(E_EquipmentType.SHIELD, LoadExperienceTable("shield-killable")),
             Map.entry(E_EquipmentType.SHOVEL, LoadExperienceTable("shovel-breakable")),
             Map.entry(E_EquipmentType.SWORD, LoadExperienceTable("sword-killable")),
@@ -124,6 +126,7 @@ public class EssorRegistry {
     public static final Map<E_EquipmentType, Map<String, Float>> SECOND_ACTION_EXPERIENCE_TABLES = Map.ofEntries(
             Map.entry(E_EquipmentType.AXE, LoadExperienceTable("axe-strippable")),
             Map.entry(E_EquipmentType.HOE, LoadExperienceTable("hoe-tillable")),
+            Map.entry(E_EquipmentType.SHEARS, LoadExperienceTable("shears-trimmable")),
             Map.entry(E_EquipmentType.SHOVEL, LoadExperienceTable("shovel-diggable"))
     );
 

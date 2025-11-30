@@ -10,12 +10,12 @@ import fr.noahboos.essor.util.InventoryUtils;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.item.ShieldItem;
+import net.minecraft.world.level.block.BeehiveBlock;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.entity.BeehiveBlockEntity;
+import net.minecraft.world.level.block.entity.BlockEntity;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
 import net.neoforged.neoforge.event.level.BlockDropsEvent;
@@ -52,6 +52,7 @@ public class EssorBlockEventHandler {
                 ItemStack mainHandItem = player.getMainHandItem();
                 ItemStack offHandItem = player.getOffhandItem();
                 Block block = event.getEntity().level().getBlockState(event.getPos()).getBlock();
+                BlockEntity blockEntity = event.getEntity().level().getBlockEntity(event.getPos());
                 Block blockOnTop = event.getEntity().level().getBlockState(event.getPos().above()).getBlock();
 
                 if (EquipmentType.GetEquipmentType(offHandItem) == E_EquipmentType.SHIELD && EquipmentType.GetEquipmentType(mainHandItem) == E_EquipmentType.AXE) return;
@@ -59,6 +60,8 @@ public class EssorBlockEventHandler {
 
                 EssorRegistry.ExperienceResult result = EssorRegistry.GetExperience(EssorRegistry.SECOND_ACTION_EXPERIENCE_TABLES, mainHandItem, BuiltInRegistries.BLOCK.getKey(block).toString());
                 if (result.isRewardable()) {
+                    // TODO - Depending on the amount of rule in the future, a system featuring a custom registry and an interface could be better for code sustainability.
+                    if (blockEntity instanceof BeehiveBlockEntity && event.getEntity().level().getBlockState(event.getPos()).getValue(BeehiveBlock.HONEY_LEVEL) == 0) return;
                     ProgressionManager.HandleProgress(player, mainHandItem, result.experience());
                 }
                 Challenges.AttemptToLevelUpChallenges(mainHandItem, BuiltInRegistries.BLOCK.getKey(block).toString());
