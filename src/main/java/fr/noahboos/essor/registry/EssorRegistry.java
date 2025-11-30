@@ -75,6 +75,7 @@ public class EssorRegistry {
 
     public static final Map<E_EquipmentType, Map<Integer, Map<String, Integer>>> ARMOR_ENCHANTMENT_REWARD_TABLES = Map.of(
             E_EquipmentType.HELMET, LoadEnchantmentTable("helmet"),
+            E_EquipmentType.TURTLE_HELMET, LoadEnchantmentTable("helmet"),
             E_EquipmentType.CHESTPLATE, LoadEnchantmentTable("chestplate"),
             E_EquipmentType.ELYTRA, LoadEnchantmentTable("elytra"),
             E_EquipmentType.LEGGINGS, LoadEnchantmentTable("leggings"),

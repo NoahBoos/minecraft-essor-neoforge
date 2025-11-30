@@ -16,5 +16,6 @@ public enum E_EquipmentType {
     SHIELD,
     SWORD,
     TRIDENT,
+    TURTLE_HELMET,
     OTHER
 }

@@ -7,6 +7,8 @@ import fr.noahboos.essor.component.ProgressionManager;
 import fr.noahboos.essor.component.challenge.Challenges;
 import fr.noahboos.essor.registry.EssorEnchantmentRegistry;
 import fr.noahboos.essor.registry.EssorRegistry;
+import fr.noahboos.essor.util.E_EquipmentType;
+import fr.noahboos.essor.util.EquipmentType;
 import fr.noahboos.essor.util.InventoryUtils;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.RegistryAccess;
@@ -150,7 +152,7 @@ public class EssorEntityEventHandler {
             ProgressionManager.ApplyEnchantment(player.level(), enchantmentRewardTable, chestStack);
             ProgressionManager.PrestigeUp(player, chestStack);
         }
-        if (player.isUnderWater() && (helmetStack.getEnchantmentLevel(EssorEnchantmentRegistry.GetEnchantmentByID("respiration", event.getEntity().registryAccess())) >= 1)) {
+        if (player.isUnderWater() && (helmetStack.getEnchantmentLevel(EssorEnchantmentRegistry.GetEnchantmentByID("respiration", event.getEntity().registryAccess())) >= 1 || EquipmentType.GetEquipmentType(helmetStack) == E_EquipmentType.TURTLE_HELMET)) {
             ProgressionManager.AddExperience(helmetStack, EquipmentLevelingData.DEFAULT_XP_UNDER_WATER_BREATHING);
             ProgressionManager.LevelUp(player, helmetStack);
             Map<Integer, Map<String, Integer>> enchantmentRewardTable = EssorRegistry.GetEnchantmentRewardTable(helmetStack);
