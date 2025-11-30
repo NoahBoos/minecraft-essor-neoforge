@@ -5,26 +5,18 @@ import fr.noahboos.essor.component.EquipmentLevelingData;
 import fr.noahboos.essor.component.EssorDataComponents;
 import fr.noahboos.essor.component.ProgressionManager;
 import fr.noahboos.essor.component.challenge.Challenges;
-import fr.noahboos.essor.registry.EssorEnchantmentRegistry;
 import fr.noahboos.essor.registry.EssorRegistry;
-import fr.noahboos.essor.util.E_EquipmentType;
-import fr.noahboos.essor.util.EquipmentType;
 import fr.noahboos.essor.util.InventoryUtils;
-import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.ShieldItem;
-import net.minecraft.world.level.block.Blocks;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
 import net.neoforged.neoforge.event.entity.living.LivingDeathEvent;
-import net.neoforged.neoforge.event.tick.PlayerTickEvent;
-import org.jetbrains.annotations.NotNull;
 
 public class EssorEntityEventHandler {
     @SubscribeEvent
@@ -100,31 +92,6 @@ public class EssorEntityEventHandler {
                 Challenges.AttemptToLevelUpChallenges(offHandItem, BuiltInRegistries.ENTITY_TYPE.getKey(entity.getType()).toString());
                 InventoryUtils.InventorySync((ServerPlayer) player);
             }
-        }
-    }
-
-    @SubscribeEvent
-    public static void OnLivingTick(PlayerTickEvent.@NotNull Post event) {
-        Player player = event.getEntity();
-
-        if (player.level().isClientSide()) return;
-
-        ItemStack helmetStack = player.getItemBySlot(EquipmentSlot.HEAD);
-        ItemStack chestStack = player.getItemBySlot(EquipmentSlot.CHEST);
-        ItemStack legsStack = player.getItemBySlot(EquipmentSlot.LEGS);
-        ItemStack feetStack = player.getItemBySlot(EquipmentSlot.FEET);
-
-        if (player.isFallFlying()) {
-            ProgressionManager.HandleProgress(player, chestStack, EquipmentLevelingData.DEFAULT_XP_ELYTRA_GLIDE);
-        }
-        if (player.isUnderWater() && (helmetStack.getEnchantmentLevel(EssorEnchantmentRegistry.GetEnchantmentByID("respiration", event.getEntity().registryAccess())) >= 1 || EquipmentType.GetEquipmentType(helmetStack) == E_EquipmentType.TURTLE_HELMET)) {
-            ProgressionManager.HandleProgress(player, helmetStack, EquipmentLevelingData.DEFAULT_XP_UNDER_WATER_BREATHING);
-        }
-        if (player.isCrouching() && (legsStack.getEnchantmentLevel(EssorEnchantmentRegistry.GetEnchantmentByID("swift_sneak", event.getEntity().registryAccess())) >= 1)) {
-            ProgressionManager.HandleProgress(player, legsStack, EquipmentLevelingData.DEFAULT_XP_CROUCHED);
-        }
-        if ((player.level().getBlockState(new BlockPos(player.blockPosition().getX(), player.blockPosition().getY(), player.blockPosition().getZ())).getBlock() == Blocks.SOUL_SAND || player.level().getBlockState(player.blockPosition().below()).getBlock() == Blocks.SOUL_SOIL) && (feetStack.getEnchantmentLevel(EssorEnchantmentRegistry.GetEnchantmentByID("soul_speed", event.getEntity().registryAccess())) >= 1)) {
-            ProgressionManager.HandleProgress(player, feetStack, EquipmentLevelingData.DEFAULT_XP_MOVING_ON_SOUL_BLOCKS);
         }
     }
 }

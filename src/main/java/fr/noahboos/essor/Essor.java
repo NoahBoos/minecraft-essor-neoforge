@@ -30,6 +30,7 @@ public class Essor
         NeoForge.EVENT_BUS.register(EssorEntityEventHandler.class);
         NeoForge.EVENT_BUS.register(EssorItemEventHandler.class);
         NeoForge.EVENT_BUS.register(EssorPlayerEventHandler.class);
+        NeoForge.EVENT_BUS.register(EssorTickEventHandler.class);
         NeoForge.EVENT_BUS.register(EssorTooltipEventHandler.class);
         modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
     }
