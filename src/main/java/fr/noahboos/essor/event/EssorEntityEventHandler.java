@@ -5,8 +5,10 @@ import fr.noahboos.essor.component.EquipmentLevelingData;
 import fr.noahboos.essor.component.EssorDataComponents;
 import fr.noahboos.essor.component.ProgressionManager;
 import fr.noahboos.essor.component.challenge.Challenges;
+import fr.noahboos.essor.registry.EssorEnchantmentRegistry;
 import fr.noahboos.essor.registry.EssorRegistry;
 import fr.noahboos.essor.util.InventoryUtils;
+import net.minecraft.core.RegistryAccess;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.Entity;
@@ -135,6 +137,7 @@ public class EssorEntityEventHandler {
 
         ItemStack helmetStack = player.getItemBySlot(EquipmentSlot.HEAD);
         ItemStack chestStack = player.getItemBySlot(EquipmentSlot.CHEST);
+        ItemStack legsStack = player.getItemBySlot(EquipmentSlot.LEGS);
 
         if (player.isFallFlying()) {
             ProgressionManager.AddExperience(chestStack, EquipmentLevelingData.DEFAULT_XP_ELYTRA_GLIDE);
@@ -149,6 +152,13 @@ public class EssorEntityEventHandler {
             Map<Integer, Map<String, Integer>> enchantmentRewardTable = EssorRegistry.GetEnchantmentRewardTable(helmetStack);
             ProgressionManager.ApplyEnchantment(player.level(), enchantmentRewardTable, helmetStack);
             ProgressionManager.PrestigeUp(player, helmetStack);
+        }
+        if (player.isCrouching() && (legsStack.getEnchantmentLevel(EssorEnchantmentRegistry.GetEnchantmentByID("swift_sneak", event.getEntity().registryAccess())) >= 1)) {
+            ProgressionManager.AddExperience(legsStack, EquipmentLevelingData.DEFAULT_XP_CROUCHED);
+            ProgressionManager.LevelUp(player, legsStack);
+            Map<Integer, Map<String, Integer>> enchantmentRewardTable = EssorRegistry.GetEnchantmentRewardTable(legsStack);
+            ProgressionManager.ApplyEnchantment(player.level(), enchantmentRewardTable, legsStack);
+            ProgressionManager.PrestigeUp(player, legsStack);
         }
     }
 }

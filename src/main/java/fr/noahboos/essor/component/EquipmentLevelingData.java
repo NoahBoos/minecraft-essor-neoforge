@@ -7,6 +7,7 @@ import java.util.Objects;
 import java.util.Set;
 
 public class EquipmentLevelingData {
+    public static final float DEFAULT_XP_CROUCHED = 0.25f;
     public static final float DEFAULT_XP_DAMAGE_DEALT = 0.75f;
     public static final float DEFAULT_XP_DAMAGE_TAKEN = 3.75f;
     public static final float DEFAULT_XP_SHIELD_BLOCK = 7.5f;
