@@ -17,7 +17,7 @@ public class Challenges {
     }
 
     public Challenges(List<ChallengeProgress> challenges) {
-        this.challenges = challenges;
+        this.challenges = new ArrayList<>(challenges);
     }
 
     public List<ChallengeProgress> GetChallenges() {
