@@ -14,24 +14,45 @@ public class ChallengesFactory {
 
         EquipmentLevelingData data = item.getComponents().get(EssorDataComponents.EQUIPMENT_LEVELING_DATA.get());
 
-        if (data == null || (data.GetChallenges() != null && !data.GetChallenges().challenges.isEmpty())) return;
+        if (data == null) return;
+        Challenges challengesToAdd = null;
 
         Item type = item.getItem();
 
         switch (type) {
-            case AxeItem axeItem -> data.SetChallenges(AddChallengeToAxe());
-            case BowItem bowItem -> data.SetChallenges(AddChallengeToRangedWeapon());
-            case CrossbowItem crossbowItem -> data.SetChallenges(AddChallengeToRangedWeapon());
-            case HoeItem hoeItem -> data.SetChallenges(AddChallengeToHoe());
-            case MaceItem maceItem -> data.SetChallenges(AddChallengeToWeapon());
-            case ShovelItem shovelItem -> data.SetChallenges(AddChallengeToShovel());
-            case ShieldItem shieldItem -> data.SetChallenges(AddChallengeToWeapon());
-            case TridentItem tridentItem -> data.SetChallenges(AddChallengeToTrident());
+            case AxeItem axeItem -> challengesToAdd = AddChallengeToAxe();
+            case BowItem bowItem -> challengesToAdd = AddChallengeToRangedWeapon();
+            case CrossbowItem crossbowItem -> challengesToAdd = AddChallengeToRangedWeapon();
+            case HoeItem hoeItem -> challengesToAdd = AddChallengeToHoe();
+            case MaceItem maceItem -> challengesToAdd = AddChallengeToWeapon();
+            case ShovelItem shovelItem -> challengesToAdd = AddChallengeToShovel();
+            case ShieldItem shieldItem -> challengesToAdd = AddChallengeToWeapon();
+            case TridentItem tridentItem -> challengesToAdd = AddChallengeToTrident();
             default -> {
                 if (item.is(ItemTags.SWORDS)) {
-                    data.SetChallenges(AddChallengeToWeapon());
+                    challengesToAdd = AddChallengeToWeapon();
                 } else if (item.is(ItemTags.PICKAXES)) {
-                    data.SetChallenges(AddChallengeToPickaxe());
+                    challengesToAdd = AddChallengeToPickaxe();
+                }
+            }
+        }
+
+        if (challengesToAdd != null) {
+            Challenges currentChallenges = data.GetChallenges();
+            if (currentChallenges == null || currentChallenges.GetChallenges().isEmpty()) {
+                data.SetChallenges(challengesToAdd);
+            } else {
+                for (ChallengeProgress challengeToAdd : challengesToAdd.GetChallenges()) {
+                    boolean exists = false;
+                    for (ChallengeProgress challenge : currentChallenges.GetChallenges()) {
+                        if (challenge.GetId().equals(challengeToAdd.GetId())) {
+                            exists = true;
+                            break;
+                        }
+                    }
+                    if (!exists) {
+                        currentChallenges.challenges.add(challengeToAdd);
+                    }
                 }
             }
         }
