@@ -9,6 +9,8 @@
   "translation.level": "Niveau",
   "translation.experiencePoint": "PE",
   "translation.holdToSeeChallenges": "Maintenez MAJ pour voir les défis.",
+  "key.categories.essor": "Essor",
+  "key.essor.open_equipment_gui": "Ouvrir l'interface des équipements",
   "Essor.Challenge.BreakAcacia": "Casser %1$s/%2$s bûches d'acacia.",
   "Essor.Challenge.BreakAncientDebris": "Casser %1$s/%2$s anciens débris.",
   "Essor.Challenge.BreakBirch": "Casser %1$s/%2$s bûches de bouleau.",

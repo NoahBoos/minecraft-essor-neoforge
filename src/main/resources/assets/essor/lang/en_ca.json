@@ -9,6 +9,8 @@
   "translation.level": "Level",
   "translation.experiencePoint": "XP",
   "translation.holdToSeeChallenges": "Hold SHIFT to see challenges.",
+  "key.categories.essor": "Essor",
+  "key.essor.open_equipment_gui": "Open the equipment GUI",
   "Essor.Challenge.BreakAcacia": "Break %1$s/%2$s acacia logs.",
   "Essor.Challenge.BreakAncientDebris": "Break %1$s/%2$s ancient debris.",
   "Essor.Challenge.BreakBirch": "Break %1$s/%2$s birch logs.",

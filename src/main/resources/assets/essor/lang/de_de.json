@@ -9,6 +9,8 @@
   "translation.level": "Level",
   "translation.experiencePoint": "EP",
   "translation.holdToSeeChallenges": "Halte SHIFT gedrückt, um Herausforderungen zu sehen.",
+  "key.categories.essor": "Essor",
+  "key.essor.open_equipment_gui": "Ausrüstungsoberfläche öffnen",
   "Essor.Challenge.BreakAcacia": "Baue %1$s/%2$s Akazienstämme ab.",
   "Essor.Challenge.BreakAncientDebris": "Baue %1$s/%2$s uralte Trümmer ab.",
   "Essor.Challenge.BreakBirch": "Baue %1$s/%2$s Birkenstämme ab.",

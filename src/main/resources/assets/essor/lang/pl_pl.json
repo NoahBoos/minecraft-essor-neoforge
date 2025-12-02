@@ -9,6 +9,8 @@
   "translation.level": "Poziom",
   "translation.experiencePoint": "PD",
   "translation.holdToSeeChallenges": "Przytrzymaj SHIFT, aby zobaczyć wyzwania.",
+  "key.categories.essor": "Essor",
+  "key.essor.open_equipment_gui": "Otwórz interfejs ekwipunku",
   "Essor.Challenge.BreakAcacia": "Zniszcz %1$s/%2$s kłód akacjowych.",
   "Essor.Challenge.BreakAncientDebris": "Zniszcz %1$s/%2$s starożytnych szczątków.",
   "Essor.Challenge.BreakBirch": "Zniszcz %1$s/%2$s kłód brzozowych.",
