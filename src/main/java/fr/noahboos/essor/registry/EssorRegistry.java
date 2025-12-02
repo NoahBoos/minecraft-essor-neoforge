@@ -41,6 +41,7 @@ public class EssorRegistry {
         "pickaxe/break-nether-quartz-ore",
         "pickaxe/break-redstone-ore",
         "pickaxe/break-stone",
+        "pickaxe/break-deepslate",
         "shovel/break-clay",
         "shovel/break-dirt",
         "shovel/break-gravel",
