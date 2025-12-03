@@ -16,8 +16,8 @@ public class EssorEquipmentScreen extends Screen {
 
     @Override
     protected void init() {
-        this.panelWidth = (int) Math.round(this.width * 0.6);
-        this.panelHeight = (int) Math.round(this.height * 0.6);
+        this.panelWidth = (int) Math.round(this.width * 0.6f);
+        this.panelHeight = (int) Math.round(this.height * 0.6f);
         this.panelLeft = (this.width - this.panelWidth) / 2;
         this.panelTop = (this.height - this.panelHeight) / 2;
     }
