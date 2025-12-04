@@ -12,7 +12,6 @@ public class EssorKeyEventHandler {
         if (EssorKeyMappings.OPEN_EQUIPMENT_GUI.consumeClick()) {
             EssorEquipmentScreen screen = new EssorEquipmentScreen();
             Minecraft.getInstance().setScreen(screen);
-            System.out.println("Equipment GUI Opened");
         }
     }
 }

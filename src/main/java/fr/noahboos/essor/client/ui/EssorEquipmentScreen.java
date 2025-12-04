@@ -1,6 +1,7 @@
 package fr.noahboos.essor.client.ui;
 
 import fr.noahboos.essor.Essor;
+import fr.noahboos.essor.client.EssorKeyMappings;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.client.renderer.RenderPipelines;
@@ -43,6 +44,15 @@ public class EssorEquipmentScreen extends Screen {
     public void renderTitles(GuiGraphics graphics) {
         graphics.drawString(this.font, "Equipments", this.panelLeft + 8, this.panelTop + 12, 0xFF676767, false);
         graphics.drawString(this.font, "Equipment detail", this.panelLeft + 139, this.panelTop + 12, 0xFF676767, false);
+    }
+
+    @Override
+    public boolean keyPressed(int keyCode, int scanCode, int modifiers) {
+        if (EssorKeyMappings.OPEN_EQUIPMENT_GUI.getKey().getValue() == keyCode) {
+            this.onClose();
+            return true;
+        }
+        return super.keyPressed(keyCode, scanCode, modifiers);
     }
 
     @Override
