@@ -22,6 +22,11 @@ public class EssorEquipmentScreen extends Screen {
     private int panelLeft;
     private int panelTop;
     private static final ResourceLocation PANEL_TEXTURE = ResourceLocation.fromNamespaceAndPath(Essor.MODID, "textures/gui/container/equipment_panel.png");
+    private int inventorySectionScrollOffset = 0;
+    private final int inventorySectionScrollSpeed = 12;
+    private final int inventorySectionTopMargin = 30;
+    private final int inventorySectionBottomMargin = 15;
+    private final int inventorySectionVisibleHeight = this.panelHeight - this.inventorySectionTopMargin - this.inventorySectionBottomMargin;
 
     public EssorEquipmentScreen() {
         super(Component.literal("Essor - Equipment panel"));
@@ -40,6 +45,7 @@ public class EssorEquipmentScreen extends Screen {
 
     @Override
     public void render(GuiGraphics graphics, int mouseX, int mouseY, float partialTicks) {
+        this.clearWidgets();
         this.renderBackground(graphics, mouseX, mouseY, partialTicks);
         this.renderTitles(graphics);
         this.renderInventory(graphics);
@@ -62,10 +68,13 @@ public class EssorEquipmentScreen extends Screen {
         int equipmentButtonWidth = 140;
         int equipmentButtonHeight = 24;
         int equipmentListLeft = this.panelLeft + 12;
-        int equipmentListTop = this.panelTop + 28;
+        int topVisibleY = this.panelTop + this.inventorySectionTopMargin;
+        int bottomVisibleY = topVisibleY + this.inventorySectionVisibleHeight;
 
         for (int i = 0; i < upgradableItemsInInventory.size(); i++) {
-            int equipmentButtonTop = equipmentListTop + i * equipmentButtonHeight;
+            int equipmentButtonTop = topVisibleY + (i * equipmentButtonHeight) - this.inventorySectionScrollOffset;
+
+            if (equipmentButtonTop + equipmentButtonHeight < topVisibleY || equipmentButtonTop > bottomVisibleY) continue;
 
             this.addRenderableWidget(new EssorEquipmentButton(
                     equipmentListLeft, equipmentButtonTop,
@@ -84,6 +93,17 @@ public class EssorEquipmentScreen extends Screen {
             return true;
         }
         return super.keyPressed(keyCode, scanCode, modifiers);
+    }
+
+    @Override
+    public boolean mouseScrolled(double mouseX, double mouseY, double scrollX, double scrollY) {
+        int equipmentButtonHeight = 24;
+        int maxScroll = Math.max(0, (upgradableItemsInInventory.size() * equipmentButtonHeight) - this.inventorySectionVisibleHeight);
+
+        this.inventorySectionScrollOffset -= (int) (scrollY * this.inventorySectionScrollSpeed);
+
+        this.inventorySectionScrollOffset = Math.max(0, Math.min(this.inventorySectionScrollOffset, maxScroll));
+        return true;
     }
 
     @Override
