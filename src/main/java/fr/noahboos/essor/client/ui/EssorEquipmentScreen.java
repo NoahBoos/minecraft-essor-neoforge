@@ -72,7 +72,7 @@ public class EssorEquipmentScreen extends Screen {
         int bottomVisibleY = topVisibleY + this.inventorySectionVisibleHeight;
 
         for (int i = 0; i < upgradableItemsInInventory.size(); i++) {
-            int equipmentButtonTop = topVisibleY + (i * equipmentButtonHeight) - this.inventorySectionScrollOffset;
+            int equipmentButtonTop = topVisibleY + (i * (equipmentButtonHeight + (i == 0 ? 0 : 4))) - this.inventorySectionScrollOffset;
 
             if (equipmentButtonTop < topVisibleY || equipmentButtonTop > bottomVisibleY || equipmentButtonTop + equipmentButtonHeight > bottomVisibleY) continue;
 
