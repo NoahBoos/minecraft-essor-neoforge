@@ -23,7 +23,7 @@ public class EssorEquipmentScreen extends Screen {
     private int panelTop;
     private static final ResourceLocation PANEL_TEXTURE = ResourceLocation.fromNamespaceAndPath(Essor.MODID, "textures/gui/container/equipment_panel.png");
     private int inventorySectionScrollOffset = 0;
-    private final int inventorySectionScrollSpeed = 12;
+    private final int inventorySectionScrollSpeed = 24;
     private final int inventorySectionTopMargin = 30;
     private final int inventorySectionBottomMargin = 15;
     private final int inventorySectionVisibleHeight = this.panelHeight - this.inventorySectionTopMargin - this.inventorySectionBottomMargin;
