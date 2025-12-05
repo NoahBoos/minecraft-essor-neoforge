@@ -41,7 +41,7 @@ public class EssorEquipmentScreen extends Screen {
 
     public void renderTitles(GuiGraphics graphics) {
         graphics.drawString(this.font, "Equipments", this.panelLeft + 8, this.panelTop + 12, 0xFF676767, false);
-        graphics.drawString(this.font, "Equipment detail", this.panelLeft + 139, this.panelTop + 12, 0xFF676767, false);
+        graphics.drawString(this.font, "Equipment detail", this.panelLeft + 167, this.panelTop + 12, 0xFF676767, false);
     }
 
     @Override
