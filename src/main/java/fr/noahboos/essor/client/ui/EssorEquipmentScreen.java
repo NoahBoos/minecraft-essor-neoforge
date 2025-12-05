@@ -9,8 +9,8 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 
 public class EssorEquipmentScreen extends Screen {
-    private int panelWidth;
-    private int panelHeight;
+    private final int panelWidth = 384;
+    private final int panelHeight = 192;
     private int panelLeft;
     private int panelTop;
     private static final ResourceLocation PANEL_TEXTURE = ResourceLocation.fromNamespaceAndPath(Essor.MODID, "textures/gui/container/equipment_panel.png");
@@ -21,8 +21,6 @@ public class EssorEquipmentScreen extends Screen {
 
     @Override
     protected void init() {
-        this.panelWidth = 384;
-        this.panelHeight = 192;
         this.panelLeft = (this.width - this.panelWidth) / 2;
         this.panelTop = (this.height - this.panelHeight) / 2;
     }
