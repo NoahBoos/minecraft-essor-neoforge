@@ -74,7 +74,7 @@ public class EssorEquipmentScreen extends Screen {
         for (int i = 0; i < upgradableItemsInInventory.size(); i++) {
             int equipmentButtonTop = topVisibleY + (i * equipmentButtonHeight) - this.inventorySectionScrollOffset;
 
-            if (equipmentButtonTop + equipmentButtonHeight < topVisibleY || equipmentButtonTop > bottomVisibleY) continue;
+            if (equipmentButtonTop < topVisibleY || equipmentButtonTop > bottomVisibleY || equipmentButtonTop + equipmentButtonHeight > bottomVisibleY) continue;
 
             this.addRenderableWidget(new EssorEquipmentButton(
                     equipmentListLeft, equipmentButtonTop,
