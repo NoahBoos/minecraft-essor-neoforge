@@ -2,13 +2,21 @@ package fr.noahboos.essor.client.ui;
 
 import fr.noahboos.essor.Essor;
 import fr.noahboos.essor.client.EssorKeyMappings;
+import fr.noahboos.essor.component.EssorDataComponents;
+import fr.noahboos.essor.client.ui.button.EssorEquipmentButton;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.client.renderer.RenderPipelines;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.ItemStack;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class EssorEquipmentScreen extends Screen {
+    private List<ItemStack> upgradableItemsInInventory = new ArrayList<>();
     private final int panelWidth = 384;
     private final int panelHeight = 192;
     private int panelLeft;
@@ -23,12 +31,18 @@ public class EssorEquipmentScreen extends Screen {
     protected void init() {
         this.panelLeft = (this.width - this.panelWidth) / 2;
         this.panelTop = (this.height - this.panelHeight) / 2;
+        Minecraft.getInstance().player.getInventory().forEach(itemStack -> {
+            if (itemStack.getComponents().has(EssorDataComponents.EQUIPMENT_LEVELING_DATA.get())) {
+                this.upgradableItemsInInventory.add(itemStack);
+            }
+        });
     }
 
     @Override
     public void render(GuiGraphics graphics, int mouseX, int mouseY, float partialTicks) {
         this.renderBackground(graphics, mouseX, mouseY, partialTicks);
         this.renderTitles(graphics);
+        this.renderInventory(graphics);
 
         super.render(graphics, mouseX, mouseY, partialTicks);
     }
@@ -42,6 +56,25 @@ public class EssorEquipmentScreen extends Screen {
     public void renderTitles(GuiGraphics graphics) {
         graphics.drawString(this.font, "Equipments", this.panelLeft + 8, this.panelTop + 12, 0xFF676767, false);
         graphics.drawString(this.font, "Equipment detail", this.panelLeft + 167, this.panelTop + 12, 0xFF676767, false);
+    }
+
+    public void renderInventory(GuiGraphics graphics) {
+        int equipmentButtonWidth = 140;
+        int equipmentButtonHeight = 24;
+        int equipmentListLeft = this.panelLeft + 12;
+        int equipmentListTop = this.panelTop + 28;
+
+        for (int i = 0; i < upgradableItemsInInventory.size(); i++) {
+            int equipmentButtonTop = equipmentListTop + i * equipmentButtonHeight;
+
+            this.addRenderableWidget(new EssorEquipmentButton(
+                    equipmentListLeft, equipmentButtonTop,
+                    equipmentButtonWidth, equipmentButtonHeight,
+                    Component.literal(upgradableItemsInInventory.get(i).getDisplayName().getString().replace("[", "").replace("]", "")),
+                    button -> {},
+                    upgradableItemsInInventory.get(i)
+            ));
+        }
     }
 
     @Override
