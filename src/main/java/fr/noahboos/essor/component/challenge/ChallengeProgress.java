@@ -23,6 +23,10 @@ public class ChallengeProgress {
         return this.id;
     }
 
+    public ChallengeDefinition GetDefinition() {
+        return EssorRegistry.CHALLENGE_DEFINITION_MAP.get(this.GetId());
+    }
+
     public int GetCurrentTier() {
         return this.currentTier;
     }
