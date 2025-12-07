@@ -10,6 +10,8 @@
   "Essor.ExperiencePoint": "PE",
   "Essor.Key.Category": "Essor",
   "Essor.Key.OpenEquipmentGUI": "Ouvrir l'interface des équipements",
+  "Essor.Equipment": "Équipement",
+  "Essor.Equipment.Select": "Choisissez un équipement",
   "Essor.Challenge.Challenges": "Défis",
   "Essor.Challenge.BreakAcacia": "Casser des bûches d'acacia.",
   "Essor.Challenge.BreakAncientDebris": "Casser des anciens débris.",

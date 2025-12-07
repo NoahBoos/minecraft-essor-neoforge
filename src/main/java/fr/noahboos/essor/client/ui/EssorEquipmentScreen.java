@@ -85,9 +85,9 @@ public class EssorEquipmentScreen extends Screen {
     }
 
     public void renderTitles(GuiGraphics graphics) {
-        graphics.drawString(this.font, "§8Equipments", this.panelLeft + 8, this.panelTop + 10, 0xFF676767, false);
+        graphics.drawString(this.font, "§8" + Component.translatable("Essor.Equipment").getString(), this.panelLeft + 8, this.panelTop + 10, 0xFF676767, false);
         if (selectedItem.isEmpty()) {
-            graphics.drawString(this.font, "§8Select an equipment", this.panelLeft + 167, this.panelTop + 10, 0xFF676767, false);
+            graphics.drawString(this.font, "§8" + Component.translatable("Essor.Equipment.Select").getString(), this.panelLeft + 167, this.panelTop + 10, 0xFF676767, false);
         }
     }
 
