@@ -9,7 +9,7 @@ public class ActionBar {
         EquipmentLevelingData equipmentLevelingData = itemInHand.get(EssorDataComponents.EQUIPMENT_LEVELING_DATA);
         if (equipmentLevelingData == null) return;
 
-        String experienceProgressCount = Component.translatable("translation.level").getString() + " " + equipmentLevelingData.GetLevel() + " - " + equipmentLevelingData.GetCurrentExperience() + " / " + equipmentLevelingData.GetRequiredExperienceToLevelUp() + " " + Component.translatable("translation.experiencePoint").getString();
+        String experienceProgressCount = Component.translatable("Essor.Level.WithoutValue").getString() + " " + equipmentLevelingData.GetLevel() + " - " + equipmentLevelingData.GetCurrentExperience() + " / " + equipmentLevelingData.GetRequiredExperienceToLevelUp() + " " + Component.translatable("Essor.ExperiencePoint").getString();
         player.displayClientMessage(Component.literal(experienceProgressCount), true);
     }
 }

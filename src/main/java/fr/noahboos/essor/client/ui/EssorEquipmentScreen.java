@@ -180,9 +180,9 @@ public class EssorEquipmentScreen extends Screen {
             }
         }
 
-        graphics.drawString(this.font, Component.translatable("tooltip.essor.totalExperienceMultiplier", data.GetTotalExperienceMultiplier()).getString(), this.equipmentDetailLeftMargin, this.panelTop + 150, 0xFF676767, false);
-        graphics.drawString(this.font, Component.translatable("tooltip.essor.prestigeExperienceMultiplier", data.GetPrestigeExperienceMultiplier()).getString(), this.equipmentDetailLeftMargin + 16, this.panelTop + 160, 0xFF676767, false);
-        graphics.drawString(this.font, Component.translatable("tooltip.essor.challengeExperienceMultiplier", data.GetChallengeExperienceMultiplier()).getString(), this.equipmentDetailLeftMargin + 16, this.panelTop + 170, 0xFF676767, false);
+        graphics.drawString(this.font, Component.translatable("Essor.TotalExperienceMultiplier", data.GetTotalExperienceMultiplier()).getString(), this.equipmentDetailLeftMargin, this.panelTop + 150, 0xFF676767, false);
+        graphics.drawString(this.font, Component.translatable("Essor.PrestigeExperienceMultiplier", data.GetPrestigeExperienceMultiplier()).getString(), this.equipmentDetailLeftMargin + 16, this.panelTop + 160, 0xFF676767, false);
+        graphics.drawString(this.font, Component.translatable("Essor.ChallengeExperienceMultiplier", data.GetChallengeExperienceMultiplier()).getString(), this.equipmentDetailLeftMargin + 16, this.panelTop + 170, 0xFF676767, false);
     }
 
     public void renderChallengeBadge(GuiGraphics graphics, ResourceLocation badgeTexture, ChallengeProgress challengeProgress, ChallengeDefinition challengeDefinition, int x, int y, int mouseX, int mouseY) {

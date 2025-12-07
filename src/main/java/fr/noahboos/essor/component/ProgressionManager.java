@@ -39,7 +39,7 @@ public class ProgressionManager {
             Map<Integer, Map<String, Integer>> enchantmentRewardTable = EssorRegistry.GetEnchantmentRewardTable(item);
             ProgressionManager.ApplyEnchantment(player.level(), enchantmentRewardTable, item);
             item.setDamageValue(0);
-            player.displayClientMessage(Component.translatable("chat.essor.levelUpMessage", item.getDisplayName(), data.GetLevel()), false);
+            player.displayClientMessage(Component.translatable("Essor.Chat.LevelUpMessage", item.getDisplayName(), data.GetLevel()), false);
         }
     }
 
@@ -53,7 +53,7 @@ public class ProgressionManager {
             data.SetTotalExperienceMultiplier();
             data.SetRequiredExperienceToLevelUp(100 + (100 * data.GetLevel()));
             data.SetRequiredLevelToPrestige(10 + (10 * data.GetPrestige()));
-            player.displayClientMessage(Component.translatable("chat.essor.prestigeMessage", item.getDisplayName(), data.GetPrestige()), false);
+            player.displayClientMessage(Component.translatable("Essor.Chat.PrestigeMessage", item.getDisplayName(), data.GetPrestige()), false);
         }
     }
 

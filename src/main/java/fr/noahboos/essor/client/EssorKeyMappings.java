@@ -7,6 +7,6 @@ public class EssorKeyMappings {
     public static KeyMapping OPEN_EQUIPMENT_GUI;
 
     public static void Initialize() {
-        OPEN_EQUIPMENT_GUI = new KeyMapping("key.essor.open_equipment_gui", InputConstants.KEY_R, "key.categories.essor");
+        OPEN_EQUIPMENT_GUI = new KeyMapping("Essor.Key.OpenEquipmentGUI", InputConstants.KEY_R, "Essor.Key.Category");
     }
 }
