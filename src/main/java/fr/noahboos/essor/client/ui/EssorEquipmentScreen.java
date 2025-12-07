@@ -176,7 +176,7 @@ public class EssorEquipmentScreen extends Screen {
                 int badgeX = startX + col * (badgeSize + gridSpacing);
                 int badgeY = startY + row * (badgeSize + gridSpacing);
 
-                this.renderChallengeBadge(graphics, EssorEquipmentScreen.CHALLENGE_BADGES.get(challengeProgress.GetCurrentTier()), challengeProgress, challengeDefinition, badgeX, badgeY, mouseX, mouseY);
+                this.renderChallengeBadge(graphics, EssorEquipmentScreen.CHALLENGE_BADGES.get(challengeProgress.GetCurrentTier() != challengeDefinition.GetMaximumTier() ? 0 : 4), challengeProgress, challengeDefinition, badgeX, badgeY, mouseX, mouseY);
             }
         }
     }
