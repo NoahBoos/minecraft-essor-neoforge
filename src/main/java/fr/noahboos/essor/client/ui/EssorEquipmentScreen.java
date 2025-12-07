@@ -190,12 +190,14 @@ public class EssorEquipmentScreen extends Screen {
         if (mouseX >= x && mouseY >= y && mouseX < x + 26 && mouseY < y + 26) {
             List<ClientTooltipComponent> tooltip = new ArrayList<>();
             tooltip.add(ClientTooltipComponent.create(Component.literal(challengeDefinition.GetId()).getVisualOrderText()));
+            tooltip.add(ClientTooltipComponent.create(Component.empty().getVisualOrderText()));
             tooltip.add(ClientTooltipComponent.create(Component.literal("Tier " + challengeProgress.GetCurrentTier() + " / Tier " + challengeDefinition.GetMaximumTier()).getVisualOrderText()));
             if (challengeProgress.GetCurrentTier() == challengeDefinition.GetMaximumTier()) {
                 tooltip.add(ClientTooltipComponent.create(Component.literal("This challenge is completed.").getVisualOrderText()));
             } else {
                 tooltip.add(ClientTooltipComponent.create(Component.literal("Current tier progress : " + challengeProgress.GetProgress() + " / " + challengeDefinition.GetThresholds().get(challengeProgress.GetCurrentTier())).getVisualOrderText()));
                 if (!challengeDefinition.GetTargets().isEmpty()) {
+                    tooltip.add(ClientTooltipComponent.create(Component.empty().getVisualOrderText()));
                     tooltip.add(ClientTooltipComponent.create(Component.literal("Targets :").getVisualOrderText()));
                     challengeDefinition.GetTargets().forEach(target -> {
                         String target_name = target.replace("minecraft:", "").replace("_", " ");
