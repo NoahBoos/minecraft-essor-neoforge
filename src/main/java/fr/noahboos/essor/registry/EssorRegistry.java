@@ -148,7 +148,7 @@ public class EssorRegistry {
 
     public static void InitializeChallengeDefinitionMap() {
         for (String fileName : CHALLENGE_FILE_NAME_LIST) {
-            ChallengeDefinition challengeDefinition = JsonLoader.LoadChallengeDefinition(fileName);
+            ChallengeDefinition challengeDefinition = new ChallengeDefinition(fileName);
             if (challengeDefinition == null) {
                 System.err.println("Failed to load challenge definition data from " + fileName + ".json.");
                 continue;
