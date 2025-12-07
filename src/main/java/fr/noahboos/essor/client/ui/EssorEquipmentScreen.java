@@ -189,7 +189,7 @@ public class EssorEquipmentScreen extends Screen {
         graphics.blit(RenderPipelines.GUI_TEXTURED, challengeDefinition.GetIcon(), iconX, iconY, 0, 0, iconSize, iconSize, iconSize, iconSize);
         if (mouseX >= x && mouseY >= y && mouseX < x + 26 && mouseY < y + 26) {
             List<ClientTooltipComponent> tooltip = new ArrayList<>();
-            tooltip.add(ClientTooltipComponent.create(Component.literal(challengeDefinition.GetId()).getVisualOrderText()));
+            tooltip.add(ClientTooltipComponent.create(Component.translatable(challengeDefinition.GetId().replace(":", ".")).getVisualOrderText()));
             tooltip.add(ClientTooltipComponent.create(Component.empty().getVisualOrderText()));
             tooltip.add(ClientTooltipComponent.create(Component.literal("Tier " + challengeProgress.GetCurrentTier() + " / Tier " + challengeDefinition.GetMaximumTier()).getVisualOrderText()));
             if (challengeProgress.GetCurrentTier() == challengeDefinition.GetMaximumTier()) {
