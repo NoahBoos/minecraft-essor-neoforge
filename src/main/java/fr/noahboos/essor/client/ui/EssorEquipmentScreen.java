@@ -195,14 +195,14 @@ public class EssorEquipmentScreen extends Screen {
                 tooltip.add(ClientTooltipComponent.create(Component.literal("This challenge is completed.").getVisualOrderText()));
             } else {
                 tooltip.add(ClientTooltipComponent.create(Component.literal("Current tier progress : " + challengeProgress.GetProgress() + " / " + challengeDefinition.GetThresholds().get(challengeProgress.GetCurrentTier())).getVisualOrderText()));
-            }
-            if (!challengeDefinition.GetTargets().isEmpty()) {
-                tooltip.add(ClientTooltipComponent.create(Component.literal("Targets :").getVisualOrderText()));
-                challengeDefinition.GetTargets().forEach(target -> {
-                    String target_name = target.replace("minecraft:", "").replace("_", " ");
-                    target_name = target_name.substring(0, 1).toUpperCase() + target_name.substring(1);
-                    tooltip.add(ClientTooltipComponent.create(Component.literal("  - " + target_name).getVisualOrderText()));
-                });
+                if (!challengeDefinition.GetTargets().isEmpty()) {
+                    tooltip.add(ClientTooltipComponent.create(Component.literal("Targets :").getVisualOrderText()));
+                    challengeDefinition.GetTargets().forEach(target -> {
+                        String target_name = target.replace("minecraft:", "").replace("_", " ");
+                        target_name = target_name.substring(0, 1).toUpperCase() + target_name.substring(1);
+                        tooltip.add(ClientTooltipComponent.create(Component.literal("  - " + target_name).getVisualOrderText()));
+                    });
+                }
             }
             queuedTooltips.addAll(tooltip);
         }
