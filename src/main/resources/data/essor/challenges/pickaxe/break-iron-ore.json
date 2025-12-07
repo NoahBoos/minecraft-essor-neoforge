@@ -1,5 +1,6 @@
 {
   "id": "Essor:Challenge:BreakIronOre",
+  "iconId": "textures/gui/challenge/icon/pickaxe/break_iron_ore.png",
   "maximumTier": 5,
   "thresholds": [
     64,

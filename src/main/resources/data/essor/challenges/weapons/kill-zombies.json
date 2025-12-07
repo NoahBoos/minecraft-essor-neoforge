@@ -1,5 +1,6 @@
 {
   "id": "Essor:Challenge:KillZombies",
+  "iconId": "textures/gui/challenge/icon/weapons/kill_zombies.png",
   "maximumTier": 5,
   "thresholds": [
     32,

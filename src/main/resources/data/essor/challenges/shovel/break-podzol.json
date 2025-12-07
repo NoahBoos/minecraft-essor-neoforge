@@ -1,5 +1,6 @@
 {
   "id": "Essor:Challenge:BreakPodzol",
+  "iconId": "textures/gui/challenge/icon/shovel/break_podzol.png",
   "maximumTier": 5,
   "thresholds": [
     64,

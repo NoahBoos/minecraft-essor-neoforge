@@ -1,5 +1,6 @@
 {
   "id": "Essor:Challenge:BreakShroomlight",
+  "iconId": "textures/gui/challenge/icon/hoe/break_shroomlight.png",
   "maximumTier": 5,
   "thresholds": [
     16,

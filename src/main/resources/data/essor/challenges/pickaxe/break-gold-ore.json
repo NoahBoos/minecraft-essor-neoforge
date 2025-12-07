@@ -1,5 +1,6 @@
 {
   "id": "Essor:Challenge:BreakGoldOre",
+  "iconId": "textures/gui/challenge/icon/pickaxe/break_gold_ore.png",
   "maximumTier": 5,
   "thresholds": [
     64,

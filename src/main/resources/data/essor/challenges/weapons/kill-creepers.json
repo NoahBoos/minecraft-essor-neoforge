@@ -1,5 +1,6 @@
 {
   "id": "Essor:Challenge:KillCreepers",
+  "iconId": "textures/gui/challenge/icon/weapons/kill_creepers.png",
   "maximumTier": 5,
   "thresholds": [
     32,

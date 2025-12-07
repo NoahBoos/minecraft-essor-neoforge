@@ -1,5 +1,6 @@
 {
   "id": "Essor:Challenge:KillFlyers",
+  "iconId": "textures/gui/challenge/icon/weapons/kill_flyers.png",
   "maximumTier": 5,
   "thresholds": [
     32,

@@ -1,5 +1,6 @@
 {
   "id": "Essor:Challenge:KillWither",
+  "iconId": "textures/gui/challenge/icon/weapons/kill_wither.png",
   "maximumTier": 5,
   "thresholds": [
     1,

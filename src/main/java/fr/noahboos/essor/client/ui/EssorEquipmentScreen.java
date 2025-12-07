@@ -6,16 +6,19 @@ import fr.noahboos.essor.client.ui.button.EssorRegularButton;
 import fr.noahboos.essor.component.EquipmentLevelingData;
 import fr.noahboos.essor.component.EssorDataComponents;
 import fr.noahboos.essor.client.ui.button.EssorEquipmentButton;
+import fr.noahboos.essor.component.challenge.ChallengeDefinition;
+import fr.noahboos.essor.component.challenge.ChallengeProgress;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.Screen;
+import net.minecraft.client.gui.screens.inventory.tooltip.ClientTooltipComponent;
+import net.minecraft.client.gui.screens.inventory.tooltip.DefaultTooltipPositioner;
 import net.minecraft.client.renderer.RenderPipelines;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class EssorEquipmentScreen extends Screen {
     private List<ItemStack> upgradableItemsInInventory = new ArrayList<>();
@@ -31,6 +34,20 @@ public class EssorEquipmentScreen extends Screen {
     private final int inventorySectionBottomMargin = 15;
     private final int inventorySectionVisibleHeight = this.panelHeight - this.inventorySectionTopMargin - this.inventorySectionBottomMargin;
     private int equipmentDetailLeftMargin;
+    private static final Map<Integer, ResourceLocation> CHALLENGE_BADGES = Map.ofEntries(
+        Map.entry(0, ResourceLocation.fromNamespaceAndPath(Essor.MODID, "textures/gui/badge/badge_default.png")),
+        Map.entry(1, ResourceLocation.fromNamespaceAndPath(Essor.MODID, "textures/gui/badge/badge_coal.png")),
+        Map.entry(2, ResourceLocation.fromNamespaceAndPath(Essor.MODID, "textures/gui/badge/badge_iron.png")),
+        Map.entry(3, ResourceLocation.fromNamespaceAndPath(Essor.MODID, "textures/gui/badge/badge_copper.png")),
+        Map.entry(4, ResourceLocation.fromNamespaceAndPath(Essor.MODID, "textures/gui/badge/badge_gold.png")),
+        Map.entry(5, ResourceLocation.fromNamespaceAndPath(Essor.MODID, "textures/gui/badge/badge_redstone.png")),
+        Map.entry(6, ResourceLocation.fromNamespaceAndPath(Essor.MODID, "textures/gui/badge/badge_lapis.png")),
+        Map.entry(7, ResourceLocation.fromNamespaceAndPath(Essor.MODID, "textures/gui/badge/badge_quartz.png")),
+        Map.entry(8, ResourceLocation.fromNamespaceAndPath(Essor.MODID, "textures/gui/badge/badge_amethyst.png")),
+        Map.entry(9, ResourceLocation.fromNamespaceAndPath(Essor.MODID, "textures/gui/badge/badge_diamond.png")),
+        Map.entry(10, ResourceLocation.fromNamespaceAndPath(Essor.MODID, "textures/gui/badge/badge_netherite.png"))
+    );
+    private final List<ClientTooltipComponent> queuedTooltips = new ArrayList<>();
 
     public EssorEquipmentScreen() {
         super(Component.literal("Essor - Equipment panel"));
@@ -54,9 +71,11 @@ public class EssorEquipmentScreen extends Screen {
         this.renderBackground(graphics, mouseX, mouseY, partialTicks);
         this.renderTitles(graphics);
         this.renderInventory();
-        this.renderEquipmentDetail(graphics);
+        this.renderEquipmentDetail(graphics, mouseX, mouseY);
 
         super.render(graphics, mouseX, mouseY, partialTicks);
+
+        renderTooltip(graphics, mouseX, mouseY);
     }
 
     @Override
@@ -119,7 +138,7 @@ public class EssorEquipmentScreen extends Screen {
         }
     }
 
-    public void renderEquipmentDetail(GuiGraphics graphics) {
+    public void renderEquipmentDetail(GuiGraphics graphics, int mouseX, int mouseY) {
         if (selectedItem.isEmpty()) return;
         EquipmentLevelingData data = selectedItem.getComponents().get(EssorDataComponents.EQUIPMENT_LEVELING_DATA.get());
 
@@ -139,6 +158,61 @@ public class EssorEquipmentScreen extends Screen {
         levelProgressBar.append("§8□".repeat(Math.max(0, levelSegments - levelFilledSegments)));
         graphics.drawString(this.font, "§8Level " + data.GetLevel() + " : " + data.GetCurrentExperience() + "/" + data.GetRequiredExperienceToLevelUp(), this.equipmentDetailLeftMargin, this.panelTop + 46, 0xFF676767, false);
         graphics.drawString(this.font, "[" + levelProgressBar.toString() + "§8]", this.equipmentDetailLeftMargin + 16, this.panelTop + 56, 0xFF676767, false);
+
+        if (!data.GetChallenges().GetChallenges().isEmpty()) {
+            graphics.drawString(this.font, "Challenges", this.equipmentDetailLeftMargin, this.panelTop + 72, 0xFF676767, false);
+
+            int badgeSize = 26;
+            int gridCols = 7;
+            int gridSpacing = 4;
+            int startX = this.equipmentDetailLeftMargin;
+            int startY = this.panelTop + 88;
+            for (int i = 0; i < data.GetChallenges().GetChallenges().size(); i++) {
+                ChallengeProgress challengeProgress = data.GetChallenges().GetChallenges().get(i);
+                ChallengeDefinition challengeDefinition = challengeProgress.GetDefinition();
+
+                int col = i % gridCols;
+                int row = i / gridCols;
+                int badgeX = startX + col * (badgeSize + gridSpacing);
+                int badgeY = startY + row * (badgeSize + gridSpacing);
+
+                this.renderChallengeBadge(graphics, EssorEquipmentScreen.CHALLENGE_BADGES.get(challengeProgress.GetCurrentTier()), challengeProgress, challengeDefinition, badgeX, badgeY, mouseX, mouseY);
+            }
+        }
+    }
+
+    public void renderChallengeBadge(GuiGraphics graphics, ResourceLocation badgeTexture, ChallengeProgress challengeProgress, ChallengeDefinition challengeDefinition, int x, int y, int mouseX, int mouseY) {
+        graphics.blit(RenderPipelines.GUI_TEXTURED, badgeTexture, x, y, 0, 0, 26, 26, 26, 26);
+        int iconSize = 16;
+        int iconX = x + (26 - iconSize) / 2;
+        int iconY = y + (26 - iconSize) / 2;
+        graphics.blit(RenderPipelines.GUI_TEXTURED, challengeDefinition.GetIcon(), iconX, iconY, 0, 0, iconSize, iconSize, iconSize, iconSize);
+        if (mouseX >= x && mouseY >= y && mouseX < x + 26 && mouseY < y + 26) {
+            List<ClientTooltipComponent> tooltip = new ArrayList<>();
+            tooltip.add(ClientTooltipComponent.create(Component.literal(challengeDefinition.GetId()).getVisualOrderText()));
+            tooltip.add(ClientTooltipComponent.create(Component.literal("Tier " + challengeProgress.GetCurrentTier() + " / Tier " + challengeDefinition.GetMaximumTier()).getVisualOrderText()));
+            if (challengeProgress.GetCurrentTier() == challengeDefinition.GetMaximumTier()) {
+                tooltip.add(ClientTooltipComponent.create(Component.literal("This challenge is completed.").getVisualOrderText()));
+            } else {
+                tooltip.add(ClientTooltipComponent.create(Component.literal("Current tier progress : " + challengeProgress.GetProgress() + " / " + challengeDefinition.GetThresholds().get(challengeProgress.GetCurrentTier())).getVisualOrderText()));
+            }
+            if (!challengeDefinition.GetTargets().isEmpty()) {
+                tooltip.add(ClientTooltipComponent.create(Component.literal("Targets :").getVisualOrderText()));
+                challengeDefinition.GetTargets().forEach(target -> {
+                    String target_name = target.replace("minecraft:", "").replace("_", " ");
+                    target_name = target_name.substring(0, 1).toUpperCase() + target_name.substring(1);
+                    tooltip.add(ClientTooltipComponent.create(Component.literal("  - " + target_name).getVisualOrderText()));
+                });
+            }
+            queuedTooltips.addAll(tooltip);
+        }
+    }
+
+    public void renderTooltip(GuiGraphics graphics, int mouseX, int mouseY) {
+        if (!queuedTooltips.isEmpty()) {
+            graphics.renderTooltip(this.font, queuedTooltips, mouseX, mouseY, DefaultTooltipPositioner.INSTANCE, null);
+            queuedTooltips.clear();
+        }
     }
 
     public void loadPreviousPage() {

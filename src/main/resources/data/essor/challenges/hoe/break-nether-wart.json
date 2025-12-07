@@ -1,5 +1,6 @@
 {
   "id": "Essor:Challenge:BreakNetherWart",
+  "iconId": "textures/gui/challenge/icon/hoe/break_nether_wart.png",
   "maximumTier": 5,
   "thresholds": [
     64,

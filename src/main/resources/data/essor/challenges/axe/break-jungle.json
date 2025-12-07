@@ -1,5 +1,6 @@
 {
   "id": "Essor:Challenge:BreakJungle",
+  "iconId": "textures/gui/challenge/icon/axe/break_jungle.png",
   "maximumTier": 5,
   "thresholds": [
     64,

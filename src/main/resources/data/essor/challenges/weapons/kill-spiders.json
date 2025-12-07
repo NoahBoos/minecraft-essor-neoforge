@@ -1,5 +1,6 @@
 {
   "id": "Essor:Challenge:KillSpiders",
+  "iconId": "textures/gui/challenge/icon/weapons/kill_spiders.png",
   "maximumTier": 5,
   "thresholds": [
     32,

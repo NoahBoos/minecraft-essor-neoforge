@@ -1,5 +1,6 @@
 {
   "id": "Essor:Challenge:BreakWarpedWart",
+  "iconId": "textures/gui/challenge/icon/hoe/break_warped_wart.png",
   "maximumTier": 5,
   "thresholds": [
     64,

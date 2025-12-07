@@ -1,5 +1,6 @@
 {
   "id": "Essor:Challenge:BreakGravel",
+  "iconId": "textures/gui/challenge/icon/shovel/break_gravel.png",
   "maximumTier": 5,
   "thresholds": [
     64,

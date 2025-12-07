@@ -1,5 +1,6 @@
 {
   "id": "Essor:Challenge:TillDirt",
+  "iconId": "textures/gui/challenge/icon/hoe/till_dirt.png",
   "maximumTier": 5,
   "thresholds": [
     16,

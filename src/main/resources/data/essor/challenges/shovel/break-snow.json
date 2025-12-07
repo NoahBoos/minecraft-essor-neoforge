@@ -1,5 +1,6 @@
 {
   "id": "Essor:Challenge:BreakSnow",
+  "iconId": "textures/gui/challenge/icon/shovel/break_snow.png",
   "maximumTier": 5,
   "thresholds": [
     128,

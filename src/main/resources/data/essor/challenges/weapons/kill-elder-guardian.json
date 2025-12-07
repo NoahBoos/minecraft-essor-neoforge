@@ -1,5 +1,6 @@
 {
   "id": "Essor:Challenge:KillElderGuardian",
+  "iconId": "textures/gui/challenge/icon/weapons/kill_elder_guardian.png",
   "maximumTier": 5,
   "thresholds": [
     1,

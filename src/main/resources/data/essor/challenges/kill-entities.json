@@ -1,5 +1,6 @@
 {
   "id": "Essor:Challenge:KillEntities",
+  "iconId": "textures/gui/challenge/icon/kill_entities.png",
   "maximumTier": 10,
   "thresholds": [
     32,

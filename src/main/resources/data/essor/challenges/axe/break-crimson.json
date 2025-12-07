@@ -1,5 +1,6 @@
 {
   "id": "Essor:Challenge:BreakCrimson",
+  "iconId": "textures/gui/challenge/icon/axe/break_crimson.png",
   "maximumTier": 5,
   "thresholds": [
     64,

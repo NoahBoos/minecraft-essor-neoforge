@@ -1,5 +1,6 @@
 {
   "id": "Essor:Challenge:BreakMycelium",
+  "iconId": "textures/gui/challenge/icon/shovel/break_mycelium.png",
   "maximumTier": 5,
   "thresholds": [
     64,

@@ -1,5 +1,6 @@
 {
   "id": "Essor:Challenge:BreakStone",
+  "iconId": "textures/gui/challenge/icon/pickaxe/break_stone.png",
   "maximumTier": 5,
   "thresholds": [
     256,

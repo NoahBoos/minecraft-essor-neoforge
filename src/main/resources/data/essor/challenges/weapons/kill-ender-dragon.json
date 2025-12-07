@@ -1,5 +1,6 @@
 {
   "id": "Essor:Challenge:KillEnderDragon",
+  "iconId": "textures/gui/challenge/icon/weapons/kill_ender_dragon.png",
   "maximumTier": 5,
   "thresholds": [
     1,

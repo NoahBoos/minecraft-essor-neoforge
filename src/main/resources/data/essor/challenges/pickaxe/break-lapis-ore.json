@@ -1,5 +1,6 @@
 {
   "id": "Essor:Challenge:BreakLapisOre",
+  "iconId": "textures/gui/challenge/icon/pickaxe/break_lapis_ore.png",
   "maximumTier": 5,
   "thresholds": [
     128,

@@ -1,5 +1,6 @@
 {
   "id": "Essor:Challenge:BreakDiamondOre",
+  "iconId": "textures/gui/challenge/icon/pickaxe/break_diamond_ore.png",
   "maximumTier": 5,
   "thresholds": [
     16,

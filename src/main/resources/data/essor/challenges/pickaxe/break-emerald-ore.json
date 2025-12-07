@@ -1,5 +1,6 @@
 {
   "id": "Essor:Challenge:BreakEmeraldOre",
+  "iconId": "textures/gui/challenge/icon/pickaxe/break_emerald_ore.png",
   "maximumTier": 5,
   "thresholds": [
     8,

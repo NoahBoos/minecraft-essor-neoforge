@@ -1,5 +1,6 @@
 {
   "id": "Essor:Challenge:BreakAncientDebris",
+  "iconId": "textures/gui/challenge/icon/pickaxe/break_ancient_debris.png",
   "maximumTier": 5,
   "thresholds": [
     2,

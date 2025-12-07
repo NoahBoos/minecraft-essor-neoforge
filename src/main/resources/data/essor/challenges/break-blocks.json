@@ -1,5 +1,6 @@
 {
   "id": "Essor:Challenge:BreakBlocks",
+  "iconId": "textures/gui/challenge/icon/break_blocks.png",
   "maximumTier": 10,
   "thresholds": [
     32,

@@ -1,5 +1,6 @@
 {
   "id": "Essor:Challenge:BreakCopperOre",
+  "iconId": "textures/gui/challenge/icon/pickaxe/break_copper_ore.png",
   "maximumTier": 5,
   "thresholds": [
     256,

@@ -1,5 +1,6 @@
 {
   "id": "Essor:Challenge:KillGuardians",
+  "iconId": "textures/gui/challenge/icon/weapons/kill_guardians.png",
   "maximumTier": 5,
   "thresholds": [
     32,

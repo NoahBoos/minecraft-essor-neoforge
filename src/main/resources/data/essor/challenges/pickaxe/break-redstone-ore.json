@@ -1,5 +1,6 @@
 {
   "id": "Essor:Challenge:BreakRedstoneOre",
+  "iconId": "textures/gui/challenge/icon/pickaxe/break_redstone_ore.png",
   "maximumTier": 5,
   "thresholds": [
     128,

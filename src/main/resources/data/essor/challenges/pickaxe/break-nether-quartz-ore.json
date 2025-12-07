@@ -1,5 +1,6 @@
 {
   "id": "Essor:Challenge:BreakNetherQuartzOre",
+  "iconId": "textures/gui/challenge/icon/pickaxe/break_nether_quartz_ore.png",
   "maximumTier": 5,
   "thresholds": [
     128,

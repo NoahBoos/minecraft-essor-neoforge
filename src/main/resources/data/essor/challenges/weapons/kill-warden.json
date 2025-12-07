@@ -1,5 +1,6 @@
 {
   "id": "Essor:Challenge:KillWarden",
+  "iconId": "textures/gui/challenge/icon/weapons/kill_warden.png",
   "maximumTier": 5,
   "thresholds": [
     1,

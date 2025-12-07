@@ -1,5 +1,6 @@
 {
   "id": "Essor:Challenge:BreakOak",
+  "iconId": "textures/gui/challenge/icon/axe/break_oak.png",
   "maximumTier": 5,
   "thresholds": [
     64,

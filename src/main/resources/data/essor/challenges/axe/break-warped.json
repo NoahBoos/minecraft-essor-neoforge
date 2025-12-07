@@ -1,5 +1,6 @@
 {
   "id": "Essor:Challenge:BreakWarped",
+  "iconId": "textures/gui/challenge/icon/axe/break_warped.png",
   "maximumTier": 5,
   "thresholds": [
     64,

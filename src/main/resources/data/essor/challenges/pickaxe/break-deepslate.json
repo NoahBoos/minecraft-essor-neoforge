@@ -1,5 +1,6 @@
 {
   "id": "Essor:Challenge:BreakDeepslate",
+  "iconId": "textures/gui/challenge/icon/pickaxe/break_deepslate.png",
   "maximumTier": 5,
   "thresholds": [
     256,

@@ -1,5 +1,6 @@
 {
   "id": "Essor:Challenge:KillSkeletons",
+  "iconId": "textures/gui/challenge/icon/weapons/kill_skeletons.png",
   "maximumTier": 5,
   "thresholds": [
     32,
