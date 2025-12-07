@@ -2,10 +2,6 @@ package fr.noahboos.essor.event;
 
 import fr.noahboos.essor.component.EquipmentLevelingData;
 import fr.noahboos.essor.component.EssorDataComponents;
-import fr.noahboos.essor.component.challenge.ChallengeDefinition;
-import fr.noahboos.essor.registry.EssorRegistry;
-import fr.noahboos.essor.util.EquipmentType;
-import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.ItemStack;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -27,7 +23,7 @@ public class EssorTooltipEventHandler {
             prestigeProgressBar.append("§7☆".repeat(Math.max(0, EquipmentLevelingData.maxPrestige - prestigeFilledSegments)));
             tooltip.add(Component.empty());
             tooltip.add(Component.literal(Component.translatable("tooltip.essor.prestige", data.GetPrestige()).getString() + " " + prestigeProgressBar.toString()));
-            tooltip.add(Component.translatable("tooltip.essor.level", data.GetLevel(), data.GetCurrentExperience(), data.GetRequiredExperienceToLevelUp()));
+            tooltip.add(Component.translatable("Essor.Level", data.GetLevel(), data.GetCurrentExperience(), data.GetRequiredExperienceToLevelUp()));
             StringBuilder levelProgressBar = new StringBuilder();
             int levelSegments = 25;
             int levelFilledSegments = (int) (((float) data.GetCurrentExperience() / (float) data.GetRequiredExperienceToLevelUp()) * levelSegments);

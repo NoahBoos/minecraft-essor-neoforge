@@ -148,7 +148,7 @@ public class EssorEquipmentScreen extends Screen {
         int prestigeFilledSegments = data.GetPrestige();
         prestigeProgressBar.append("§6★".repeat(Math.max(0, prestigeFilledSegments)));
         prestigeProgressBar.append("§8☆".repeat(Math.max(0, EquipmentLevelingData.maxPrestige - prestigeFilledSegments)));
-        graphics.drawString(this.font, "§8Prestige : " + data.GetPrestige(), this.equipmentDetailLeftMargin, this.panelTop + 24, 0xFF676767, false);
+        graphics.drawString(this.font, "§8" + Component.translatable("Essor.Prestige", data.GetPrestige()).getString(), this.equipmentDetailLeftMargin, this.panelTop + 24, 0xFF676767, false);
         graphics.drawString(this.font, "§8[" + prestigeProgressBar.toString() + "§8]", this.equipmentDetailLeftMargin + 16, this.panelTop + 34, 0xFF676767, false);
 
         StringBuilder levelProgressBar = new StringBuilder();
@@ -156,11 +156,11 @@ public class EssorEquipmentScreen extends Screen {
         int levelFilledSegments = (int) (((float) data.GetCurrentExperience() / (float) data.GetRequiredExperienceToLevelUp()) * levelSegments);
         levelProgressBar.append("§2■".repeat(Math.max(0, levelFilledSegments)));
         levelProgressBar.append("§8□".repeat(Math.max(0, levelSegments - levelFilledSegments)));
-        graphics.drawString(this.font, "§8Level " + data.GetLevel() + " : " + data.GetCurrentExperience() + "/" + data.GetRequiredExperienceToLevelUp(), this.equipmentDetailLeftMargin, this.panelTop + 46, 0xFF676767, false);
+        graphics.drawString(this.font, "§8" + Component.translatable("Essor.Level", data.GetLevel(), data.GetCurrentExperience(), data.GetRequiredExperienceToLevelUp()).getString(), this.equipmentDetailLeftMargin, this.panelTop + 46, 0xFF676767, false);
         graphics.drawString(this.font, "[" + levelProgressBar.toString() + "§8]", this.equipmentDetailLeftMargin + 16, this.panelTop + 56, 0xFF676767, false);
 
         if (!data.GetChallenges().GetChallenges().isEmpty()) {
-            graphics.drawString(this.font, "Challenges", this.equipmentDetailLeftMargin, this.panelTop + 72, 0xFF676767, false);
+            graphics.drawString(this.font, Component.translatable("Essor.Challenge.Challenges"), this.equipmentDetailLeftMargin, this.panelTop + 72, 0xFF676767, false);
 
             int badgeSize = 26;
             int gridCols = 7;
