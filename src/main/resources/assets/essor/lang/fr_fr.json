@@ -60,7 +60,10 @@
   "Essor.Challenge.KillWither": "Vaincre le Wither.",
   "Essor.Challenge.KillZombies": "Tuer des créatures zombifiées.",
   "Essor.Challenge.TillDirt": "Bêcher des blocs de terre.",
-
+  "Essor.Challenge.TierProgress": "Palier %1$s / Palier %2$s",
+  "Essor.Challenge.Completed": "Ce défi est terminé.",
+  "Essor.Challenge.CurrentProgress": "Progression du palier actuel : %1$s / %2$s",
+  "Essor.Challenge.Targets": "Objectifs",
   "Essor.Command.NoEquipmentLevelingData": "Cet item ne possède pas aucun composant de données EquipmentLevelingData. Est-ce un item améliorable ?",
   "Essor.Command.MustBeTriggeredByAPlayer": "Cette commande doit être déclenchée par un joueur.",
   "Essor.Command.SetPrestige.Successful": "Le niveau de prestige de l'item a bien été mis à jour au niveau %1$s.",

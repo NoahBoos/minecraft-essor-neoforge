@@ -195,14 +195,14 @@ public class EssorEquipmentScreen extends Screen {
             List<ClientTooltipComponent> tooltip = new ArrayList<>();
             tooltip.add(ClientTooltipComponent.create(Component.translatable(challengeDefinition.GetId().replace(":", ".")).getVisualOrderText()));
             tooltip.add(ClientTooltipComponent.create(Component.empty().getVisualOrderText()));
-            tooltip.add(ClientTooltipComponent.create(Component.literal("Tier " + challengeProgress.GetCurrentTier() + " / Tier " + challengeDefinition.GetMaximumTier()).getVisualOrderText()));
+            tooltip.add(ClientTooltipComponent.create(Component.translatable("Essor.Challenge.TierProgress", challengeProgress.GetCurrentTier(), challengeDefinition.GetMaximumTier()).getVisualOrderText()));
             if (challengeProgress.GetCurrentTier() == challengeDefinition.GetMaximumTier()) {
-                tooltip.add(ClientTooltipComponent.create(Component.literal("This challenge is completed.").getVisualOrderText()));
+                tooltip.add(ClientTooltipComponent.create(Component.translatable("Essor.Challenge.Completed").getVisualOrderText()));
             } else {
-                tooltip.add(ClientTooltipComponent.create(Component.literal("Current tier progress : " + challengeProgress.GetProgress() + " / " + challengeDefinition.GetThresholds().get(challengeProgress.GetCurrentTier())).getVisualOrderText()));
+                tooltip.add(ClientTooltipComponent.create(Component.translatable("Essor.Challenge.CurrentProgress", challengeProgress.GetProgress(), challengeDefinition.GetThresholds().get(challengeProgress.GetCurrentTier())).getVisualOrderText()));
                 if (!challengeDefinition.GetTargets().isEmpty()) {
                     tooltip.add(ClientTooltipComponent.create(Component.empty().getVisualOrderText()));
-                    tooltip.add(ClientTooltipComponent.create(Component.literal("Targets :").getVisualOrderText()));
+                    tooltip.add(ClientTooltipComponent.create(Component.translatable("Essor.Challenge.Targets").getVisualOrderText()));
                     challengeDefinition.GetTargets().forEach(target -> {
                         String target_name = target.replace("minecraft:", "").replace("_", " ");
                         target_name = target_name.substring(0, 1).toUpperCase() + target_name.substring(1);
