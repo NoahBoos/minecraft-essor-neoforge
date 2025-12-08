@@ -4,6 +4,7 @@ import fr.noahboos.essor.component.EquipmentLevelingData;
 import fr.noahboos.essor.component.EssorDataComponents;
 import fr.noahboos.essor.component.ProgressionManager;
 import fr.noahboos.essor.registry.EssorRegistry;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 
 import java.util.ArrayList;
@@ -32,6 +33,17 @@ public class Challenges {
             if (challenge.IsTarget(id) || definition.GetTargets().isEmpty()) {
                 ProgressionManager.IncrementChallenge(challenge, definition, 1);
                 ProgressionManager.LevelUpChallenge(item, challenge, definition);
+            }
+        }
+    }
+
+    public static void AttemptToLevelUpChallenges(ItemStack item, int progress) {
+        EquipmentLevelingData data = item.getComponents().get(EssorDataComponents.EQUIPMENT_LEVELING_DATA.get());
+        if (data == null) return;
+        for (var challenge : data.GetChallenges().challenges) {
+            if (challenge.GetDefinition().GetTargets().isEmpty()) {
+                ProgressionManager.IncrementChallenge(challenge, challenge.GetDefinition(), progress);
+                ProgressionManager.LevelUpChallenge(item, challenge, challenge.GetDefinition());
             }
         }
     }
