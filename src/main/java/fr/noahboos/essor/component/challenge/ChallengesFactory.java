@@ -21,6 +21,7 @@ public class ChallengesFactory {
 
         switch (equipmentType) {
             case E_EquipmentType.AXE -> challengesToAdd = AddChallengeToAxe();
+            case E_EquipmentType.HELMET, E_EquipmentType.TURTLE_HELMET, E_EquipmentType.CHESTPLATE, E_EquipmentType.ELYTRA, E_EquipmentType.LEGGINGS, E_EquipmentType.BOOTS -> challengesToAdd = AddChallengeToArmor();
             case E_EquipmentType.BOW, E_EquipmentType.CROSSBOW -> challengesToAdd = AddChallengeToRangedWeapon();
             case E_EquipmentType.HOE -> challengesToAdd = AddChallengeToHoe();
             case E_EquipmentType.MACE, E_EquipmentType.SHIELD, E_EquipmentType.SWORD -> challengesToAdd = AddChallengeToWeapon();
@@ -56,6 +57,12 @@ public class ChallengesFactory {
         challenges.challenges.add(new ChallengeProgress(EssorRegistry.CHALLENGE_DEFINITION_MAP.get("Essor:Challenge:KillElderGuardian")));
         challenges.challenges.add(new ChallengeProgress(EssorRegistry.CHALLENGE_DEFINITION_MAP.get("Essor:Challenge:KillWither")));
         challenges.challenges.add(new ChallengeProgress(EssorRegistry.CHALLENGE_DEFINITION_MAP.get("Essor:Challenge:KillWarden")));
+        return challenges;
+    }
+
+    private static Challenges AddChallengeToArmor() {
+        Challenges challenges = new Challenges();
+        challenges.challenges.add(new ChallengeProgress(EssorRegistry.CHALLENGE_DEFINITION_MAP.get("Essor:Challenge:TakeDamages")));
         return challenges;
     }
 

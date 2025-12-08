@@ -63,7 +63,8 @@ public class EssorRegistry {
         "weapons/kill-wither",
         "weapons/kill-zombies",
         "break-blocks",
-        "kill-entities"
+        "kill-entities",
+        "take-damages"
     );
 
     private static Map<Integer, Map<String, Integer>> LoadEnchantmentTable(String file) {
