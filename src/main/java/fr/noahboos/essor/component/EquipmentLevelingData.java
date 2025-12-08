@@ -76,9 +76,10 @@ public class EquipmentLevelingData {
     );
 
     public static final Set<E_EquipmentType> CHALLENGEABLE_ITEM_CLASSES = Set.of(
-        E_EquipmentType.AXE, E_EquipmentType.BOW, E_EquipmentType.CROSSBOW, E_EquipmentType.HOE,
-        E_EquipmentType.MACE, E_EquipmentType.PICKAXE, E_EquipmentType.SHOVEL, E_EquipmentType.SHIELD,
-        E_EquipmentType.SWORD, E_EquipmentType.TRIDENT
+        E_EquipmentType.AXE, E_EquipmentType.BOOTS, E_EquipmentType.BOW, E_EquipmentType.CHESTPLATE,
+        E_EquipmentType.CROSSBOW, E_EquipmentType.ELYTRA, E_EquipmentType.HELMET, E_EquipmentType.HOE,
+        E_EquipmentType.LEGGINGS, E_EquipmentType.MACE, E_EquipmentType.PICKAXE, E_EquipmentType.SHOVEL,
+        E_EquipmentType.SHIELD, E_EquipmentType.SWORD, E_EquipmentType.TRIDENT, E_EquipmentType.TURTLE_HELMET
     );
 
     public int GetPrestige() {
