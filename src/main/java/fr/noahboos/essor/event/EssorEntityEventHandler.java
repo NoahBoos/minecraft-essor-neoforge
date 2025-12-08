@@ -38,6 +38,7 @@ public class EssorEntityEventHandler {
                         EquipmentLevelingData data = item.getComponents().get(EssorDataComponents.EQUIPMENT_LEVELING_DATA.get());
                         if (data == null) continue;
                         ProgressionManager.HandleProgress(player, item, armorExperience);
+                        Challenges.AttemptToLevelUpChallenges(item, Math.round(damage));
                     }
                 }
                 float shieldExperience = event.getBlockedDamage() * EquipmentLevelingData.DEFAULT_XP_SHIELD_BLOCK;
