@@ -3,8 +3,8 @@ package fr.noahboos.essor.component.challenge;
 import fr.noahboos.essor.component.EquipmentLevelingData;
 import fr.noahboos.essor.component.EssorDataComponents;
 import fr.noahboos.essor.registry.EssorRegistry;
+import fr.noahboos.essor.util.E_EquipmentType;
 import fr.noahboos.essor.util.EquipmentType;
-import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.*;
 
 public class ChallengesFactory {
@@ -17,24 +17,16 @@ public class ChallengesFactory {
         if (data == null) return;
         Challenges challengesToAdd = null;
 
-        Item type = item.getItem();
+        E_EquipmentType equipmentType = EquipmentType.GetEquipmentType(item);
 
-        switch (type) {
-            case AxeItem axeItem -> challengesToAdd = AddChallengeToAxe();
-            case BowItem bowItem -> challengesToAdd = AddChallengeToRangedWeapon();
-            case CrossbowItem crossbowItem -> challengesToAdd = AddChallengeToRangedWeapon();
-            case HoeItem hoeItem -> challengesToAdd = AddChallengeToHoe();
-            case MaceItem maceItem -> challengesToAdd = AddChallengeToWeapon();
-            case ShovelItem shovelItem -> challengesToAdd = AddChallengeToShovel();
-            case ShieldItem shieldItem -> challengesToAdd = AddChallengeToWeapon();
-            case TridentItem tridentItem -> challengesToAdd = AddChallengeToTrident();
-            default -> {
-                if (item.is(ItemTags.SWORDS)) {
-                    challengesToAdd = AddChallengeToWeapon();
-                } else if (item.is(ItemTags.PICKAXES)) {
-                    challengesToAdd = AddChallengeToPickaxe();
-                }
-            }
+        switch (equipmentType) {
+            case E_EquipmentType.AXE -> challengesToAdd = AddChallengeToAxe();
+            case E_EquipmentType.BOW, E_EquipmentType.CROSSBOW -> challengesToAdd = AddChallengeToRangedWeapon();
+            case E_EquipmentType.HOE -> challengesToAdd = AddChallengeToHoe();
+            case E_EquipmentType.MACE, E_EquipmentType.SHIELD, E_EquipmentType.SWORD -> challengesToAdd = AddChallengeToWeapon();
+            case E_EquipmentType.PICKAXE -> challengesToAdd = AddChallengeToPickaxe();
+            case E_EquipmentType.SHOVEL -> challengesToAdd = AddChallengeToShovel();
+            case E_EquipmentType.TRIDENT -> challengesToAdd = AddChallengeToTrident();
         }
 
         if (challengesToAdd != null) {
