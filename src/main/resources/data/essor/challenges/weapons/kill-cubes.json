@@ -11,6 +11,6 @@
   ],
   "targets": [
     "minecraft:magma_cube",
-    "minecraft:slimes"
+    "minecraft:slime"
   ]
 }

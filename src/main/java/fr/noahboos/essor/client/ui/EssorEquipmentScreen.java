@@ -14,9 +14,11 @@ import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.client.gui.screens.inventory.tooltip.ClientTooltipComponent;
 import net.minecraft.client.gui.screens.inventory.tooltip.DefaultTooltipPositioner;
 import net.minecraft.client.renderer.RenderPipelines;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.block.Block;
 
 import java.util.*;
 
@@ -204,8 +206,16 @@ public class EssorEquipmentScreen extends Screen {
                     tooltip.add(ClientTooltipComponent.create(Component.empty().getVisualOrderText()));
                     tooltip.add(ClientTooltipComponent.create(Component.translatable("Essor.Challenge.Targets").getVisualOrderText()));
                     challengeDefinition.GetTargets().forEach(target -> {
-                        String target_name = target.replace("minecraft:", "").replace("_", " ");
-                        target_name = target_name.substring(0, 1).toUpperCase() + target_name.substring(1);
+                        String target_name = "";
+                        ResourceLocation targetId = ResourceLocation.tryParse(target);
+                        if (targetId == null) {
+                            target_name = target.replace("minecraft:", "").replace("_", " ");
+                            target_name = target_name.substring(0, 1).toUpperCase() + target_name.substring(1);
+                        } else if (BuiltInRegistries.BLOCK.containsKey(targetId)) {
+                            target_name = BuiltInRegistries.BLOCK.getValue(targetId).getName().getString();
+                        } else if (BuiltInRegistries.ENTITY_TYPE.containsKey(targetId)) {
+                            target_name = BuiltInRegistries.ENTITY_TYPE.getValue(targetId).getDescription().getString();
+                        }
                         tooltip.add(ClientTooltipComponent.create(Component.literal("  - " + target_name).getVisualOrderText()));
                     });
                 }
