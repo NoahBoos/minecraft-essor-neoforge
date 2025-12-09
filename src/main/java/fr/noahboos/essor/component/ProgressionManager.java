@@ -93,9 +93,9 @@ public class ProgressionManager {
         EquipmentLevelingData data = item.getComponents().get(EssorDataComponents.EQUIPMENT_LEVELING_DATA.get());
         if (data == null) return;
         if (challenge.GetCurrentTier() >= definition.GetMaximumTier()) return;
-        if (challenge.GetProgress() >= definition.GetThresholds().get(challenge.GetCurrentTier())) {
+        while (challenge.GetProgress() >= definition.GetThresholds().get(challenge.GetCurrentTier())) {
+            challenge.SetProgress(challenge.GetProgress() - definition.GetThresholds().get(challenge.GetCurrentTier()));
             challenge.SetCurrentTier(challenge.GetCurrentTier() + 1);
-            challenge.SetProgress(0);
             data.SetChallengeExperienceMultiplier(data.GetChallengeExperienceMultiplier() + EquipmentLevelingData.challengeExperienceMultiplierStep);
             data.SetTotalExperienceMultiplier();
         }
