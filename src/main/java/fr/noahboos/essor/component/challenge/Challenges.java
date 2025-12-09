@@ -37,13 +37,18 @@ public class Challenges {
         }
     }
 
-    public static void AttemptToLevelUpChallenges(ItemStack item, int progress) {
+    public static void AttemptToLevelUpChallenges(ItemStack item, int progress, String challengeId) {
         EquipmentLevelingData data = item.getComponents().get(EssorDataComponents.EQUIPMENT_LEVELING_DATA.get());
         if (data == null) return;
         for (var challenge : data.GetChallenges().challenges) {
-            if (challenge.GetDefinition().GetTargets().isEmpty()) {
+            if (challenge.GetId().equals(challengeId)) {
+                System.out.println(challenge.GetId() + " - Progrès actuel : " + challenge.GetProgress());
+                System.out.println(challenge.GetId() + " - Niveau actuel : " + challenge.GetCurrentTier());
+                System.out.println("Progrès à ajouter : " + progress);
                 ProgressionManager.IncrementChallenge(challenge, challenge.GetDefinition(), progress);
                 ProgressionManager.LevelUpChallenge(item, challenge, challenge.GetDefinition());
+                System.out.println(challenge.GetId() + " - Nouveau progrès : " + challenge.GetProgress());
+                System.out.println(challenge.GetId() + " - Nouveau niveau : " + challenge.GetCurrentTier());
             }
         }
     }
