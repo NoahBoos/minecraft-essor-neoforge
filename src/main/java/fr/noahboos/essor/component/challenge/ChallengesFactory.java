@@ -8,7 +8,6 @@ import fr.noahboos.essor.util.EquipmentType;
 import net.minecraft.world.item.*;
 
 public class ChallengesFactory {
-    // TODO - Change this method behaviour, so instead of brute assigning challenges, it contextually assigns them to each item, depending on what challenges are missing.
     public static void AssignChallenges(ItemStack item) {
         if (!EquipmentLevelingData.CHALLENGEABLE_ITEM_CLASSES.contains(EquipmentType.GetEquipmentType(item))) return;
 
