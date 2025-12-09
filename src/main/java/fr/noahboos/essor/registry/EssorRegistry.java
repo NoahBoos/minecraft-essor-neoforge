@@ -63,6 +63,7 @@ public class EssorRegistry {
         "weapons/kill-wither",
         "weapons/kill-zombies",
         "break-blocks",
+        "breathe-underwater",
         "kill-entities",
         "take-damages"
     );

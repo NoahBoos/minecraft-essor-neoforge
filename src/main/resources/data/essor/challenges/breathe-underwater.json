@@ -1,0 +1,20 @@
+{
+  "id": "Essor:Challenge:BreatheUnderwater",
+  "iconId": "textures/gui/challenge/icon/breathe_underwater.png",
+  "maximumTier": 10,
+  "thresholds": [
+    32,
+    64,
+    128,
+    256,
+    512,
+    1024,
+    2048,
+    4096,
+    8192,
+    16384
+  ],
+  "targets": [
+
+  ]
+}

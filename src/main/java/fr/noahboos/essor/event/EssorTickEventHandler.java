@@ -2,6 +2,7 @@ package fr.noahboos.essor.event;
 
 import fr.noahboos.essor.component.EquipmentLevelingData;
 import fr.noahboos.essor.component.ProgressionManager;
+import fr.noahboos.essor.component.challenge.Challenges;
 import fr.noahboos.essor.registry.EssorEnchantmentRegistry;
 import fr.noahboos.essor.util.E_EquipmentType;
 import fr.noahboos.essor.util.EquipmentType;
@@ -14,7 +15,12 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class EssorTickEventHandler {
+    private static Map<Player, Integer> underwaterTicks = new HashMap<>();
+
     @SubscribeEvent
     public static void OnLivingTick(PlayerTickEvent.@NotNull Post event) {
         Player player = event.getEntity();
@@ -32,6 +38,14 @@ public class EssorTickEventHandler {
         if (player.isUnderWater() && (helmetStack.getEnchantmentLevel(EssorEnchantmentRegistry.GetEnchantmentByID("respiration", event.getEntity().registryAccess())) >= 1 || EquipmentType.GetEquipmentType(helmetStack) == E_EquipmentType.TURTLE_HELMET)) {
             ProgressionManager.HandleProgress(player, helmetStack, EquipmentLevelingData.DEFAULT_XP_UNDER_WATER_BREATHING);
         }
+        if (player.isUnderWater()) {
+            ProgressionManager.HandleProgress(player, helmetStack, EquipmentLevelingData.DEFAULT_XP_UNDER_WATER_BREATHING);
+            underwaterTicks.put(player, underwaterTicks.getOrDefault(player, 0) + 1);
+            if (underwaterTicks.get(player) >= 20) {
+                Challenges.AttemptToLevelUpChallenges(helmetStack, 1, "Essor:Challenge:BreatheUnderwater");
+                underwaterTicks.put(player, 0);
+            }
+        } else underwaterTicks.put(player, 0);
         if (player.isCrouching() && (legsStack.getEnchantmentLevel(EssorEnchantmentRegistry.GetEnchantmentByID("swift_sneak", event.getEntity().registryAccess())) >= 1)) {
             ProgressionManager.HandleProgress(player, legsStack, EquipmentLevelingData.DEFAULT_XP_CROUCHED);
         }
