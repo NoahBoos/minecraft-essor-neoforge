@@ -64,6 +64,7 @@ public class EssorRegistry {
         "weapons/kill-zombies",
         "break-blocks",
         "breathe-underwater",
+        "fly-long-distance-with-the-elytra",
         "kill-entities",
         "take-damages"
     );
