@@ -21,7 +21,8 @@ public class ChallengesFactory {
         switch (equipmentType) {
             case E_EquipmentType.AXE -> challengesToAdd = AddChallengeToAxe();
             case E_EquipmentType.HELMET, E_EquipmentType.TURTLE_HELMET -> challengesToAdd = AddChallengeToHelmet();
-            case E_EquipmentType.CHESTPLATE, E_EquipmentType.ELYTRA, E_EquipmentType.LEGGINGS, E_EquipmentType.BOOTS -> challengesToAdd = AddChallengeToArmor();
+            case E_EquipmentType.ELYTRA -> challengesToAdd = AddChallengeToElytra();
+            case E_EquipmentType.CHESTPLATE, E_EquipmentType.LEGGINGS, E_EquipmentType.BOOTS -> challengesToAdd = AddChallengeToArmor();
             case E_EquipmentType.BOW, E_EquipmentType.CROSSBOW -> challengesToAdd = AddChallengeToRangedWeapon();
             case E_EquipmentType.HOE -> challengesToAdd = AddChallengeToHoe();
             case E_EquipmentType.MACE, E_EquipmentType.SHIELD, E_EquipmentType.SWORD -> challengesToAdd = AddChallengeToWeapon();
@@ -69,6 +70,12 @@ public class ChallengesFactory {
     private static Challenges AddChallengeToHelmet() {
         Challenges challenges = AddChallengeToArmor();
         challenges.challenges.add(new ChallengeProgress(EssorRegistry.CHALLENGE_DEFINITION_MAP.get("Essor:Challenge:BreatheUnderwater")));
+        return challenges;
+    }
+
+    private static Challenges AddChallengeToElytra() {
+        Challenges challenges = AddChallengeToArmor();
+        challenges.challenges.add(new ChallengeProgress(EssorRegistry.CHALLENGE_DEFINITION_MAP.get("Essor:Challenge:FlyLongDistanceWithTheElytra")));
         return challenges;
     }
 
