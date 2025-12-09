@@ -51,6 +51,7 @@ public class EssorRegistry {
         "shears/break-oak-leaves",
         "shears/break-pale-oak-leaves",
         "shears/break-spruce-leaves",
+        "shears/shear-sheep",
         "shovel/break-clay",
         "shovel/break-dirt",
         "shovel/break-gravel",

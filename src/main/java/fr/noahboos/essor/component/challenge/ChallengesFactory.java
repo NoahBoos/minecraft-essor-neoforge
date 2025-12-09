@@ -155,6 +155,7 @@ public class ChallengesFactory {
 
     private static Challenges AddChallengeToShears() {
         Challenges challenges = AddChallengeToTool();
+        challenges.challenges.add(new ChallengeProgress(EssorRegistry.CHALLENGE_DEFINITION_MAP.get("Essor:Challenge:ShearSheep")));
         challenges.challenges.add(new ChallengeProgress(EssorRegistry.CHALLENGE_DEFINITION_MAP.get("Essor:Challenge:BreakAcaciaLeaves")));
         challenges.challenges.add(new ChallengeProgress(EssorRegistry.CHALLENGE_DEFINITION_MAP.get("Essor:Challenge:BreakBirchLeaves")));
         challenges.challenges.add(new ChallengeProgress(EssorRegistry.CHALLENGE_DEFINITION_MAP.get("Essor:Challenge:BreakCherryLeaves")));
