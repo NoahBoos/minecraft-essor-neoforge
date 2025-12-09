@@ -11,6 +11,7 @@ import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.phys.Vec3;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 import org.jetbrains.annotations.NotNull;
@@ -19,6 +20,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class EssorTickEventHandler {
+    private static Vec3 lastRecordedPositionInElytra = null;
+    private static double totalDistanceFlown = 0.0;
+    private static final int DISTANCE_FLOWN_UPDATE_INTERVAL = 4;
+    private static int distanceFlownTicks = 0;
     private static Map<Player, Integer> underwaterTicks = new HashMap<>();
 
     @SubscribeEvent
@@ -34,6 +39,24 @@ public class EssorTickEventHandler {
 
         if (player.isFallFlying()) {
             ProgressionManager.HandleProgress(player, chestStack, EquipmentLevelingData.DEFAULT_XP_ELYTRA_GLIDE);
+            distanceFlownTicks++;
+            if (distanceFlownTicks >= DISTANCE_FLOWN_UPDATE_INTERVAL) {
+                if (lastRecordedPositionInElytra == null) {
+                    lastRecordedPositionInElytra = player.position();
+                } else {
+                    totalDistanceFlown += lastRecordedPositionInElytra.distanceTo(player.position());
+                    lastRecordedPositionInElytra = player.position();
+                }
+                distanceFlownTicks = 0;
+            }
+        } else {
+            if (lastRecordedPositionInElytra != null) {
+                System.out.println(totalDistanceFlown);
+                Challenges.AttemptToLevelUpChallenges(chestStack, (int) Math.round(totalDistanceFlown), "Essor:Challenge:FlyLongDistanceWithTheElytra");
+                lastRecordedPositionInElytra = null;
+                totalDistanceFlown = 0.0;
+                distanceFlownTicks = 0;
+            }
         }
         if (player.isUnderWater() && (helmetStack.getEnchantmentLevel(EssorEnchantmentRegistry.GetEnchantmentByID("respiration", event.getEntity().registryAccess())) >= 1 || EquipmentType.GetEquipmentType(helmetStack) == E_EquipmentType.TURTLE_HELMET)) {
             ProgressionManager.HandleProgress(player, helmetStack, EquipmentLevelingData.DEFAULT_XP_UNDER_WATER_BREATHING);
