@@ -1,0 +1,15 @@
+{
+  "id": "Essor:Challenge:BreakJungleLeaves",
+  "iconId": "textures/gui/challenge/icon/shears/break_jungle_leaves.png",
+  "maximumTier": 5,
+  "thresholds": [
+    64,
+    128,
+    256,
+    512,
+    1024
+  ],
+  "targets": [
+    "minecraft:jungle_leaves"
+  ]
+}

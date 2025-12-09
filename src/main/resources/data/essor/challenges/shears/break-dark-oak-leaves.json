@@ -1,0 +1,15 @@
+{
+  "id": "Essor:Challenge:BreakDarkOakLeaves",
+  "iconId": "textures/gui/challenge/icon/shears/break_dark_oak_leaves.png",
+  "maximumTier": 5,
+  "thresholds": [
+    64,
+    128,
+    256,
+    512,
+    1024
+  ],
+  "targets": [
+    "minecraft:dark_oak_leaves"
+  ]
+}

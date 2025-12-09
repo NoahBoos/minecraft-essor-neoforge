@@ -1,0 +1,15 @@
+{
+  "id": "Essor:Challenge:BreakBirchLeaves",
+  "iconId": "textures/gui/challenge/icon/shears/break_birch_leaves.png",
+  "maximumTier": 5,
+  "thresholds": [
+    64,
+    128,
+    256,
+    512,
+    1024
+  ],
+  "targets": [
+    "minecraft:birch_leaves"
+  ]
+}
