@@ -30,16 +30,13 @@ public class EssorEntityEventHandler {
             LivingEntity entity = event.getEntity();
             Entity attacker = event.getSource().getEntity();
             if (entity instanceof Player player) {
-                // TODO - Patch the damage rewarding system for both the experience and the challenge.
-                float damage = event.getOriginalDamage() - event.getNewDamage();
-                float armorExperience = damage * EquipmentLevelingData.DEFAULT_XP_DAMAGE_TAKEN;
+                float armorExperience = (event.getOriginalDamage() - event.getNewDamage()) * EquipmentLevelingData.DEFAULT_XP_DAMAGE_TAKEN;
                 Iterable<ItemStack> armor = InventoryUtils.GetPlayerArmor(player.getInventory());
                 for (ItemStack item : armor) {
                     if (item instanceof ItemStack) {
                         EquipmentLevelingData data = item.getComponents().get(EssorDataComponents.EQUIPMENT_LEVELING_DATA.get());
                         if (data == null) continue;
                         ProgressionManager.HandleProgress(player, item, armorExperience);
-                        System.out.println("Dégats originaux : " + event.getOriginalDamage() + " - Nouveaux dégats : " + event.getNewDamage());
                         Challenges.AttemptToLevelUpChallenges(item, Math.round(event.getNewDamage()), "Essor:Challenge:TakeDamages");
                     }
                 }
