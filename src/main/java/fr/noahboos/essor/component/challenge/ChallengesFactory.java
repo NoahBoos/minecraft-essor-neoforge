@@ -27,6 +27,7 @@ public class ChallengesFactory {
             case E_EquipmentType.HOE -> challengesToAdd = AddChallengeToHoe();
             case E_EquipmentType.MACE, E_EquipmentType.SHIELD, E_EquipmentType.SWORD -> challengesToAdd = AddChallengeToWeapon();
             case E_EquipmentType.PICKAXE -> challengesToAdd = AddChallengeToPickaxe();
+            case E_EquipmentType.SHEARS -> challengesToAdd = AddChallengeToShears();
             case E_EquipmentType.SHOVEL -> challengesToAdd = AddChallengeToShovel();
             case E_EquipmentType.TRIDENT -> challengesToAdd = AddChallengeToTrident();
         }
@@ -149,6 +150,11 @@ public class ChallengesFactory {
         challenges.challenges.add(new ChallengeProgress(EssorRegistry.CHALLENGE_DEFINITION_MAP.get("Essor:Challenge:BreakShroomlight")));
         challenges.challenges.add(new ChallengeProgress(EssorRegistry.CHALLENGE_DEFINITION_MAP.get("Essor:Challenge:BreakNetherWart")));
         challenges.challenges.add(new ChallengeProgress(EssorRegistry.CHALLENGE_DEFINITION_MAP.get("Essor:Challenge:BreakWarpedWart")));
+        return challenges;
+    }
+
+    private static Challenges AddChallengeToShears() {
+        Challenges challenges = AddChallengeToTool();
         return challenges;
     }
 
