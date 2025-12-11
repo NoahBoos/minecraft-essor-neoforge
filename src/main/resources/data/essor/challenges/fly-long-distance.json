@@ -1,6 +1,6 @@
 {
-  "id": "Essor:Challenge:FlyLongDistanceWithTheElytra",
-  "iconId": "textures/gui/challenge/icon/fly_long_distance_with_the_elytra.png",
+  "id": "Essor:Challenge:FlyLongDistance",
+  "iconId": "textures/gui/challenge/icon/fly_long_distance.png",
   "maximumTier": 10,
   "thresholds": [
     256,

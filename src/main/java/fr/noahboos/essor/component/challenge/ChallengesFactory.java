@@ -76,7 +76,7 @@ public class ChallengesFactory {
 
     private static Challenges AddChallengeToElytra() {
         Challenges challenges = AddChallengeToArmor();
-        challenges.challenges.add(new ChallengeProgress(EssorRegistry.CHALLENGE_DEFINITION_MAP.get("Essor:Challenge:FlyLongDistanceWithTheElytra")));
+        challenges.challenges.add(new ChallengeProgress(EssorRegistry.CHALLENGE_DEFINITION_MAP.get("Essor:Challenge:FlyLongDistance")));
         return challenges;
     }
 
