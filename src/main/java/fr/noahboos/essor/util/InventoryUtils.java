@@ -15,29 +15,7 @@ import java.util.List;
 public class InventoryUtils {
     public static void InventorySync(ServerPlayer player) {
         player.containerMenu.broadcastChanges();
-
-        int stateId = player.containerMenu.getStateId();
-
-        // Hotbar (0-8)
-        for (int i = 0; i <= 8; i++) {
-            player.connection.send(new ClientboundContainerSetSlotPacket(-2, stateId, i, player.getInventory().getItem(i)));
-        }
-
-        // Inventaire principal (9-35)
-        for (int i = 9; i <= 35; i++) {
-            player.connection.send(new ClientboundContainerSetSlotPacket(-2, stateId, i, player.getInventory().getItem(i)));
-        }
-
-        // Armure (36-39)
-        for (int i = 36; i <= 39; i++) {
-            player.connection.send(new ClientboundContainerSetSlotPacket(-2, stateId, i, player.getInventory().getItem(i)));
-        }
-
-        // Main hand (slot sélectionné)
-        player.connection.send(new ClientboundContainerSetSlotPacket(-2, stateId, player.getInventory().getSelectedSlot(), player.getMainHandItem()));
-
-        // Off-hand (slot 40)
-        player.connection.send(new ClientboundContainerSetSlotPacket(-2, stateId, 40, player.getOffhandItem()));
+        player.inventoryMenu.broadcastChanges();
     }
 
     public static void InitializeEquipmentLevelingDataOnInventoryItems(Inventory inventory) {
