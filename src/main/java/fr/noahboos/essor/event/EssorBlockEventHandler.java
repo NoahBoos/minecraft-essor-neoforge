@@ -1,6 +1,6 @@
 package fr.noahboos.essor.event;
 
-import fr.noahboos.essor.component.ActionBar;
+import fr.noahboos.essor.client.ui.EssorActionBar;
 import fr.noahboos.essor.component.ProgressionManager;
 import fr.noahboos.essor.component.challenge.Challenges;
 import fr.noahboos.essor.registry.EssorRegistry;
@@ -34,7 +34,7 @@ public class EssorBlockEventHandler {
             }
             Challenges.AttemptToLevelUpChallenges(heldItem, BuiltInRegistries.BLOCK.getKey(block).toString(), dropCount);
             player.containerMenu.broadcastChanges();
-            ActionBar.DisplayXPCount((ServerPlayer) player, heldItem);
+            EssorActionBar.DisplayXPCount((ServerPlayer) player, heldItem);
         }
     }
 
@@ -59,7 +59,7 @@ public class EssorBlockEventHandler {
             }
             Challenges.AttemptToLevelUpChallenges(mainHandItem, BuiltInRegistries.BLOCK.getKey(block).toString());
             player.containerMenu.broadcastChanges();
-            ActionBar.DisplayXPCount((ServerPlayer) player, mainHandItem);
+            EssorActionBar.DisplayXPCount((ServerPlayer) player, mainHandItem);
         }
     }
 }

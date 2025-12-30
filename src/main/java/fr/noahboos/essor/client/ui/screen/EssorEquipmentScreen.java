@@ -1,4 +1,4 @@
-package fr.noahboos.essor.client.ui;
+package fr.noahboos.essor.client.ui.screen;
 
 import fr.noahboos.essor.Essor;
 import fr.noahboos.essor.client.EssorKeyMappings;

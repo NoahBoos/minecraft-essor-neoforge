@@ -1,10 +1,12 @@
-package fr.noahboos.essor.component;
+package fr.noahboos.essor.client.ui;
 
+import fr.noahboos.essor.component.EquipmentLevelingData;
+import fr.noahboos.essor.component.EssorDataComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.item.ItemStack;
 
-public class ActionBar {
+public class EssorActionBar {
     public static void DisplayXPCount(ServerPlayer player, ItemStack itemInHand) {
         EquipmentLevelingData equipmentLevelingData = itemInHand.get(EssorDataComponents.EQUIPMENT_LEVELING_DATA);
         if (equipmentLevelingData == null) return;
