@@ -57,10 +57,7 @@ public class EssorTickEventHandler {
                 distanceFlownTicks = 0;
             }
         }
-        if (player.isUnderWater() && (helmetStack.getEnchantmentLevel(EssorEnchantmentRegistry.GetEnchantmentByID("respiration", event.getEntity().registryAccess())) >= 1 || EquipmentType.GetEquipmentType(helmetStack) == E_EquipmentType.TURTLE_HELMET)) {
-            ProgressionManager.HandleProgress(player, helmetStack, EquipmentLevelingData.DEFAULT_XP_UNDER_WATER_BREATHING);
-        }
-        if (player.isUnderWater()) {
+        if (player.isUnderWater()  && (helmetStack.getEnchantmentLevel(EssorEnchantmentRegistry.GetEnchantmentByID("respiration", event.getEntity().registryAccess())) >= 1 || EquipmentType.GetEquipmentType(helmetStack) == E_EquipmentType.TURTLE_HELMET)) {
             ProgressionManager.HandleProgress(player, helmetStack, EquipmentLevelingData.DEFAULT_XP_UNDER_WATER_BREATHING);
             underwaterTicks.put(player, underwaterTicks.getOrDefault(player, 0) + 1);
             if (underwaterTicks.get(player) >= 20) {
