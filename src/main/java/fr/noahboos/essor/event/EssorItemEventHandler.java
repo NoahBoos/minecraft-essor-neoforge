@@ -28,7 +28,7 @@ public class EssorItemEventHandler {
             }
 
             InventoryUtils.InitializeEquipmentLevelingDataOnInventoryItems(event.getEntity().getInventory());
-            InventoryUtils.InventorySync((ServerPlayer) event.getEntity());
+            event.getEntity().containerMenu.broadcastChanges();
         }
     }
 
@@ -38,7 +38,7 @@ public class EssorItemEventHandler {
             return;
         } else {
             InventoryUtils.InitializeEquipmentLevelingDataOnInventoryItems(event.getPlayer().getInventory());
-            InventoryUtils.InventorySync((ServerPlayer) event.getPlayer());
+            event.getPlayer().containerMenu.broadcastChanges();
         }
     }
 }

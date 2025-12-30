@@ -50,7 +50,7 @@ public class EssorEntityEventHandler {
                 if (offHandItem.getItem() instanceof ShieldItem) {
                     ProgressionManager.HandleProgress(player, offHandItem, shieldExperience);
                 }
-                InventoryUtils.InventorySync((ServerPlayer) player);
+                player.containerMenu.broadcastChanges();
             }
 
             if (attacker instanceof Player player) {
@@ -61,12 +61,11 @@ public class EssorEntityEventHandler {
                     ProgressionManager.HandleProgress(player, heldItem, experience);
                 }
 
-
                 ItemStack offHandItem = player.getOffhandItem();
                 if (!(offHandItem.getItem() instanceof ShieldItem)) {
                     ProgressionManager.HandleProgress(player, offHandItem, experience);
                 }
-                InventoryUtils.InventorySync((ServerPlayer) player);
+                player.containerMenu.broadcastChanges();
             }
         }
     }
@@ -93,7 +92,7 @@ public class EssorEntityEventHandler {
                     ProgressionManager.HandleProgress(player, offHandItem, offHandResult.experience());
                 }
                 Challenges.AttemptToLevelUpChallenges(offHandItem, BuiltInRegistries.ENTITY_TYPE.getKey(entity.getType()).toString());
-                InventoryUtils.InventorySync((ServerPlayer) player);
+                player.containerMenu.broadcastChanges();
             }
         }
     }
@@ -111,6 +110,6 @@ public class EssorEntityEventHandler {
             ProgressionManager.HandleProgress(player, mainHandItem, mainItemResult.experience());
         }
         Challenges.AttemptToLevelUpChallenges(mainHandItem, BuiltInRegistries.ENTITY_TYPE.getKey(entity.getType()).toString());
-        InventoryUtils.InventorySync(player);
+        player.containerMenu.broadcastChanges();
     }
 }

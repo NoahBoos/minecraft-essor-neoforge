@@ -23,51 +23,44 @@ import net.neoforged.neoforge.event.level.BlockDropsEvent;
 public class EssorBlockEventHandler {
     @SubscribeEvent
     public static void OnBlockDropped(BlockDropsEvent event) {
-        if (event.getBreaker() == null) return;
-        if (event.getBreaker().level().isClientSide()) {
-            return;
-        } else {
-            if (event.getBreaker() instanceof Player player) {
-                ItemStack heldItem = player.getMainHandItem();
-                Block block = event.getState().getBlock();
-                EssorRegistry.ExperienceResult result = EssorRegistry.GetExperience(EssorRegistry.PRIMARY_ACTION_EXPERIENCE_TABLES, heldItem, BuiltInRegistries.BLOCK.getKey(block).toString());
-                int dropCount = event.getDrops().stream().mapToInt(itemEntity -> itemEntity.getItem().getCount()).sum();
-                if (result.isRewardable()) {
-                    float experience = result.experience() * dropCount;
-                    ProgressionManager.HandleProgress(player, heldItem, experience);
-                }
-                Challenges.AttemptToLevelUpChallenges(heldItem, BuiltInRegistries.BLOCK.getKey(block).toString(), dropCount);
-                InventoryUtils.InventorySync((ServerPlayer) player);
-                ActionBar.DisplayXPCount((ServerPlayer) player, heldItem);
+        if (event.getBreaker() == null || event.getBreaker().level().isClientSide()) return;
+        if (event.getBreaker() instanceof Player player) {
+            ItemStack heldItem = player.getMainHandItem();
+            Block block = event.getState().getBlock();
+            EssorRegistry.ExperienceResult result = EssorRegistry.GetExperience(EssorRegistry.PRIMARY_ACTION_EXPERIENCE_TABLES, heldItem, BuiltInRegistries.BLOCK.getKey(block).toString());
+            int dropCount = event.getDrops().stream().mapToInt(itemEntity -> itemEntity.getItem().getCount()).sum();
+            if (result.isRewardable()) {
+                float experience = result.experience() * dropCount;
+                ProgressionManager.HandleProgress(player, heldItem, experience);
             }
+            Challenges.AttemptToLevelUpChallenges(heldItem, BuiltInRegistries.BLOCK.getKey(block).toString(), dropCount);
+            player.containerMenu.broadcastChanges();
+            ActionBar.DisplayXPCount((ServerPlayer) player, heldItem);
         }
     }
 
     @SubscribeEvent
     public static void OnBlockRightClicked(PlayerInteractEvent.RightClickBlock event) {
-        if (event.getEntity().level().isClientSide()) {
-            return;
-        } else {
-            if (event.getEntity() instanceof Player player) {
-                ItemStack mainHandItem = player.getMainHandItem();
-                ItemStack offHandItem = player.getOffhandItem();
-                Block block = event.getEntity().level().getBlockState(event.getPos()).getBlock();
-                BlockEntity blockEntity = event.getEntity().level().getBlockEntity(event.getPos());
-                Block blockOnTop = event.getEntity().level().getBlockState(event.getPos().above()).getBlock();
+        if (event.getEntity().level().isClientSide()) return;
+        if (event.getEntity() instanceof Player player) {
+            ItemStack mainHandItem = player.getMainHandItem();
+            ItemStack offHandItem = player.getOffhandItem();
+            Block block = event.getEntity().level().getBlockState(event.getPos()).getBlock();
+            BlockEntity blockEntity = event.getEntity().level().getBlockEntity(event.getPos());
+            Block blockOnTop = event.getEntity().level().getBlockState(event.getPos().above()).getBlock();
 
-                if (EquipmentType.GetEquipmentType(offHandItem) == E_EquipmentType.SHIELD && EquipmentType.GetEquipmentType(mainHandItem) == E_EquipmentType.AXE) return;
-                if ((EquipmentType.GetEquipmentType(mainHandItem) == E_EquipmentType.HOE || EquipmentType.GetEquipmentType(mainHandItem) == E_EquipmentType.SHOVEL) && blockOnTop != Blocks.AIR) return;
+            if (EquipmentType.GetEquipmentType(offHandItem) == E_EquipmentType.SHIELD && EquipmentType.GetEquipmentType(mainHandItem) == E_EquipmentType.AXE) return;
+            if ((EquipmentType.GetEquipmentType(mainHandItem) == E_EquipmentType.HOE || EquipmentType.GetEquipmentType(mainHandItem) == E_EquipmentType.SHOVEL) && blockOnTop != Blocks.AIR) return;
 
-                EssorRegistry.ExperienceResult result = EssorRegistry.GetExperience(EssorRegistry.SECOND_ACTION_EXPERIENCE_TABLES, mainHandItem, BuiltInRegistries.BLOCK.getKey(block).toString());
-                if (result.isRewardable()) {
-                    // TODO - Depending on the amount of rule in the future, a system featuring a custom registry and an interface could be better for code sustainability.
-                    if (blockEntity instanceof BeehiveBlockEntity && event.getEntity().level().getBlockState(event.getPos()).getValue(BeehiveBlock.HONEY_LEVEL) == 0) return;
-                    ProgressionManager.HandleProgress(player, mainHandItem, result.experience());
-                }
-                Challenges.AttemptToLevelUpChallenges(mainHandItem, BuiltInRegistries.BLOCK.getKey(block).toString());
-                InventoryUtils.InventorySync((ServerPlayer) player);
-                ActionBar.DisplayXPCount((ServerPlayer) player, mainHandItem);
+            EssorRegistry.ExperienceResult result = EssorRegistry.GetExperience(EssorRegistry.SECOND_ACTION_EXPERIENCE_TABLES, mainHandItem, BuiltInRegistries.BLOCK.getKey(block).toString());
+            if (result.isRewardable()) {
+                // TODO - Depending on the amount of rule in the future, a system featuring a custom registry and an interface could be better for code sustainability.
+                if (blockEntity instanceof BeehiveBlockEntity && event.getEntity().level().getBlockState(event.getPos()).getValue(BeehiveBlock.HONEY_LEVEL) == 0) return;
+                ProgressionManager.HandleProgress(player, mainHandItem, result.experience());
             }
+            Challenges.AttemptToLevelUpChallenges(mainHandItem, BuiltInRegistries.BLOCK.getKey(block).toString());
+            player.containerMenu.broadcastChanges();
+            ActionBar.DisplayXPCount((ServerPlayer) player, mainHandItem);
         }
     }
 }
