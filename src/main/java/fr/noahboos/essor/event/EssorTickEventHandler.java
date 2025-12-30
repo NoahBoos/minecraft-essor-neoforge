@@ -20,17 +20,19 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.UUID;
 
 public class EssorTickEventHandler {
-    private static Vec3 lastRecordedPositionInElytra = null;
-    private static double totalDistanceFlown = 0.0;
+    private static Map<UUID, Vec3> lastRecordedPositionInElytra = new HashMap<>();
+    private static Map<UUID, Double> totalDistanceFlown = new HashMap<>();
     private static final int DISTANCE_FLOWN_UPDATE_INTERVAL = 4;
-    private static int distanceFlownTicks = 0;
-    private static Map<Player, Integer> underwaterTicks = new HashMap<>();
+    private static Map<UUID, Integer> distanceFlownTicks = new HashMap<>();
+    private static Map<UUID, Integer> underwaterTicks = new HashMap<>();
 
     @SubscribeEvent
     public static void OnLivingTick(PlayerTickEvent.@NotNull Post event) {
         Player player = event.getEntity();
+        UUID uuid = player.getUUID();
 
         if (player.level().isClientSide()) return;
 
@@ -41,32 +43,32 @@ public class EssorTickEventHandler {
 
         if (player.isFallFlying()) {
             ProgressionManager.HandleProgress(player, chestStack, EquipmentLevelingData.DEFAULT_XP_ELYTRA_GLIDE);
-            distanceFlownTicks++;
-            if (distanceFlownTicks >= DISTANCE_FLOWN_UPDATE_INTERVAL) {
-                if (lastRecordedPositionInElytra == null) {
-                    lastRecordedPositionInElytra = player.position();
+            distanceFlownTicks.put(uuid, distanceFlownTicks.getOrDefault(uuid, 0) + 1);
+            if (distanceFlownTicks.get(uuid) >= DISTANCE_FLOWN_UPDATE_INTERVAL) {
+                if (lastRecordedPositionInElytra.get(uuid) == null) {
+                    lastRecordedPositionInElytra.put(uuid, player.position());
                 } else {
-                    totalDistanceFlown += lastRecordedPositionInElytra.distanceTo(player.position());
-                    lastRecordedPositionInElytra = player.position();
+                    totalDistanceFlown.merge(uuid, lastRecordedPositionInElytra.get(uuid).distanceTo(player.position()), Double::sum);
+                    lastRecordedPositionInElytra.put(uuid,player.position());
                 }
-                distanceFlownTicks = 0;
+                distanceFlownTicks.put(uuid, 0);
             }
         } else {
-            if (lastRecordedPositionInElytra != null) {
-                Challenges.AttemptToLevelUpChallenges(chestStack, (int) Math.round(totalDistanceFlown), "Essor:Challenge:FlyLongDistance");
-                lastRecordedPositionInElytra = null;
-                totalDistanceFlown = 0.0;
-                distanceFlownTicks = 0;
+            if (lastRecordedPositionInElytra.get(uuid) != null) {
+                Challenges.AttemptToLevelUpChallenges(chestStack, (int) Math.round(totalDistanceFlown.get(uuid)), "Essor:Challenge:FlyLongDistance");
+                lastRecordedPositionInElytra.remove(uuid);
+                totalDistanceFlown.put(uuid, 0.0);
+                distanceFlownTicks.put(uuid, 0);
             }
         }
         if (player.isUnderWater()  && (helmetStack.getEnchantmentLevel(EssorEnchantmentRegistry.GetEnchantmentByID("respiration", event.getEntity().registryAccess())) >= 1 || EquipmentType.GetEquipmentType(helmetStack) == E_EquipmentType.TURTLE_HELMET)) {
             ProgressionManager.HandleProgress(player, helmetStack, EquipmentLevelingData.DEFAULT_XP_UNDER_WATER_BREATHING);
-            underwaterTicks.put(player, underwaterTicks.getOrDefault(player, 0) + 1);
-            if (underwaterTicks.get(player) >= 20) {
+            underwaterTicks.put(uuid, underwaterTicks.getOrDefault(uuid, 0) + 1);
+            if (underwaterTicks.get(uuid) >= 20) {
                 Challenges.AttemptToLevelUpChallenges(helmetStack, 1, "Essor:Challenge:BreatheUnderwater");
-                underwaterTicks.put(player, 0);
+                underwaterTicks.put(uuid, 0);
             }
-        } else underwaterTicks.put(player, 0);
+        } else underwaterTicks.put(uuid, 0);
         if (player.isCrouching() && (legsStack.getEnchantmentLevel(EssorEnchantmentRegistry.GetEnchantmentByID("swift_sneak", event.getEntity().registryAccess())) >= 1)) {
             ProgressionManager.HandleProgress(player, legsStack, EquipmentLevelingData.DEFAULT_XP_CROUCHED);
         }
