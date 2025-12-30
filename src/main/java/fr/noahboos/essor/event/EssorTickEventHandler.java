@@ -51,8 +51,7 @@ public class EssorTickEventHandler {
             }
         } else {
             if (lastRecordedPositionInElytra != null) {
-                System.out.println(totalDistanceFlown);
-                Challenges.AttemptToLevelUpChallenges(chestStack, (int) Math.round(totalDistanceFlown), "Essor:Challenge:FlyLongDistanceWithTheElytra");
+                Challenges.AttemptToLevelUpChallenges(chestStack, (int) Math.round(totalDistanceFlown), "Essor:Challenge:FlyLongDistance");
                 lastRecordedPositionInElytra = null;
                 totalDistanceFlown = 0.0;
                 distanceFlownTicks = 0;
