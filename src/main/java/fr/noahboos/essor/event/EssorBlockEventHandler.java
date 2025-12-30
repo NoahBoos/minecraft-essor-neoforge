@@ -6,7 +6,6 @@ import fr.noahboos.essor.component.challenge.Challenges;
 import fr.noahboos.essor.registry.EssorRegistry;
 import fr.noahboos.essor.util.E_EquipmentType;
 import fr.noahboos.essor.util.EquipmentType;
-import fr.noahboos.essor.util.InventoryUtils;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Player;
